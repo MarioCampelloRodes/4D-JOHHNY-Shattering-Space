@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _playerRB;
     private SpriteRenderer _playerSpriteRenderer;
     private Animator _anim;
+    private PlayerHealthController _pHCRef;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,8 @@ public class PlayerController : MonoBehaviour
         _anim = GetComponent<Animator>();
 
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
+
+        _pHCRef = GetComponent<PlayerHealthController>();
     }
 
     // Update is called once per frame
@@ -162,6 +165,7 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         float rbGravity = _playerRB.gravityScale;
         _playerRB.gravityScale = 0f;
+
         if(_isWalledLeft)
             _playerRB.velocity = new Vector2(1.5f * dashSpeed, 0f);
         else if(_isWalledRight)
@@ -173,7 +177,8 @@ public class PlayerController : MonoBehaviour
             if (!_playerSpriteRenderer.flipX)
                 _playerRB.velocity = new Vector2(-dashSpeed, 0f);
         }
-        
+
+        _pHCRef.invincibleCounter = dashTime;
         _anim.SetTrigger("IsDashing");
         yield return new WaitForSeconds(dashTime);
         _isDashing = false;
