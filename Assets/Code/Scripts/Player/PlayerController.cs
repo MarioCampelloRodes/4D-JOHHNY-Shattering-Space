@@ -61,7 +61,10 @@ public class PlayerController : MonoBehaviour
         if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing)
         {
             //Movimiento
-            _playerRB.velocity = new Vector2(Input.GetAxis("Horizontal") * playerSpeed, _playerRB.velocity.y);
+            if (_isGrounded)
+                _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+            else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+                _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
 
             //¿Está en el suelo?
             _isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
@@ -166,10 +169,18 @@ public class PlayerController : MonoBehaviour
         float rbGravity = _playerRB.gravityScale;
         _playerRB.gravityScale = 0f;
 
-        if(_isWalledLeft)
-            _playerRB.velocity = new Vector2(1.5f * dashSpeed, 0f);
-        else if(_isWalledRight)
-            _playerRB.velocity = new Vector2(-1.5f * dashSpeed, 0f);
+        if (_isWalledLeft)
+        {
+            _playerRB.velocity = new Vector2(dashSpeed, 0f);
+            jumpNumber = 0;
+        }
+            
+        else if (_isWalledRight)
+        {
+            _playerRB.velocity = new Vector2(-dashSpeed, 0f);
+            jumpNumber = 0;
+        }
+            
         else
         {
             if (_playerSpriteRenderer.flipX)
@@ -180,10 +191,14 @@ public class PlayerController : MonoBehaviour
 
         _pHCRef.invincibleCounter = dashTime;
         _anim.SetTrigger("IsDashing");
+
         yield return new WaitForSeconds(dashTime);
+
         _isDashing = false;
         _playerRB.gravityScale = rbGravity;
+
         yield return new WaitForSeconds(dashCooldown);
+
         canDash = true;
     }
 }

@@ -168,6 +168,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 8
   playerJumpForce: 12
+  jumpNumber: 0
+  wallJumpCounterLength: 0.25
+  canDash: 1
+  dashSpeed: 16
+  dashTime: 0.2
+  dashCooldown: 0.75
   knockbackForce: 10
   knockbackCounterLength: 0.25
   groundPoint: {fileID: 1838125212152150749}
@@ -176,9 +182,6 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  whatIsWall:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &4527783608865212809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,8 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 3
-  invincibleCounterLength: 0
+  maxHealth: 6
+  invincibleCounterLength: 0.5
+  invincibleCounter: 0
 --- !u!95 &6365179721459431673
 Animator:
   serializedVersion: 5

@@ -37,7 +37,7 @@ public class PlayerHealthController : MonoBehaviour
         if(invincibleCounter > 0)
         {
             invincibleCounter -= Time.deltaTime;
-            _spriteRendererRef.color = new Color(255f, 127f, 127f, 0.7f);
+            _spriteRendererRef.color = new Color(_spriteRendererRef.color.r, _spriteRendererRef.color.g, _spriteRendererRef.color.b, 0.7f);
         }
         else
         {

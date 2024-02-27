@@ -540,30 +540,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: dashTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: dashSpeed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: dashCooldown
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: wallJumpCounterLength
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527783608865212809, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: maxHealth
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527783608865212809, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: invincibleCounterLength
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5482898449313581739, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5

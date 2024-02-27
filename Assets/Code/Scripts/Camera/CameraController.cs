@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
 
 
         //Restricción entre un mínimo y un máximo para la cámara en y
-        transform.position = new Vector3(target.position.x - 2f, Mathf.Clamp(transform.position.y, minHeight, maxHeight), transform.position.z);
+        transform.position = new Vector3(target.position.x - 2f, Mathf.Clamp(transform.position.y, minHeight, maxHeight) + 1f, transform.position.z);
 
         //farBackground.position += new Vector3(_amountToMove.x, _amountToMove.y, 0f);
         //middleBackground.position += new Vector3(_amountToMove.x * 0.5f, _amountToMove.y * -0.1f, 0f);
