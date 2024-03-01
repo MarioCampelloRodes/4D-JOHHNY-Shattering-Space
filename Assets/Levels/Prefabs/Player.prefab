@@ -169,6 +169,7 @@ MonoBehaviour:
   playerSpeed: 8
   playerJumpForce: 12
   jumpNumber: 0
+  isGrounded: 0
   wallJumpCounterLength: 0.25
   canDash: 1
   dashSpeed: 16
@@ -196,8 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 6
-  invincibleCounterLength: 0.5
+  invincibleCounterLength: 1
   invincibleCounter: 0
+  playerDeath: {fileID: 7265321160436931013, guid: 7d20899a8acce6f4d8fdea6dd194e6b1, type: 3}
 --- !u!95 &6365179721459431673
 Animator:
   serializedVersion: 5

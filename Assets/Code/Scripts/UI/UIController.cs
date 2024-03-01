@@ -2,18 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
     public GameObject life1, life2, life3, life4, life5, life6;
+
+    public int score, time, streak;
+
+    private float _timeCounter;
+
+    public TextMeshProUGUI scoreText, timeText, streakText;
 
     private PlayerHealthController _pHRef;
     // Start is called before the first frame update
     void Start()
     {
         _pHRef = GameObject.Find("Player").GetComponent<PlayerHealthController>();
+
+        _timeCounter = 0;
     }
 
+    private void Update()
+    {
+        _timeCounter += Time.deltaTime;
+
+        if (_timeCounter >= 1)
+        {
+            time++;
+            _timeCounter = 0;
+
+            timeText.text = time.ToString();
+        }
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;
+
+        scoreText.text = score.ToString();
+    }
+
+    public void AddStreak()
+    {
+        streak++;
+        streakText.text = streak.ToString();
+    }
     public void UpdateHealth()
     {
         switch (_pHRef.currentHealth)

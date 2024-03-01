@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
 {
-    [HideInInspector] public int currentHealth;
+    public int currentHealth;
     public int maxHealth;
 
-    public float invincibleCounterLength = 1;
+    public float invincibleCounterLength = 1f;
     public float invincibleCounter;
 
     private UIController _uIRef;
@@ -17,6 +17,8 @@ public class PlayerHealthController : MonoBehaviour
     private SpriteRenderer _spriteRendererRef;
 
     private LevelManager _lMRef;
+
+    public GameObject playerDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,15 @@ public class PlayerHealthController : MonoBehaviour
         {
             _spriteRendererRef.color = Color.white;
         }
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0; //Por si se queda en negativo
+
+            invincibleCounter = invincibleCounterLength;
+
+            Death();
+        }
     }
 
     public void DealWithDamage()
@@ -54,7 +65,10 @@ public class PlayerHealthController : MonoBehaviour
             if (currentHealth <= 0)
             {
                 currentHealth = 0; //Por si se queda en negativo
-                _lMRef.RespawnPlayer();
+
+                invincibleCounter = invincibleCounterLength;
+
+                Death();
             }
             else
             {
@@ -68,5 +82,23 @@ public class PlayerHealthController : MonoBehaviour
             }
             _uIRef.UpdateHealth();
         }
+    }
+
+    public void Death()
+    {
+        StartCoroutine("DeathCO");
+    }
+
+    private IEnumerator DeathCO()
+    {
+        _pCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _pCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+        yield return new WaitUntil(() => _pCRef.isGrounded);
+
+        _lMRef.RespawnPlayer();
+
+        Instantiate(playerDeath, transform.position, transform.rotation);
+
+        yield return new WaitForSeconds(1f);
     }
 }

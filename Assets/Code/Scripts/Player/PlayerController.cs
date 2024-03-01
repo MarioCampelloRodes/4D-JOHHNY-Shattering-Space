@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     //Saltos
     public float playerJumpForce;
     public int jumpNumber = 0;
-    private bool _isGrounded;
+    public bool isGrounded;
 
     //Saltos de Pared
     private bool _isWalledLeft, _isWalledRight;
@@ -57,17 +57,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //¿Está en el suelo?
+        isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
+
         //Si el contador de knockback se ha vaciado, el jugador recupera el control
-        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing)
+        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0)
         {
             //Movimiento
-            if (_isGrounded)
+            if (isGrounded)
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
             else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-
-            //¿Está en el suelo?
-            _isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
 
             //¿Está tocando la pared?
             _isWalledLeft = Physics2D.OverlapCircle(wallPointLeft.position, 0.2f, whatIsGround);
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
             _isWalledRight = Physics2D.OverlapCircle(wallPointRight.position, 0.2f, whatIsGround);
 
             //Salto
-            if (Input.GetButtonDown("Jump") && _isGrounded)
+            if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 _playerRB.velocity = new Vector2(_playerRB.velocity.x, playerJumpForce);
             }
@@ -86,13 +86,13 @@ public class PlayerController : MonoBehaviour
                 jumpNumber++;
             }
             //Salto de Pared
-            if (Input.GetButtonDown("Jump") && _isWalledRight && !_isGrounded)
+            if (Input.GetButtonDown("Jump") && _isWalledRight && !isGrounded)
             {
                 _wallJumpCounter = wallJumpCounterLength;
                 _playerRB.velocity = new Vector2(-0.9f * playerJumpForce, 0.9f * playerJumpForce);
                 jumpNumber = 0;
             }
-            if (Input.GetButtonDown("Jump") && _isWalledLeft && !_isGrounded)
+            if (Input.GetButtonDown("Jump") && _isWalledLeft && !isGrounded)
             {
                 _wallJumpCounter = wallJumpCounterLength;
                 _playerRB.velocity = new Vector2(0.9f * playerJumpForce, 0.9f * playerJumpForce);
@@ -137,13 +137,13 @@ public class PlayerController : MonoBehaviour
             }
         }
         //Reseteo de Saltos
-        if (_isGrounded)
+        if (isGrounded)
         {
             jumpNumber = 0;
         }
 
         //Animaciones
-        _anim.SetBool("isGrounded", _isGrounded);
+        _anim.SetBool("isGrounded", isGrounded);
 
         //Math.Abs devuelve el absoluto de una variable
         _anim.SetFloat("MoveSpeed", Mathf.Abs(_playerRB.velocity.x));
