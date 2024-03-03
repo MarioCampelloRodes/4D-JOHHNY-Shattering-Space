@@ -9,6 +9,8 @@ public class SeeBoxRight : MonoBehaviour
     private void Start()
     {
         _sCRef = GetComponentInParent<SlimeController>();
+
+        Debug.Log("Mewing");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -40,11 +40,12 @@ public class SlimeController : MonoBehaviour
 
             if (movingRight)
             {
-                if (seeingLeft)
+                if (seeingRight)
                 {
-                    _rBRef.velocity = new Vector2(slimeSpeed * 1.5f, _rBRef.velocity.y);
+                    _rBRef.velocity = new Vector2(slimeSpeed * 1.75f, _rBRef.velocity.y);
+                    _moveCount = moveTime;
                 }
-                else if (!seeingLeft)
+                else if (!seeingRight)
                 {
                     _rBRef.velocity = new Vector2(slimeSpeed, _rBRef.velocity.y);
                 }
@@ -58,11 +59,12 @@ public class SlimeController : MonoBehaviour
             }
             else
             {
-                if (seeingRight)
+                if (seeingLeft)
                 {
-                    _rBRef.velocity = new Vector2(-slimeSpeed * 1.5f, _rBRef.velocity.y);
+                    _rBRef.velocity = new Vector2(-slimeSpeed * 1.75f, _rBRef.velocity.y);
+                    _moveCount = moveTime;
                 }
-                else if (!seeingRight)
+                else if (!seeingLeft)
                 {
                     _rBRef.velocity = new Vector2(-slimeSpeed, _rBRef.velocity.y);
                 }
