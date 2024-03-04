@@ -382,7 +382,8 @@ PrefabInstance:
       value: EnemySpawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7925745375493145196, guid: 80f84a4eb86e0f046a430043870a7402, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80f84a4eb86e0f046a430043870a7402, type: 3}

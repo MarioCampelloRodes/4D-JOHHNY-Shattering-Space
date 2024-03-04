@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject enemyPrefab;
+    private GameObject _enemy;
 
     public void SpawnEnemy()
     {
-        Instantiate(enemy, transform.position, transform.rotation);
+        Instantiate(enemyPrefab, this.transform.position, this.transform.rotation);
 
-        enemy.transform.parent = transform;
+        _enemy = GameObject.FindWithTag("4DEnemy");
 
-        enemy.GetComponent<FourDimensionalEnemy>().SpawnRandom();
+        _enemy.transform.parent = this.transform;
+
+        GetComponentInChildren<FourDimensionalEnemy>().SpawnRandom();
     }
 }

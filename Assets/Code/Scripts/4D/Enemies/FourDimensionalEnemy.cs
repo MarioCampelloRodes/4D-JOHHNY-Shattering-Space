@@ -8,15 +8,13 @@ public class FourDimensionalEnemy : MonoBehaviour
 
     private Rigidbody2D _rb;
 
-    private Transform _spawnPos;
-
     private Transform _spawnTop, _spawnBottom, _spawnLeft, _spawnRight;
 
     private PlayerHealthController _pHC;
 
     private EnemySpawner _enemySpawner;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
 
@@ -53,30 +51,25 @@ public class FourDimensionalEnemy : MonoBehaviour
         switch (spawnRandomPos)
         {
             case 1:
-                _spawnPos = _spawnTop;
-                transform.position = _spawnPos.position;
+                transform.position = _spawnTop.position;
                 _rb.velocity = new Vector2(0f, -enemySpeed);
                 break;
 
             case 2:
-                _spawnPos = _spawnBottom;
-                transform.position = _spawnPos.position;
+                transform.position = _spawnBottom.position;
                 _rb.velocity = new Vector2(0f, enemySpeed);
                 break;
 
             case 3:
-                _spawnPos = _spawnLeft;
-                transform.position = _spawnPos.position;
+                transform.position = _spawnLeft.position;
                 _rb.velocity = new Vector2(enemySpeed, 0f);
                 break;
             case 4:
-                _spawnPos = _spawnRight;
-                transform.position = _spawnPos.position;
+                transform.position = _spawnRight.position;
                 _rb.velocity = new Vector2(-enemySpeed, 0f);
                 break;
             default:
-                _spawnPos = _spawnLeft;
-                transform.position = _spawnPos.position;
+                transform.position = _spawnLeft.position;
                 _rb.velocity = new Vector2(enemySpeed, 0f);
                 break;
         }
