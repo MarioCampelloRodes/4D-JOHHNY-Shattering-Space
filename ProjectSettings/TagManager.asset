@@ -6,6 +6,8 @@ TagManager:
   tags:
   - 4DPlayer
   - 4DEnemy
+  - MovingPlatform
+  - 4DBullet
   layers:
   - Default
   - TransparentFX

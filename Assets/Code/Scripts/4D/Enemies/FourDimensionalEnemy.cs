@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FourDimensionalEnemy : MonoBehaviour
@@ -17,6 +18,7 @@ public class FourDimensionalEnemy : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        transform.parent = GameObject.Find("EnemySpawner").transform;
 
         _pHC = GameObject.Find("Player").GetComponent<PlayerHealthController>();
 
@@ -25,14 +27,14 @@ public class FourDimensionalEnemy : MonoBehaviour
         _spawnLeft = GameObject.Find("LeftSpawn").GetComponent<Transform>();
         _spawnRight = GameObject.Find("RightSpawn").GetComponent<Transform>();
 
-        _enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
-
         SpawnRandom();
-
     }
     private void Update()
     {
-        transform.parent = _enemySpawner.gameObject.transform;
+        if (_pHC.currentHealth <= 0f) 
+        {
+            Destroy(gameObject, 0.8f);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
