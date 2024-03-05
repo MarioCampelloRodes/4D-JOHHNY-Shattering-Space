@@ -169,13 +169,13 @@ public class PlayerController : MonoBehaviour
         float rbGravity = _playerRB.gravityScale;
         _playerRB.gravityScale = 0f;
 
-        if (_isWalledLeft)
+        if (_isWalledLeft && !isGrounded)
         {
             _playerRB.velocity = new Vector2(dashSpeed, 0f);
             jumpNumber = 0;
         }
             
-        else if (_isWalledRight)
+        else if (_isWalledRight && !isGrounded)
         {
             _playerRB.velocity = new Vector2(-dashSpeed, 0f);
             jumpNumber = 0;
@@ -201,6 +201,4 @@ public class PlayerController : MonoBehaviour
 
         canDash = true;
     }
-
-
 }

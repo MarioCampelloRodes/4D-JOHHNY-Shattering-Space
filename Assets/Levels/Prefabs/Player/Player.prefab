@@ -173,7 +173,7 @@ MonoBehaviour:
   wallJumpCounterLength: 0.25
   canDash: 1
   dashSpeed: 16
-  dashTime: 0.2
+  dashTime: 0.3
   dashCooldown: 0.75
   knockbackForce: 10
   knockbackCounterLength: 0.25

@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 7008839985155833610, guid: 114cbc8401ca91e43bdb0346eddaf555, type: 3}
-  shootCooldownLength: 0.35
+  shootCooldownLength: 0.25
   shootingLeft: 0
   shootingRight: 0
   shootingTop: 0
