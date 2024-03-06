@@ -8,6 +8,7 @@ TagManager:
   - 4DEnemy
   - MovingPlatform
   - 4DBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

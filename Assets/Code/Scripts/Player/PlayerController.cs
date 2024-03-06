@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public float knockbackForce = 3f;
     public float knockbackCounterLength;
     private float _knockbackCounter;
+    private float _enemyXPos;
 
     //Puntos para detectar pared/suelo
     public Transform groundPoint;
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
             {
                 _knockbackCounter -= Time.deltaTime;
 
-                if (!_playerSpriteRenderer.flipX)
+                if (transform.position.x > _enemyXPos)
                 {
                     _playerRB.velocity = new Vector2(knockbackForce, _playerRB.velocity.y);
                 }
@@ -149,6 +150,13 @@ public class PlayerController : MonoBehaviour
         _anim.SetFloat("MoveSpeed", Mathf.Abs(_playerRB.velocity.x));
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            _enemyXPos = collision.transform.position.x;
+        }
+    }
     public void Knockback()
     {
         _knockbackCounter = knockbackCounterLength;
