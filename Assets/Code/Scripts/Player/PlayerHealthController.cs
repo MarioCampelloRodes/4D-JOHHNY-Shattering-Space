@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
 {
+    public bool isIkal, isJohnny;
     public int currentHealth;
     public int maxHealth;
 
@@ -12,7 +13,9 @@ public class PlayerHealthController : MonoBehaviour
 
     private UIController _uIRef;
 
-    private PlayerController _pCRef;
+    private IkalController _iCRef;
+
+    private JohnnyController _jCRef;
 
     private SpriteRenderer _spriteRendererRef;
 
@@ -26,7 +29,15 @@ public class PlayerHealthController : MonoBehaviour
 
         _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
 
-        _pCRef = GetComponent<PlayerController>();
+        if(isIkal)
+        {
+            _iCRef = GetComponent<IkalController>();
+        }
+
+        if (isJohnny)
+        {
+            _jCRef = GetComponent<JohnnyController>();
+        }
 
         _spriteRendererRef = GetComponent<SpriteRenderer>();
 
@@ -76,9 +87,18 @@ public class PlayerHealthController : MonoBehaviour
 
                 _spriteRendererRef.color = new Color(255f, 127f, 127f, 0.7f);
 
-                _pCRef.Knockback();
+                if (isIkal)
+                {
+                    _iCRef.Knockback();
 
-                _pCRef.jumpNumber = 0;
+                    _iCRef.jumpNumber = 0;
+                }
+
+                if (isJohnny)
+                {
+                    _jCRef.Knockback();
+                }
+
             }
             _uIRef.UpdateHealth();
         }
@@ -91,14 +111,30 @@ public class PlayerHealthController : MonoBehaviour
 
     private IEnumerator DeathCO()
     {
-        _pCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _pCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        if (isIkal)
+        {
+            _iCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _iCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
-        yield return new WaitUntil(() => _pCRef.isGrounded);
+            yield return new WaitUntil(() => _iCRef.isGrounded);
 
-        _lMRef.RespawnPlayer();
+            _lMRef.RespawnPlayer();
 
-        Instantiate(playerDeath, transform.position, transform.rotation);
+            Instantiate(playerDeath, transform.position, transform.rotation);
 
-        yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f);
+        }
+        if (isJohnny)
+        {
+            _jCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _jCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+
+            yield return new WaitUntil(() => _jCRef.isGrounded);
+
+            _lMRef.RespawnPlayer();
+
+            Instantiate(playerDeath, transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(1f);
+        }
+        
     }
 }

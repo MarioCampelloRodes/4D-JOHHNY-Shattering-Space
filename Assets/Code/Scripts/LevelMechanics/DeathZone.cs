@@ -11,7 +11,7 @@ public class DeathZone : MonoBehaviour
     private void Start()
     {
         _lMRef = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        _pHCRef = GameObject.Find("Player").GetComponent<PlayerHealthController>();
+        _pHCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>();
         _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
     }
     private void OnTriggerEnter2D(Collider2D collision)

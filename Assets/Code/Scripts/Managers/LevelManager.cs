@@ -6,17 +6,17 @@ public class LevelManager : MonoBehaviour
 {
     public float timeForRespawn = 2f;
 
-    private PlayerController _pCRef;
+    private IkalController _pCRef;
     private CheckpointController _cpRef;
     private UIController _uIRef;
     private PlayerHealthController _pHCRef;
 
     private void Start()
     {
-        _pCRef = GameObject.Find("Player").GetComponent<PlayerController>();
+        _pCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<IkalController>();
         _cpRef = GameObject.Find("CheckpointController").GetComponent<CheckpointController>();
         _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
-        _pHCRef = GameObject.Find("Player").GetComponent<PlayerHealthController>();
+        _pHCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>();
     }
 
     public void RespawnPlayer()

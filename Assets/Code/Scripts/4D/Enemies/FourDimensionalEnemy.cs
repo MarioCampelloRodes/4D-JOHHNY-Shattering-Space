@@ -22,7 +22,7 @@ public class FourDimensionalEnemy : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         transform.parent = GameObject.Find("EnemySpawner").transform;
 
-        _pHC = GameObject.Find("Player").GetComponent<PlayerHealthController>();
+        _pHC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>();
 
         _spawnTop = GameObject.Find("TopSpawn").GetComponent<Transform>();
         _spawnBottom = GameObject.Find("BottomSpawn").GetComponent<Transform>();

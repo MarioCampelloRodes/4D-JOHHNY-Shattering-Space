@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _pHRef = GameObject.Find("Player").GetComponent<PlayerHealthController>();
+        _pHRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>();
 
         _timeCounter = 0;
     }

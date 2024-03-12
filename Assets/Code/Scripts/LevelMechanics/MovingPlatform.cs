@@ -7,10 +7,10 @@ public class MovingPlatform : MonoBehaviour
     public float platformSpeed;
     public Transform maxLeft, maxRight;
     private bool _movingRight;
-
+    
     private Rigidbody2D _rb;
-    private GameObject _player;
-    private PlayerController _pCRef;
+    private GameObject _ikal;
+    private IkalController _iCRef;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +20,8 @@ public class MovingPlatform : MonoBehaviour
         _movingRight = true;
 
         _rb = GetComponent<Rigidbody2D>();
-        _player = GameObject.FindWithTag("Player");
-        _pCRef = GameObject.Find("Player").GetComponent<PlayerController>();
+        _ikal = GameObject.Find("Ikal");
+        _iCRef = GameObject.Find("Ikal").GetComponent<IkalController>();
     }
 
     // Update is called once per frame
@@ -48,9 +48,11 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") && _pCRef.isGrounded)
+        if (collision.gameObject.CompareTag("Player") && _iCRef.isGrounded)
         {
-            _player.transform.position = new Vector2(_player.transform.position.x + _rb.velocity.x * Time.deltaTime, _player.transform.position.y);
+            if(_ikal.gameObject.activeSelf)
+                _ikal.transform.position = new Vector2(_ikal.transform.position.x + _rb.velocity.x * Time.deltaTime, _ikal.transform.position.y);
+            
         }
     }
 }

@@ -13,7 +13,7 @@ public class CheckpointController : MonoBehaviour
     void Start()
     {
         _checkpoints = GetComponentsInChildren<CheckPoint>();
-        _playerRef = GameObject.Find("Player");
+        _playerRef = GameObject.FindGameObjectWithTag("Player");
         spawnPoint = _playerRef.transform.position;
     }
 

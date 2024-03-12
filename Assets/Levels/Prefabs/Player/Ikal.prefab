@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4527783608865212809}
   - component: {fileID: 6365179721459431673}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Ikal
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   dashSpeed: 16
   dashTime: 0.3
   dashCooldown: 0.75
-  knockbackForce: 10
+  knockbackForce: 8
   knockbackCounterLength: 0.25
   boostSpeed: 12
   boostTimeLength: 3
@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05a53db4d9950046aac16addb82aab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIkal: 1
+  isJohnny: 0
   currentHealth: 0
   maxHealth: 6
   invincibleCounterLength: 1

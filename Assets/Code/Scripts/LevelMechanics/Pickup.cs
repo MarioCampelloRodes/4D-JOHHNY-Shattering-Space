@@ -9,13 +9,13 @@ public class Pickup : MonoBehaviour
     private bool _isCollected;
     private UIController _uIRef;
     private PlayerHealthController _pHCRef;
-    private PlayerController _pCRef;
+    private IkalController _pCRef;
     // Start is called before the first frame update
     void Start()
     {
         _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
-        _pHCRef = GameObject.Find("Player").GetComponent<PlayerHealthController>();
-        _pCRef = GameObject.Find("Player").GetComponent<PlayerController>();
+        _pHCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>();
+        _pCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<IkalController>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
