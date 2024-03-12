@@ -7,6 +7,8 @@ public class FourDimensionalEnemy : MonoBehaviour
 {
     public float enemySpeed;
 
+    private bool _isSpawned;
+
     private Rigidbody2D _rb;
 
     private Transform _spawnTop, _spawnBottom, _spawnLeft, _spawnRight;
@@ -42,6 +44,8 @@ public class FourDimensionalEnemy : MonoBehaviour
         {
             _pHC.DealWithDamage();
 
+            _isSpawned = false;
+
             SpawnRandom();
         }
     }
@@ -53,26 +57,49 @@ public class FourDimensionalEnemy : MonoBehaviour
         switch (spawnRandomPos)
         {
             case 1:
-                transform.position = _spawnTop.position;
-                _rb.velocity = new Vector2(0f, -enemySpeed);
+                if (!_isSpawned)
+                {
+                    transform.position = _spawnTop.position;
+                    _rb.velocity = new Vector2(0f, -enemySpeed);
+                    _isSpawned = true;
+                }
                 break;
 
             case 2:
-                transform.position = _spawnBottom.position;
-                _rb.velocity = new Vector2(0f, enemySpeed);
+                if (!_isSpawned)
+                {
+                    transform.position = _spawnBottom.position;
+                    _rb.velocity = new Vector2(0f, enemySpeed);
+                    _isSpawned = true;
+                }
                 break;
 
             case 3:
-                transform.position = _spawnLeft.position;
-                _rb.velocity = new Vector2(enemySpeed, 0f);
+                if (!_isSpawned)
+                {
+                    transform.position = _spawnLeft.position;
+                    _rb.velocity = new Vector2(enemySpeed, 0f);
+                    _isSpawned = true;
+                }
                 break;
+
             case 4:
-                transform.position = _spawnRight.position;
-                _rb.velocity = new Vector2(-enemySpeed, 0f);
+                if (!_isSpawned)
+                {
+                    transform.position = _spawnRight.position;
+                    _rb.velocity = new Vector2(-enemySpeed, 0f);
+                    _isSpawned = true;
+                }
                 break;
+
             default:
-                transform.position = _spawnLeft.position;
-                _rb.velocity = new Vector2(enemySpeed, 0f);
+                if (!_isSpawned)
+                {
+                    transform.position = _spawnLeft.position;
+                    _rb.velocity = new Vector2(enemySpeed, 0f);
+                    _isSpawned = true;
+                }
+                
                 break;
         }
     }

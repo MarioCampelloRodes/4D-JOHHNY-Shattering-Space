@@ -177,6 +177,9 @@ MonoBehaviour:
   dashCooldown: 0.75
   knockbackForce: 10
   knockbackCounterLength: 0.25
+  boostSpeed: 12
+  boostTimeLength: 3
+  boostTime: 0
   groundPoint: {fileID: 1838125212152150749}
   wallPointLeft: {fileID: 2337075593819611484}
   wallPointRight: {fileID: 3157639321890550940}

@@ -940,7 +940,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2140982076817892803, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Ikal
       objectReference: {fileID: 0}
     - target: {fileID: 5482898449313581739, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: m_LocalPosition.x

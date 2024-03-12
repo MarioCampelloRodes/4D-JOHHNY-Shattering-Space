@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
     private float _knockbackCounter;
     private float _enemyXPos;
 
+    //Boost
+    public float boostSpeed;
+    public float boostTimeLength;
+    public float boostTime;
+
+
     //Puntos para detectar pared/suelo
     public Transform groundPoint;
     public Transform wallPointLeft, wallPointRight;
@@ -65,11 +71,21 @@ public class PlayerController : MonoBehaviour
         if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0)
         {
             //Movimiento
-            if (isGrounded)
-                _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-            else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
-                _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-
+            if (boostTime > 0) //Movimiento Boost
+            {
+                if (isGrounded)
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
+                else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
+            }
+            else //Movimiento Default
+            {
+                if (isGrounded)
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+                else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+            }
+            
             //¿Está tocando la pared?
             _isWalledLeft = Physics2D.OverlapCircle(wallPointLeft.position, 0.2f, whatIsGround);
 
@@ -142,7 +158,11 @@ public class PlayerController : MonoBehaviour
         {
             jumpNumber = 0;
         }
-
+        //Contador de boost
+        if(boostTime > 0)
+        {
+            boostTime -= Time.deltaTime;
+        }
         //Animaciones
         _anim.SetBool("isGrounded", isGrounded);
 
