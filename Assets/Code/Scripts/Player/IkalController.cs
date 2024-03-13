@@ -85,11 +85,27 @@ public class IkalController : MonoBehaviour
                 else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
             }
-            
-            //¿Está tocando la pared?
-            _isWalledLeft = Physics2D.OverlapCircle(wallPointLeft.position, 0.2f, whatIsGround);
 
-            _isWalledRight = Physics2D.OverlapCircle(wallPointRight.position, 0.2f, whatIsGround);
+            //¿Está tocando la pared?
+            Collider2D rightWall = Physics2D.OverlapCircle(wallPointRight.position, 0.2f, whatIsGround);
+            if(rightWall != null && !rightWall.usedByEffector)
+            {
+                _isWalledRight = true;
+            }
+            else
+            {
+                _isWalledRight = false;
+            }
+
+            Collider2D leftWall = Physics2D.OverlapCircle(wallPointLeft.position, 0.2f, whatIsGround);
+            if (leftWall != null && !leftWall.usedByEffector)
+            {
+                _isWalledLeft = true;
+            }
+            else
+            {
+                _isWalledLeft = false;
+            }
 
             //Salto
             if (Input.GetButtonDown("Jump") && isGrounded)
