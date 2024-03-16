@@ -32,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: -0.483, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.61, y: 0.61, z: 0.61}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1838125212152150749}
   - {fileID: 2337075593819611484}
@@ -166,13 +166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d1ea58a6ccec24ca8cd5277e769baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 6
+  playerSpeed: 5
   playerJumpForce: 10
   isGrounded: 0
   canDash: 1
-  dashSpeed: 12
+  dashSpeed: 10
   dashTime: 0.3
-  dashCooldown: 1.25
+  dashCooldown: 0.75
   knockbackForce: 10
   knockbackCounterLength: 0.25
   groundPoint: {fileID: 1838125212152150749}

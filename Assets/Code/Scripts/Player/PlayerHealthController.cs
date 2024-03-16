@@ -31,7 +31,7 @@ public class PlayerHealthController : MonoBehaviour
 
         if(isIkal)
         {
-            _iCRef = GetComponent<IkalController>();
+            IkalController _iCRef = GetComponent<IkalController>();
         }
 
         if (isJohnny)
