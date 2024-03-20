@@ -34,7 +34,7 @@ public class JohnnyController : MonoBehaviour
     private Rigidbody2D _playerRB;
     private SpriteRenderer _playerSpriteRenderer;
     private Animator _anim;
-    private PlayerHealthController _pHCRef;
+    private LevelOnePHC _pHCRef;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,7 @@ public class JohnnyController : MonoBehaviour
 
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
-        _pHCRef = GetComponent<PlayerHealthController>();
+        _pHCRef = GetComponent<LevelOnePHC>();
     }
 
     // Update is called once per frame

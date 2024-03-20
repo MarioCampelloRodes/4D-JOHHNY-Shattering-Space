@@ -6,17 +6,20 @@ public class LevelManager : MonoBehaviour
 {
     public float timeForRespawn = 2f;
 
-    private IkalController _pCRef;
+    private IkalController _iCRef;
     private CheckpointController _cpRef;
     private UIController _uIRef;
     private PlayerHealthController _pHCRef;
 
     private void Start()
     {
-        _pCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<IkalController>();
+        _iCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<IkalController>();
+
         _cpRef = GameObject.Find("CheckpointController").GetComponent<CheckpointController>();
-        _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
+        
         _pHCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>();
+
+        _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
     }
 
     public void RespawnPlayer()
@@ -26,15 +29,15 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator RespawnPlayerCO()
     {
-        _pCRef.gameObject.SetActive(false);
+        _iCRef.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(timeForRespawn);
 
-        _pCRef.gameObject.SetActive(true);
-        _pCRef.gameObject.transform.position = _cpRef.spawnPoint;
-        _pCRef.canDash = true;
+        _iCRef.gameObject.SetActive(true);
+        _iCRef.gameObject.transform.position = _cpRef.spawnPoint;
+        _iCRef.canDash = true;
         _pHCRef.currentHealth = _pHCRef.maxHealth;
         _uIRef.UpdateHealth();
-        
+
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealthController : MonoBehaviour
+public class LevelOnePHC : MonoBehaviour
 {
     public int currentHealth;
     public int maxHealth;
@@ -12,38 +12,36 @@ public class PlayerHealthController : MonoBehaviour
 
     private UIController _uIRef;
 
-    private IkalController _iCRef;
+    private JohnnyController _jCRef;
 
     private SpriteRenderer _sRRef;
 
-    private LevelManager _lMRef;
+    private LevelOneLM _lMRef;
 
     public GameObject playerDeath;
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;        
+        currentHealth = maxHealth;
 
         _sRRef = GetComponent<SpriteRenderer>();
-       
-        _iCRef = GetComponent<IkalController>();
 
-        _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
+        _jCRef = GetComponent<JohnnyController>();
 
-        _lMRef = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        _lMRef = GameObject.Find("L1LevelManager").GetComponent<LevelOneLM>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(invincibleCounter > 0)
+        if (invincibleCounter > 0)
         {
             invincibleCounter -= Time.deltaTime;
             _sRRef.color = new Color(_sRRef.color.r, _sRRef.color.g, _sRRef.color.b, 0.7f);
         }
         else
         {
-            _sRRef.color = Color.white;                                                                                            
+            _sRRef.color = Color.white;
         }
 
         if (currentHealth <= 0)
@@ -58,7 +56,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void DealWithDamage()
     {
-        if(invincibleCounter <= 0)
+        if (invincibleCounter <= 0)
         {
             currentHealth--;
 
@@ -76,11 +74,9 @@ public class PlayerHealthController : MonoBehaviour
 
                 _sRRef.color = new Color(255f, 127f, 127f, 0.7f);
 
-                _iCRef.Knockback();
+                _jCRef.Knockback();
 
-                _iCRef.jumpNumber = 0;
             }
-            _uIRef.UpdateHealth();
         }
     }
 
@@ -91,9 +87,9 @@ public class PlayerHealthController : MonoBehaviour
 
     private IEnumerator DeathCO()
     {
-        _iCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _iCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        _jCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _jCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
-        yield return new WaitUntil(() => _iCRef.isGrounded);
+        yield return new WaitUntil(() => _jCRef.isGrounded);
 
         _lMRef.RespawnPlayer();
 

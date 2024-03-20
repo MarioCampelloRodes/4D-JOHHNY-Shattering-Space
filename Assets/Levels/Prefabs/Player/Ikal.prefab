@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 8
-  playerJumpForce: 12
+  playerJumpForce: 13
   jumpNumber: 0
   isGrounded: 0
   wallJumpCounterLength: 0.25

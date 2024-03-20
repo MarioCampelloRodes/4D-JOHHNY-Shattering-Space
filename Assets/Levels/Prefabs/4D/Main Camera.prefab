@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  minHeight: -18
-  maxHeight: 7
+  minHeight: -19
+  maxHeight: 13
 --- !u!1001 &3640162318127845388
 PrefabInstance:
   m_ObjectHideFlags: 0
