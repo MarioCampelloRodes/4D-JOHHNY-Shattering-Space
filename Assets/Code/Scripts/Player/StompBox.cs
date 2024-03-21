@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class StompBox : MonoBehaviour
 {
-    private PlayerController _pCRef;
+    private IkalController _iCRef;
 
     public float bounceForce = 10f;
     // Start is called before the first frame update
     void Start()
     {
-        _pCRef = GetComponentInParent<PlayerController>();
+        _iCRef = GetComponentInParent<IkalController>();
          
     }
 
@@ -19,7 +19,7 @@ public class StompBox : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             collision.GetComponentInParent<EnemyDeath>().EnemyDeathController();
-            _pCRef.Bounce(bounceForce);
+            _iCRef.Bounce(bounceForce);
         }
     }
 }

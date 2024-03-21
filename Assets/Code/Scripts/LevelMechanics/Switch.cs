@@ -14,19 +14,19 @@ public class Switch : MonoBehaviour
 
     private SpriteRenderer _sPRef;
 
-    private PlayerController _pCRef;
+    private IkalController _iCRef;
     // Start is called before the first frame update
     void Start()
     {
         _sPRef = GetComponent<SpriteRenderer>();
 
-        _pCRef = GameObject.Find("Player").GetComponent<PlayerController>();
+        _iCRef = GameObject.Find("Player").GetComponent<IkalController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && _pCRef.canInteract)
+        if (Input.GetKeyDown(KeyCode.E) && _iCRef.canInteract)
         {
             if(objectToSwitch.GetComponent<Door>().isActive == false)
             {
@@ -46,7 +46,7 @@ public class Switch : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             infoPanel.SetActive(true);
-            collision.GetComponent<PlayerController>().canInteract = true;
+            collision.GetComponent<IkalController>().canInteract = true;
         }
     }
 
@@ -55,7 +55,7 @@ public class Switch : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             infoPanel.SetActive(false);
-            collision.GetComponent<PlayerController>().canInteract = false;
+            collision.GetComponent<IkalController>().canInteract = false;
         }
     }
 }

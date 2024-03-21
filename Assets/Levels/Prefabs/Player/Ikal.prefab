@@ -117,7 +117,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &1193951523204223377
 CapsuleCollider2D:
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 8
-  playerJumpForce: 13
+  playerJumpForce: 14
   jumpNumber: 0
   isGrounded: 0
   wallJumpCounterLength: 0.25
@@ -180,6 +180,7 @@ MonoBehaviour:
   boostSpeed: 12
   boostTimeLength: 3
   boostTime: 0
+  canInteract: 0
   groundPoint: {fileID: 1838125212152150749}
   wallPointLeft: {fileID: 2337075593819611484}
   wallPointRight: {fileID: 3157639321890550940}
@@ -198,8 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05a53db4d9950046aac16addb82aab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIkal: 1
-  isJohnny: 0
   currentHealth: 0
   maxHealth: 6
   invincibleCounterLength: 1

@@ -35,6 +35,8 @@ public class IkalController : MonoBehaviour
     public float boostTimeLength;
     public float boostTime;
 
+    //Interactuable
+    public bool canInteract;
 
     //Puntos para detectar pared/suelo
     public Transform groundPoint;
@@ -199,6 +201,11 @@ public class IkalController : MonoBehaviour
 
         _playerRB.velocity = new Vector2(0f, knockbackForce);
         _anim.SetTrigger("IsHurt");
+    }
+
+    public void Bounce(float bounceForce)
+    {
+        _playerRB.velocity = new Vector2(_playerRB.velocity.x, bounceForce);
     }
 
     void Dash()
