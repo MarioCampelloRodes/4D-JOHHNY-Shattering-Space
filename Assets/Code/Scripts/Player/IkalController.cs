@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class IkalController : MonoBehaviour
 {
+    //¿Tiene el control?
+    private bool _canMove;
     //Movimiento Default
     public float playerSpeed;
     
@@ -24,6 +26,17 @@ public class IkalController : MonoBehaviour
     public float dashTime;
     public float dashCooldown;
 
+    //Ataque
+    public Transform attackPointLeft, attackPointRight;
+    public int lightDamage = 2, heavyDamage = 4;
+    public float attackRange = 1f;
+    public float attackCounterLength = 0.25f;
+    public float heavyAttackCounterLength = 0.4f;
+    private float attackCounter;
+    public float heavyAttackHoldLength = 1f;
+    private float attackHoldTime;
+    private bool canHeavyAttack = true;
+
     //Knockbacks
     public float knockbackForce = 3f;
     public float knockbackCounterLength;
@@ -42,8 +55,9 @@ public class IkalController : MonoBehaviour
     public Transform groundPoint;
     public Transform wallPointLeft, wallPointRight;
 
-    //Detector de capas
+    //Detectores de capas
     public LayerMask whatIsGround;
+    public LayerMask whatIsEnemy;
 
     //Referencias
     private Rigidbody2D _playerRB;
@@ -69,8 +83,17 @@ public class IkalController : MonoBehaviour
         //¿Está en el suelo?
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
 
-        //Si el contador de knockback se ha vaciado, el jugador recupera el control
+        //¿Tiene el control?
         if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0)
+        {
+            _canMove = true;
+        }
+        else
+        {
+            _canMove = false;
+        }
+        //Si los contadores se han vaciado, el jugador recupera el control
+        if (_canMove)
         {
             //Movimiento
             if (boostTime > 0) //Movimiento Boost
@@ -140,6 +163,32 @@ public class IkalController : MonoBehaviour
                 Dash();
             }
 
+            //Ataque
+            if(attackCounter <= 0)
+            {
+                if (Input.GetKey(KeyCode.X))
+                {
+                    attackHoldTime += Time.deltaTime;
+                    
+                    if (attackHoldTime > heavyAttackHoldLength && canHeavyAttack)
+                    {
+                        HeavyAttack();
+                        canHeavyAttack = false;
+                    }
+                }
+                if (Input.GetKeyUp(KeyCode.X))
+                {
+                    if(attackHoldTime < heavyAttackHoldLength)
+                    {
+                        LightAttack();
+                    }
+
+                    attackHoldTime = 0;
+
+                    canHeavyAttack = true;
+                }
+            }
+
             //Cambio de dirección del sprite
             if (_playerRB.velocity.x < 0)
             {
@@ -171,15 +220,23 @@ public class IkalController : MonoBehaviour
                 _wallJumpCounter -= Time.deltaTime;
             }
         }
+
         //Reseteo de Saltos
         if (isGrounded)
         {
             jumpNumber = 0;
         }
+        
         //Contador de boost
         if(boostTime > 0)
         {
             boostTime -= Time.deltaTime;
+        }
+
+        //Contador de Ataque
+        if(attackCounter > 0) 
+        { 
+            attackCounter -= Time.deltaTime;
         }
         //Animaciones
         _anim.SetBool("isGrounded", isGrounded);
@@ -251,5 +308,72 @@ public class IkalController : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
 
         canDash = true;
+    }
+
+    void LightAttack()
+    {
+        if(_playerSpriteRenderer.flipX)
+        {
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRange, whatIsEnemy);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(lightDamage);
+            }
+        }
+        
+        if (!_playerSpriteRenderer.flipX)
+        {
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRange, whatIsEnemy);
+
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(lightDamage);
+            }
+        }
+
+        attackCounter = attackCounterLength;
+
+        Debug.Log("Ataque Ligero");
+    }
+
+    void HeavyAttack()
+    {
+        if (_playerSpriteRenderer.flipX)
+        {
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRange, whatIsEnemy);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(heavyDamage);
+            }
+        }
+
+        if (!_playerSpriteRenderer.flipX)
+        {
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointLeft.position, attackRange, whatIsEnemy);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(heavyDamage);
+            }
+        }
+
+        attackCounter = heavyAttackCounterLength;
+
+        Debug.Log("Ataque Pesado");
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPointLeft != null)
+        {
+            Gizmos.DrawWireSphere(attackPointLeft.position, attackRange);
+        }
+
+        if (attackPointRight != null)
+        {
+            Gizmos.DrawWireSphere(attackPointRight.position, attackRange);
+        }
     }
 }

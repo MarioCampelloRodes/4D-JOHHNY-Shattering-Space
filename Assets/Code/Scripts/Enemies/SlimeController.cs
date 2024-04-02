@@ -16,12 +16,14 @@ public class SlimeController : MonoBehaviour
     private Rigidbody2D _rBRef;
     private SpriteRenderer _sRRef;
     private Animator _animRef;
+    private EnemyHealth _eHRef;
     // Start is called before the first frame update
     void Start()
     {
         _rBRef = GetComponent<Rigidbody2D>();
         _sRRef = GetComponentInChildren<SpriteRenderer>();
         _animRef = GetComponent<Animator>();
+        _eHRef = GetComponent<EnemyHealth>();
 
         maxLeft.parent = null;
         maxRight.parent = null;
@@ -34,68 +36,75 @@ public class SlimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_moveCount > 0)
+        if (_eHRef.isDamaged == false)
         {
-            _moveCount -= Time.deltaTime;
-
-            if (movingRight)
+            if(_moveCount > 0)
             {
-                if (seeingRight)
+                _moveCount -= Time.deltaTime;
+
+                if (movingRight)
                 {
-                    _rBRef.velocity = new Vector2(slimeSpeed * 1.75f, _rBRef.velocity.y);
-                    _moveCount = moveTime;
-                }
-                else if (!seeingRight)
-                {
-                    _rBRef.velocity = new Vector2(slimeSpeed, _rBRef.velocity.y);
-                }
+                    if (seeingRight)
+                    {
+                        _rBRef.velocity = new Vector2(slimeSpeed * 1.75f, _rBRef.velocity.y);
+                        _moveCount = moveTime;
+                    }
+                    else if (!seeingRight)
+                    {
+                        _rBRef.velocity = new Vector2(slimeSpeed, _rBRef.velocity.y);
+                    }
                 
-                _sRRef.flipX = true;
+                    _sRRef.flipX = true;
 
-                if (transform.position.x >= maxRight.position.x)
-                {
-                    movingRight = false;
+                    if (transform.position.x >= maxRight.position.x)
+                    {
+                        movingRight = false;
+                    }
                 }
+                else
+                {
+                    if (seeingLeft)
+                    {
+                        _rBRef.velocity = new Vector2(-slimeSpeed * 1.75f, _rBRef.velocity.y);
+                        _moveCount = moveTime;
+                    }
+                    else if (!seeingLeft)
+                    {
+                        _rBRef.velocity = new Vector2(-slimeSpeed, _rBRef.velocity.y);
+                    }
+
+                    _sRRef.flipX = false;
+
+                    if (transform.position.x <= maxLeft.position.x)
+                    {
+                        movingRight = true;
+                    }
+                }
+
+                if(_moveCount <= 0)
+                {
+                    _waitCount = waitTime;
+                }
+
+                //_animRef.SetBool("IsMoving", true);
             }
-            else
+            else if(_waitCount > 0)
             {
-                if (seeingLeft)
+                _waitCount -= Time.deltaTime;
+
+                _rBRef.velocity = new Vector2(0f, _rBRef.velocity.y);
+
+                if(_waitCount <= 0)
                 {
-                    _rBRef.velocity = new Vector2(-slimeSpeed * 1.75f, _rBRef.velocity.y);
-                    _moveCount = moveTime;
-                }
-                else if (!seeingLeft)
-                {
-                    _rBRef.velocity = new Vector2(-slimeSpeed, _rBRef.velocity.y);
+                    _moveCount = Random.Range(moveTime * 0.5f, moveTime * 1.25f);
                 }
 
-                _sRRef.flipX = false;
-
-                if (transform.position.x <= maxLeft.position.x)
-                {
-                    movingRight = true;
-                }
-            }
-
-            if(_moveCount <= 0)
-            {
-                _waitCount = waitTime;
-            }
-
-            //_animRef.SetBool("IsMoving", true);
+                //_animRef.SetBool("IsMoving", false);
+            } 
         }
-        else if(_waitCount > 0)
+        else
         {
-            _waitCount -= Time.deltaTime;
-
             _rBRef.velocity = new Vector2(0f, _rBRef.velocity.y);
-
-            if(_waitCount <= 0)
-            {
-                _moveCount = Random.Range(moveTime * 0.5f, moveTime * 1.25f);
-            }
-
-            //_animRef.SetBool("IsMoving", false);
-        } 
+        }
     }
 }

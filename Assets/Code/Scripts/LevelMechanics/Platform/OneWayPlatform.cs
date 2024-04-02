@@ -14,7 +14,7 @@ public class OneWayPlatform : MonoBehaviour
 
     private void Update()
     {
-        if(_onPlatform && Input.GetAxis("Vertical") < -0.1f)
+        if (_onPlatform && Input.GetAxis("Vertical") < -0.1f)
         {
             StartCoroutine(ActDeactPlatform());
         }

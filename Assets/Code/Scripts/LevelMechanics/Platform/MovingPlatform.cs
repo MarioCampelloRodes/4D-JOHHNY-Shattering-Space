@@ -7,13 +7,13 @@ public class MovingPlatform : MonoBehaviour
     public float platformSpeed;
     public Transform maxLeft, maxRight;
     private bool _movingRight;
-    
+
     private Rigidbody2D _rb;
     private IkalController _iCRef;
     // Start is called before the first frame update
     void Start()
     {
-        maxLeft.transform.parent = null; 
+        maxLeft.transform.parent = null;
         maxRight.transform.parent = null;
 
         _movingRight = true;
@@ -25,16 +25,16 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_movingRight) 
+        if (_movingRight)
         {
-            _rb.velocity = new Vector2(platformSpeed, 0f);            
+            _rb.velocity = new Vector2(platformSpeed, 0f);
         }
         else
         {
             _rb.velocity = new Vector2(-platformSpeed, 0f);
         }
 
-        if(transform.position.x >= maxRight.position.x) 
+        if (transform.position.x >= maxRight.position.x)
         {
             _movingRight = false;
         }
