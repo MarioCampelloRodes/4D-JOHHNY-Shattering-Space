@@ -75,6 +75,7 @@ public class IkalController : MonoBehaviour
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
         _pHCRef = GetComponent<PlayerHealthController>();
+         
     }
 
     // Update is called once per frame
@@ -170,6 +171,7 @@ public class IkalController : MonoBehaviour
                 {
                     attackHoldTime += Time.deltaTime;
                     
+                    //Ataque Pesado
                     if (attackHoldTime > heavyAttackHoldLength && canHeavyAttack)
                     {
                         HeavyAttack();
@@ -178,6 +180,7 @@ public class IkalController : MonoBehaviour
                 }
                 if (Input.GetKeyUp(KeyCode.X))
                 {
+                    //Ataque Ligero
                     if(attackHoldTime < heavyAttackHoldLength)
                     {
                         LightAttack();

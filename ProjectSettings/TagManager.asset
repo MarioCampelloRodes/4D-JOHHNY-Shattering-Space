@@ -9,6 +9,7 @@ TagManager:
   - MovingPlatform
   - 4DBullet
   - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX

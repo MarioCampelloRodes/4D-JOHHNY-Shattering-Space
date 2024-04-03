@@ -5,10 +5,12 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool isActive = false;
+
+    private Animator _anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,11 +21,11 @@ public class Door : MonoBehaviour
 
     public void ActivateObject()
     {
-        GetComponent<Animator>().SetTrigger("Open");
+        _anim.SetTrigger("Close");
     }
     public void DeactivateObject()
     {
-        GetComponent<Animator>().SetTrigger("Close");
+        _anim.SetTrigger("Open");
     }
 
 }
