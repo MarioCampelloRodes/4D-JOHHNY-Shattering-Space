@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    public float slimeSpeed;
+    public float enemySpeed, followSpeed;
+    public bool canJump;
+    public float jumpForce;
     public Transform maxLeft, maxRight;
     public bool movingRight;
 
@@ -46,12 +48,12 @@ public class SlimeController : MonoBehaviour
                 {
                     if (seeingRight)
                     {
-                        _rBRef.velocity = new Vector2(slimeSpeed * 1.75f, _rBRef.velocity.y);
+                        _rBRef.velocity = new Vector2(followSpeed, _rBRef.velocity.y);
                         _moveCount = moveTime;
                     }
                     else if (!seeingRight)
                     {
-                        _rBRef.velocity = new Vector2(slimeSpeed, _rBRef.velocity.y);
+                        _rBRef.velocity = new Vector2(enemySpeed, _rBRef.velocity.y);
                     }
                 
                     _sRRef.flipX = true;
@@ -65,12 +67,12 @@ public class SlimeController : MonoBehaviour
                 {
                     if (seeingLeft)
                     {
-                        _rBRef.velocity = new Vector2(-slimeSpeed * 1.75f, _rBRef.velocity.y);
+                        _rBRef.velocity = new Vector2(-followSpeed, _rBRef.velocity.y);
                         _moveCount = moveTime;
                     }
                     else if (!seeingLeft)
                     {
-                        _rBRef.velocity = new Vector2(-slimeSpeed, _rBRef.velocity.y);
+                        _rBRef.velocity = new Vector2(-enemySpeed, _rBRef.velocity.y);
                     }
 
                     _sRRef.flipX = false;
@@ -106,5 +108,11 @@ public class SlimeController : MonoBehaviour
         {
             _rBRef.velocity = new Vector2(0f, _rBRef.velocity.y);
         }
+    }
+
+    public void Jump()
+    {
+        if(canJump)
+            _rBRef.velocity = new Vector2(_rBRef.velocity.y, jumpForce);
     }
 }

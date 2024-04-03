@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SeeBoxLeft : MonoBehaviour
 {
-    private SlimeController _sCRef;
+    private EnemyController _sCRef;
 
     private void Start()
     {
-        _sCRef = GetComponentInParent<SlimeController>();
+        _sCRef = GetComponentInParent<EnemyController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
