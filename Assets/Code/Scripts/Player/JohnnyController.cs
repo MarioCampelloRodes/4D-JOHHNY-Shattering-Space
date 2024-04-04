@@ -6,6 +6,7 @@ public class JohnnyController : MonoBehaviour
 {
     //Movimiento Default
     public float playerSpeed;
+    public bool canMove = true;
     
     //Saltos
     public float playerJumpForce;
@@ -55,7 +56,7 @@ public class JohnnyController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
 
         //Si el contador de knockback se ha vaciado, el jugador recupera el control
-        if (_knockbackCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0)
+        if (_knockbackCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && canMove)
         {
             //Movimiento
             if (isGrounded)

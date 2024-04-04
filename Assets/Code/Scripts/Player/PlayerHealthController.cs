@@ -67,8 +67,6 @@ public class PlayerHealthController : MonoBehaviour
                 currentHealth = 0; //Por si se queda en negativo
 
                 invincibleCounter = invincibleCounterLength;
-
-                Death();
             }
             else
             {
@@ -95,10 +93,8 @@ public class PlayerHealthController : MonoBehaviour
 
         yield return new WaitUntil(() => _iCRef.isGrounded);
 
-        _lMRef.RespawnPlayer();
-
         Instantiate(playerDeath, transform.position, transform.rotation);
 
-        yield return new WaitForSeconds(1f);
+        _lMRef.RespawnPlayer();
     }
 }

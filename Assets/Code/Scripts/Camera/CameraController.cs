@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
+    public bool isFreezed;
+    public float xOffSet = -2f, yOffSet = 1f;
 
     //Referencias a las posiciones de los fondos
     //public Transform farBackground, middleBackground;
@@ -22,20 +24,23 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+        if(!isFreezed)
+        {
+            transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
-        ////Variable para conocer cuanto hay que moverse en X y en Y
-        //Vector2 _amountToMove = new Vector2(target.position.x - _lastPos.x, target.position.y - _lastPos.y);
+            ////Variable para conocer cuanto hay que moverse en X y en Y
+            //Vector2 _amountToMove = new Vector2(target.position.x - _lastPos.x, target.position.y - _lastPos.y);
 
 
-        //Restricción entre un mínimo y un máximo para la cámara en y
-        transform.position = new Vector3(target.position.x - 2f, Mathf.Clamp(transform.position.y, minHeight, maxHeight) + 1f, transform.position.z);
+            //Restricción entre un mínimo y un máximo para la cámara en y
+            transform.position = new Vector3(target.position.x + xOffSet, Mathf.Clamp(transform.position.y, minHeight, maxHeight) + yOffSet, transform.position.z);
 
-        //farBackground.position += new Vector3(_amountToMove.x, _amountToMove.y, 0f);
-        //middleBackground.position += new Vector3(_amountToMove.x * 0.5f, _amountToMove.y * -0.1f, 0f);
+            //farBackground.position += new Vector3(_amountToMove.x, _amountToMove.y, 0f);
+            //middleBackground.position += new Vector3(_amountToMove.x * 0.5f, _amountToMove.y * -0.1f, 0f);
 
-        //Actualizamos la posición del jugador
-        _lastPos.x = target.position.x;
-        _lastPos.y = target.position.y;
+            //Actualizamos la posición del jugador
+            _lastPos.x = target.position.x;
+            _lastPos.y = target.position.y;
+        }
     }
 }

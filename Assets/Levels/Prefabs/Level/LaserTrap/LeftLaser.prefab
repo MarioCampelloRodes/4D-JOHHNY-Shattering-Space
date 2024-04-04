@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 4556308847421780326}
   - component: {fileID: 1778215952841438414}
   - component: {fileID: 4486579343144378059}
-  m_Layer: 0
+  - component: {fileID: 6911858896024600373}
+  m_Layer: 8
   m_Name: LeftLaser
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -187,3 +188,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6911858896024600373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717697250740506571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be26d2fc29040894f93263c8b5b8b6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnemy: 1
+  isProp: 0
+  isBasicNyuxhian: 0
+  isRangerNyuxhian: 0
+  isHeavyNyuxhian: 0
+  maxHealth: 1
+  currentHealth: 0
+  isDamaged: 0
+  enemiesSpawned: 0
+  spawnTimeLength: 0
+  shootTimeLength: 0
+  leftBulletPrefab: {fileID: 0}
+  rightBulletPrefab: {fileID: 0}
+  deathEffect: {fileID: 3067371009091400574, guid: ceeb53321df3d5245b89eea8f25f53a5, type: 3}

@@ -26,4 +26,12 @@ public class DamagePlayer : MonoBehaviour
             collision.gameObject.GetComponent<PlayerHealthController>().DealWithDamage();
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerHealthController>().DealWithDamage();
+        }
+    }
 }

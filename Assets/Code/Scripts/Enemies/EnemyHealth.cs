@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class EnemyHealth : MonoBehaviour
 
     SpriteRenderer _sPR;
     EnemySpawner _eSRef;
-    Transform _playerTransform;
+    private float _lookForPlayerTime;
+    GameObject _player;
 
     private void Start()
     {
@@ -42,61 +44,57 @@ public class EnemyHealth : MonoBehaviour
             _isInvincible = true;
         }
 
-        _playerTransform = GameObject.FindWithTag("Player").transform;
+        _player = GameObject.FindWithTag("Player");
     }
 
     private void Update()
     {
-        if(_playerTransform.gameObject.activeSelf)
+        //Nyuxhiano Acorazado Spawnea
+        if (isHeavyNyuxhian && Vector2.Distance(transform.position, _player.transform.position) < 17 && _spawnTime <= 0f && _player.gameObject.activeSelf == true)
         {
-            //Nyuxhiano Acorazado Spawnea
-            if (isHeavyNyuxhian && Vector2.Distance(transform.position, _playerTransform.position) < 17 && _spawnTime <= 0f)
-            {
-                _eSRef.SpawnEnemy();
+            _eSRef.SpawnEnemy();
 
-                _spawnTime = spawnTimeLength;
+            _spawnTime = spawnTimeLength;
+        }
+        else if (isHeavyNyuxhian && _spawnTime > 0)
+        {
+            _spawnTime -= Time.deltaTime;
+        }
+
+        //Nyuxhiano Tirador Disparo
+        if (isRangerNyuxhian && Vector2.Distance(transform.position, _player.transform.position) < 17 && _shootTime <= 0)
+        {
+            if (_player.transform.position.x < transform.position.x)
+            {
+                Instantiate(leftBulletPrefab, transform.position + new Vector3(-1f, 0, 0), transform.rotation);
+            }
+            else if (_player.transform.position.x > transform.position.x)
+            {
+                Instantiate(rightBulletPrefab, transform.position + new Vector3(1f, 0, 0), transform.rotation);
             }
 
-            if (isHeavyNyuxhian && _spawnTime > 0)
-            {
-                _spawnTime -= Time.deltaTime;
-            }
+            _shootTime = shootTimeLength;
+        }
+        if (isRangerNyuxhian && _shootTime > 0)
+        {
+            _shootTime -= Time.deltaTime;
+        }
 
-            //Nyuxhiano Tirador Disparo
-            if (isRangerNyuxhian && Vector2.Distance(transform.position, _playerTransform.position) < 17 && _playerTransform.gameObject.activeSelf && _shootTime <= 0)
-            {
-                if(_playerTransform.position.x < transform.position.x)
-                {
-                    Instantiate(leftBulletPrefab, transform.position + new Vector3(-1f, 0, 0), transform.rotation);
-                }
-                else if (_playerTransform.position.x > transform.position.x)
-                {
-                    Instantiate(rightBulletPrefab, transform.position + new Vector3(1f, 0, 0), transform.rotation);
-                }
+        //Nyuxhiano Tirador Punto Débil
+        if (isRangerNyuxhian && Vector2.Distance(transform.position, _player.transform.position) < 17 && !_hasAppeared)
+        {
+            _eSRef.SpawnWeakSpot();
 
-                _shootTime = shootTimeLength;
-            }
-            if(isRangerNyuxhian && _shootTime > 0)
-            {
-                _shootTime -= Time.deltaTime;
-            }
+            _weakSpot = GameObject.FindWithTag("4DWeakSpot");
 
-            //Nyuxhiano Tirador Punto Débil
-            if (isRangerNyuxhian && Vector2.Distance(transform.position, _playerTransform.position) < 17 && !_hasAppeared)
-            {
-                _eSRef.SpawnWeakSpot();
+            _hasAppeared = true;
+        }
 
-                _weakSpot = GameObject.FindWithTag("4DWeakSpot");
+        if (isRangerNyuxhian && _hasAppeared && _weakSpot == null && _isInvincible)
+        {
+            _isInvincible = false;
 
-                _hasAppeared = true;
-            }
-
-            if(isRangerNyuxhian && _hasAppeared && _weakSpot == null && _isInvincible)
-            {
-                _isInvincible = false;
-
-                _sPR.color = Color.white;
-            }
+            _sPR.color = Color.white;
         }
 
         //Muerte

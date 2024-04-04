@@ -19,8 +19,8 @@ public class DeathZone : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             _pHCRef.currentHealth = 0;
-            _lMRef.RespawnPlayer();
             _uIRef.UpdateHealth();
+            _lMRef.RespawnPlayer();
         }
     }
 }

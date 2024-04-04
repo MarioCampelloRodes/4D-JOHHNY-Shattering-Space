@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IkalController : MonoBehaviour
 {
     //¿Tiene el control?
-    private bool _canMove;
+    public bool canMove;
+    public bool isLevelOver;
     //Movimiento Default
     public float playerSpeed;
     
@@ -76,7 +78,6 @@ public class IkalController : MonoBehaviour
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
         _pHCRef = GetComponent<PlayerHealthController>();
-         
     }
 
     // Update is called once per frame
@@ -86,24 +87,24 @@ public class IkalController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
 
         //¿Tiene el control?
-        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0)
+        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && !isLevelOver)
         {
-            _canMove = true;
+            canMove = true;
         }
         else
         {
-            _canMove = false;
+            canMove = false;
         }
         //Si los contadores se han vaciado, el jugador recupera el control
-        if (_canMove)
+        if (canMove)
         {
             //Movimiento
             if (boostTime > 0) //Movimiento Boost
             {
                 if (isGrounded)
-                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
                 else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
-                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed * 0.75f, _playerRB.velocity.y);
             }
             else //Movimiento Default
             {
@@ -242,6 +243,7 @@ public class IkalController : MonoBehaviour
         { 
             attackCounter -= Time.deltaTime;
         }
+
         //Animaciones
         _anim.SetBool("isGrounded", isGrounded);
 
@@ -325,7 +327,7 @@ public class IkalController : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().TakeDamage(lightDamage);
             }
 
-            if (hitEnemies.Length == 0)
+            if (hitEnemies.Length == 0 && SceneManager.GetActiveScene().name != "Level-2")
             {
                 Instantiate(rightBulletPrefab, transform.position + new Vector3(3f, 0, 0), transform.rotation);
             }
@@ -340,7 +342,7 @@ public class IkalController : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().TakeDamage(lightDamage);
             }
 
-            if(hitEnemies.Length == 0)
+            if(hitEnemies.Length == 0 && SceneManager.GetActiveScene().name != "Level-2")
             {
                 Instantiate(leftBulletPrefab, transform.position + new Vector3(-3f, 0, 0), transform.rotation);
             }

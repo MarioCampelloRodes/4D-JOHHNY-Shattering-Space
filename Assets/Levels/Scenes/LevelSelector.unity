@@ -1805,7 +1805,7 @@ MonoBehaviour:
   right: {fileID: 518595970}
   down: {fileID: 0}
   left: {fileID: 0}
-  isLevel: 0
+  isLevel: 1
   levelToLoad: Shop
 --- !u!1001 &1845335150
 PrefabInstance:
