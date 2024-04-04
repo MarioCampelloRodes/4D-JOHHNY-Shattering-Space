@@ -64,7 +64,7 @@ public class FourDBullets : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("4DEnemy"))
+        if (collision.CompareTag("4DEnemy") || collision.CompareTag("4DWeakSpot"))
         {
             _uIRef.AddScore(200);
             Destroy(collision.gameObject);

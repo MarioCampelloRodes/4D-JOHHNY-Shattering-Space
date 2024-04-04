@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
+    public bool leftDirection, rightDirection;
     public float laserSpeed = 3f;
 
     private Rigidbody2D _rB;
@@ -13,7 +14,15 @@ public class Laser : MonoBehaviour
     {
         _rB = GetComponent<Rigidbody2D>();
 
-        _rB.velocity = new Vector2(-laserSpeed, 0f);
+        if(leftDirection)
+        {
+            _rB.velocity = new Vector2(-laserSpeed, 0f);
+        }
+        else if(rightDirection)
+        {
+            _rB.velocity = new Vector2(laserSpeed, 0f);
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

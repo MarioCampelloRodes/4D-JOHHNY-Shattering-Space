@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OneWayPlatform : MonoBehaviour
 {
+    public bool canGoDown;
     private Collider2D _platformCollider;
     private bool _onPlatform;
     // Start is called before the first frame update
@@ -14,7 +15,7 @@ public class OneWayPlatform : MonoBehaviour
 
     private void Update()
     {
-        if (_onPlatform && Input.GetAxis("Vertical") < -0.1f)
+        if (_onPlatform && Input.GetAxis("Vertical") < -0.1f && canGoDown)
         {
             StartCoroutine(ActDeactPlatform());
         }

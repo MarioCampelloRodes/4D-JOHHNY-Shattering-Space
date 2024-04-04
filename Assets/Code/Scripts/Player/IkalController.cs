@@ -167,7 +167,7 @@ public class IkalController : MonoBehaviour
             //Ataque
             if(attackCounter <= 0)
             {
-                if (Input.GetKey(KeyCode.X))
+                if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.RightControl))
                 {
                     attackHoldTime += Time.deltaTime;
                     
@@ -178,7 +178,7 @@ public class IkalController : MonoBehaviour
                         canHeavyAttack = false;
                     }
                 }
-                if (Input.GetKeyUp(KeyCode.X))
+                if (Input.GetKeyUp(KeyCode.C) || Input.GetKey(KeyCode.RightControl))
                 {
                     //Ataque Ligero
                     if(attackHoldTime < heavyAttackHoldLength)

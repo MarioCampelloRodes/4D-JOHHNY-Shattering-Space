@@ -8,6 +8,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: enemiesSpawned
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: shootTimeLength
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: isRangerNyuxhian
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: leftBulletPrefab
+      value: 
+      objectReference: {fileID: 1717697250740506571, guid: aeeedd1e3dd02e94580ea939a0ba581f, type: 3}
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: rightBulletPrefab
+      value: 
+      objectReference: {fileID: 1717697250740506571, guid: 43d4d44d0706b5543ba5de2265993ec3, type: 3}
+    - target: {fileID: 1596844221218175575, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2243347
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596844221218175575, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0048828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596844221218175575, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1723079547849820446, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: canJump
       value: 0
@@ -35,6 +67,14 @@ PrefabInstance:
     - target: {fileID: 2624717545709494096, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_Name
       value: RangerNyuxhian Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495691069981866325, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0852966
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495691069981866325, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0048828125
       objectReference: {fileID: 0}
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -75,6 +115,14 @@ PrefabInstance:
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c60c9588ca7e1014fa91bfd21799fb5d, type: 3}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6313726
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1723079547849820446, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -8,9 +9,18 @@ public class EnemyHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public bool isDamaged;
+    public int enemiesSpawned;
 
+    //Nyuxhiano Acorazado
     public float spawnTimeLength;
     private float _spawnTime;
+
+    //Nyuxhiano Tirador
+    private bool _hasAppeared, _isInvincible;
+    public float shootTimeLength;
+    private float _shootTime;
+    public GameObject leftBulletPrefab, rightBulletPrefab;
+    private GameObject _weakSpot;
 
     SpriteRenderer _sPR;
     EnemySpawner _eSRef;
@@ -27,6 +37,11 @@ public class EnemyHealth : MonoBehaviour
             _eSRef = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         }
 
+        if(isRangerNyuxhian )
+        {
+            _isInvincible = true;
+        }
+
         _playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
@@ -35,36 +50,64 @@ public class EnemyHealth : MonoBehaviour
         if(_playerTransform.gameObject.activeSelf)
         {
             //Nyuxhiano Acorazado Spawnea
-            if (_spawnTime > 0)
-            {
-                _spawnTime -= Time.deltaTime;
-            }
-
             if (isHeavyNyuxhian && Vector2.Distance(transform.position, _playerTransform.position) < 17 && _spawnTime <= 0f)
             {
                 _eSRef.SpawnEnemy();
 
                 _spawnTime = spawnTimeLength;
             }
+
+            if (isHeavyNyuxhian && _spawnTime > 0)
+            {
+                _spawnTime -= Time.deltaTime;
+            }
+
+            //Nyuxhiano Tirador Disparo
+            if (isRangerNyuxhian && Vector2.Distance(transform.position, _playerTransform.position) < 17 && _playerTransform.gameObject.activeSelf && _shootTime <= 0)
+            {
+                if(_playerTransform.position.x < transform.position.x)
+                {
+                    Instantiate(leftBulletPrefab, transform.position + new Vector3(-1f, 0, 0), transform.rotation);
+                }
+                else if (_playerTransform.position.x > transform.position.x)
+                {
+                    Instantiate(rightBulletPrefab, transform.position + new Vector3(1f, 0, 0), transform.rotation);
+                }
+
+                _shootTime = shootTimeLength;
+            }
+            if(isRangerNyuxhian && _shootTime > 0)
+            {
+                _shootTime -= Time.deltaTime;
+            }
+
+            //Nyuxhiano Tirador Punto Débil
+            if (isRangerNyuxhian && Vector2.Distance(transform.position, _playerTransform.position) < 17 && !_hasAppeared)
+            {
+                _eSRef.SpawnWeakSpot();
+
+                _weakSpot = GameObject.FindWithTag("4DWeakSpot");
+
+                _hasAppeared = true;
+            }
+
+            if(isRangerNyuxhian && _hasAppeared && _weakSpot == null && _isInvincible)
+            {
+                _isInvincible = false;
+
+                _sPR.color = Color.white;
+            }
         }
 
         //Muerte
         if (currentHealth <= 0) 
         {
-            if (isBasicNyuxhian)
+            if(enemiesSpawned > 0)
             {
-                _eSRef.SpawnEnemy();
-                _eSRef.SpawnEnemy();
-            }
-            else if (isRangerNyuxhian)
-            {
-                _eSRef.SpawnEnemy();
-                _eSRef.SpawnEnemy();
-                _eSRef.SpawnEnemy();
-            }
-            else if (isHeavyNyuxhian)
-            {
-                _eSRef.SpawnEnemy();
+                for(int i = 0; i < enemiesSpawned; i++) 
+                {
+                    _eSRef.SpawnEnemy();            
+                }
             }
 
             EnemyDeathController();
@@ -94,7 +137,7 @@ public class EnemyHealth : MonoBehaviour
 
                 _sPR.color = new Color(1f, 0.5f, 0.5f, 1f);
             }
-            else if(!isHeavyNyuxhian && !isRangerNyuxhian)
+            else if(!isHeavyNyuxhian && !_isInvincible)
             {
                 currentHealth -= damage;
 

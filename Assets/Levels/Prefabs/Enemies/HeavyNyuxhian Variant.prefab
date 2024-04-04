@@ -193,6 +193,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: enemiesSpawned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: isHeavyNyuxhian
       value: 1
       objectReference: {fileID: 0}
