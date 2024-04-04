@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Ground
   - 4DWeakSpot
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

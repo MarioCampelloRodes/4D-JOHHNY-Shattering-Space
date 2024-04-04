@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1723079547849820446, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: enemySpeed
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1723079547849820446, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: followSpeed
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2624717545709494096, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_Name

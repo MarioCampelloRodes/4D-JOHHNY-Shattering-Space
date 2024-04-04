@@ -435,7 +435,11 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   isDamaged: 0
+  enemiesSpawned: 0
   spawnTimeLength: 0
+  shootTimeLength: 0
+  leftBulletPrefab: {fileID: 0}
+  rightBulletPrefab: {fileID: 0}
   deathEffect: {fileID: 4461926073205091622, guid: cc0cc919ca38dfb49bf4423ee1b396c4, type: 3}
 --- !u!114 &2867705470367778533
 MonoBehaviour:
@@ -449,8 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5265ea2be8bd516428052831ab787780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 5
-  followSpeed: 7
+  enemySpeed: 4
+  followSpeed: 6
   canJump: 0
   jumpForce: 0
   maxLeft: {fileID: 8610264213748092558}

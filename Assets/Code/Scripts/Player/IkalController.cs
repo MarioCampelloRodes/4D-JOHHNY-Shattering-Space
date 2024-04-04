@@ -36,6 +36,7 @@ public class IkalController : MonoBehaviour
     public float heavyAttackHoldLength = 1f;
     private float attackHoldTime;
     private bool canHeavyAttack = true;
+    public GameObject leftBulletPrefab, rightBulletPrefab;
 
     //Knockbacks
     public float knockbackForce = 3f;
@@ -178,7 +179,7 @@ public class IkalController : MonoBehaviour
                         canHeavyAttack = false;
                     }
                 }
-                if (Input.GetKeyUp(KeyCode.C) || Input.GetKey(KeyCode.RightControl))
+                if (Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.RightControl))
                 {
                     //Ataque Ligero
                     if(attackHoldTime < heavyAttackHoldLength)
@@ -323,6 +324,11 @@ public class IkalController : MonoBehaviour
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(lightDamage);
             }
+
+            if (hitEnemies.Length == 0)
+            {
+                Instantiate(rightBulletPrefab, transform.position + new Vector3(3f, 0, 0), transform.rotation);
+            }
         }
         
         if (!_playerSpriteRenderer.flipX)
@@ -332,6 +338,11 @@ public class IkalController : MonoBehaviour
             foreach(Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(lightDamage);
+            }
+
+            if(hitEnemies.Length == 0)
+            {
+                Instantiate(leftBulletPrefab, transform.position + new Vector3(-3f, 0, 0), transform.rotation);
             }
         }
 
