@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     public float xOffSet = -2f, yOffSet = 1f;
 
     //Referencias a las posiciones de los fondos
-    //public Transform farBackground, middleBackground;
+    public Transform veryFarBackground, farBackground, middleBackground, nearBackGround;
 
     public float minHeight, maxHeight;
 
@@ -29,14 +29,16 @@ public class CameraController : MonoBehaviour
             transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
             ////Variable para conocer cuanto hay que moverse en X y en Y
-            //Vector2 _amountToMove = new Vector2(target.position.x - _lastPos.x, target.position.y - _lastPos.y);
+            Vector2 _amountToMove = new Vector2(target.position.x - _lastPos.x, target.position.y - _lastPos.y);
 
 
             //Restricción entre un mínimo y un máximo para la cámara en y
             transform.position = new Vector3(target.position.x + xOffSet, Mathf.Clamp(transform.position.y, minHeight, maxHeight) + yOffSet, transform.position.z);
 
-            //farBackground.position += new Vector3(_amountToMove.x, _amountToMove.y, 0f);
-            //middleBackground.position += new Vector3(_amountToMove.x * 0.5f, _amountToMove.y * -0.1f, 0f);
+            veryFarBackground.position += new Vector3(_amountToMove.x, _amountToMove.y, 0f);
+            farBackground.position += new Vector3(_amountToMove.x * 0.9f, _amountToMove.y * 0.9f, 0f);
+            middleBackground.position += new Vector3(_amountToMove.x * 0.6f, _amountToMove.y * -0.05f, 0f);
+            nearBackGround.position += new Vector3(_amountToMove.x * 0.2f, _amountToMove.y * -0.075f, 0f);
 
             //Actualizamos la posición del jugador
             _lastPos.x = target.position.x;
