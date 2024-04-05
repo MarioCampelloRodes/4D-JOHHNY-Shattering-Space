@@ -54,11 +54,11 @@ public class LevelOnePHC : MonoBehaviour
         }
     }
 
-    public void DealWithDamage()
+    public void DealWithDamage(int damage)
     {
         if (invincibleCounter <= 0)
         {
-            currentHealth--;
+            currentHealth -= damage;
 
             if (currentHealth <= 0)
             {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelOneLM : MonoBehaviour
 {
     public float timeForRespawn = 2f;
+    public bool isPursuitActive;
 
     private JohnnyController _jCRef;
     private CheckpointController _cpRef;
@@ -35,5 +36,10 @@ public class LevelOneLM : MonoBehaviour
         _jCRef.gameObject.transform.position = _cpRef.spawnPoint;
         _jCRef.canDash = true;
         _pHCRef.currentHealth = _pHCRef.maxHealth;
+
+        if(isPursuitActive) 
+        {
+            GameObject.Find("Pursuit(Clone)").transform.position = _cpRef.spawnPoint;
+        }
     }
 }

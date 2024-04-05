@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public bool isPoint, isRestoreHealth;
+    public bool isPoint, isRestoreHealth, isBigPoint;
 
     private bool _isCollected;
     private UIController _uIRef;
@@ -24,6 +24,15 @@ public class Pickup : MonoBehaviour
             if (isPoint)
             {
                 _uIRef.AddScore(100);
+
+                _isCollected = true;
+
+                Destroy(gameObject);
+            }
+
+            if(isBigPoint)
+            {
+                _uIRef.AddScore(1000);
 
                 _isCollected = true;
 

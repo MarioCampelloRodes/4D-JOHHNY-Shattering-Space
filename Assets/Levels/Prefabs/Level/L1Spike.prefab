@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7142672626519214000}
   - component: {fileID: 5664228846817065210}
   m_Layer: 0
-  m_Name: Props_Pinchos
+  m_Name: L1Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea10c4b4bc7716449c09f24a40b374e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageDealt: 1
 --- !u!61 &5664228846817065210
 BoxCollider2D:
   m_ObjectHideFlags: 0
