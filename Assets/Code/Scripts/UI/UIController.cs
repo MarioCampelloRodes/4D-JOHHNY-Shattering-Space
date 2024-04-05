@@ -14,6 +14,8 @@ public class UIController : MonoBehaviour
 
     public TextMeshProUGUI scoreText, timeText, streakText;
 
+    public GameObject pauseScreen;
+
     private PlayerHealthController _pHRef;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,12 @@ public class UIController : MonoBehaviour
             _timeCounter = 0;
 
             timeText.text = time.ToString();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ActivatePauseScreen();
+            Time.timeScale = 0;
         }
     }
 
@@ -136,5 +144,10 @@ public class UIController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void ActivatePauseScreen()
+    {
+        pauseScreen.SetActive(true);
     }
 }

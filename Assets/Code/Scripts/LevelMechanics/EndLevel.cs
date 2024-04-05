@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class EndLevel : MonoBehaviour
 {
     private CameraController _cCRef;
+    private LSUIControl _uIRef;
     private void Start()
     {
         _cCRef = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        _uIRef = GameObject.Find("Canvas").GetComponent<LSUIControl>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -35,7 +37,11 @@ public class EndLevel : MonoBehaviour
     {
         _cCRef.isFreezed = true;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+
+        _uIRef.FadeToBlack();
+
+        yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene("LevelSelector");
     }

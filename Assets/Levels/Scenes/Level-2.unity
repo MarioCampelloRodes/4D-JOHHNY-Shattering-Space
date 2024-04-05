@@ -4872,7 +4872,7 @@ GameObject:
   - component: {fileID: 1566337203}
   - component: {fileID: 1566337202}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Radar4D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
