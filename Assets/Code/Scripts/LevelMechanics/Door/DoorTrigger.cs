@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    public bool isClosed;
+    public bool isClosed, hasActivated;
 
     public GameObject lastWaveEnemy;
     public Door doorLeftRef, doorRightRef;
@@ -23,11 +23,12 @@ public class DoorTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !hasActivated)
         {
             doorLeftRef.ActivateObject();
             doorRightRef.ActivateObject();
             isClosed = true;
+            hasActivated = true;
         }
     }
 }

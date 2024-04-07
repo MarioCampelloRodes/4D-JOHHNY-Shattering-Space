@@ -189,6 +189,7 @@ MonoBehaviour:
   heavyAttackHoldLength: 0.5
   leftBulletPrefab: {fileID: 7076753470244331541, guid: 1ff96835ddeccd04d93b22a556ed5ad0, type: 3}
   rightBulletPrefab: {fileID: 4928619759899995988, guid: 2a3e233d0def62d4bbe41001d83e475a, type: 3}
+  attackCirclePrefab: {fileID: 2206374973562515993, guid: 4f5a10f07f300e14eaba12bdc92f52e7, type: 3}
   knockbackForce: 8
   knockbackCounterLength: 0.25
   boostSpeed: 12

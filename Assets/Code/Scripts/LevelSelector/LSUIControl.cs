@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LSUIControl : MonoBehaviour
 {
     public Image fadeScreen;
     public float fadeSpeed;
+    public GameObject optionsScreen;
 
     private bool _shouldFade, _shouldUnfade;
     // Start is called before the first frame update
@@ -35,6 +37,11 @@ public class LSUIControl : MonoBehaviour
                 _shouldUnfade = false;
             }
         }
+
+        if(SceneManager.GetActiveScene().name == "LevelSelector" && Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoadSettingsScreen();
+        }
     }
 
     public void FadeToBlack()
@@ -47,5 +54,10 @@ public class LSUIControl : MonoBehaviour
     {
         _shouldFade = false;
         _shouldUnfade = true;
+    }
+
+    public void LoadSettingsScreen()
+    {
+        optionsScreen.SetActive(true);
     }
 }

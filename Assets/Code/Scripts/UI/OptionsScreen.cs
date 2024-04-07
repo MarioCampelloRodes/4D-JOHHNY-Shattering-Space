@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OptionsScreen : MonoBehaviour
 {
@@ -15,5 +16,10 @@ public class OptionsScreen : MonoBehaviour
     public void DeactivateOptionsScreen()
     {
         gameObject.SetActive(false);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

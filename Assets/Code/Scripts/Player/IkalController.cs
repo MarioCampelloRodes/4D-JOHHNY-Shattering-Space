@@ -38,7 +38,7 @@ public class IkalController : MonoBehaviour
     public float heavyAttackHoldLength = 1f;
     private float attackHoldTime;
     private bool canHeavyAttack = true;
-    public GameObject leftBulletPrefab, rightBulletPrefab;
+    public GameObject leftBulletPrefab, rightBulletPrefab, attackCirclePrefab;
 
     //Knockbacks
     public float knockbackForce = 3f;
@@ -331,6 +331,8 @@ public class IkalController : MonoBehaviour
             {
                 Instantiate(rightBulletPrefab, transform.position + new Vector3(3f, 0, 0), transform.rotation);
             }
+            
+            Instantiate(attackCirclePrefab, attackPointRight.position, transform.rotation);
         }
         
         if (!_playerSpriteRenderer.flipX)
@@ -346,6 +348,8 @@ public class IkalController : MonoBehaviour
             {
                 Instantiate(leftBulletPrefab, transform.position + new Vector3(-3f, 0, 0), transform.rotation);
             }
+
+            Instantiate(attackCirclePrefab, attackPointLeft.position, transform.rotation);
         }
 
         attackCounter = attackCounterLength;
@@ -359,10 +363,13 @@ public class IkalController : MonoBehaviour
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRange, whatIsEnemy);
 
+
             foreach (Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(heavyDamage);
             }
+
+            Instantiate(attackCirclePrefab, attackPointRight.position, transform.rotation);
         }
 
         if (!_playerSpriteRenderer.flipX)
@@ -373,6 +380,8 @@ public class IkalController : MonoBehaviour
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(heavyDamage);
             }
+
+            Instantiate(attackCirclePrefab, attackPointLeft.position, transform.rotation);
         }
 
         attackCounter = heavyAttackCounterLength;
@@ -380,15 +389,17 @@ public class IkalController : MonoBehaviour
         Debug.Log("Ataque Pesado");
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         if (attackPointLeft != null)
         {
+            Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(attackPointLeft.position, attackRange);
         }
 
         if (attackPointRight != null)
         {
+            Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(attackPointRight.position, attackRange);
         }
     }

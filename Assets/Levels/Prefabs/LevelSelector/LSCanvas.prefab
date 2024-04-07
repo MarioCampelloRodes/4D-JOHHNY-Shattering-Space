@@ -192,7 +192,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 4781899411513880768}
-  fadeSpeed: 0
+  fadeSpeed: 1
+  optionsScreen: {fileID: 0}
 --- !u!1 &3686749947794620607
 GameObject:
   m_ObjectHideFlags: 0
