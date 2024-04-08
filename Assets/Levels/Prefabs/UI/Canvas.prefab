@@ -772,8 +772,8 @@ RectTransform:
   - {fileID: 2382345265063639033}
   - {fileID: 5302691541855767573}
   - {fileID: 769688788836592741}
-  - {fileID: 8057581224935423719}
   - {fileID: 767547512140410400}
+  - {fileID: 8057581224935423719}
   - {fileID: 2802341012048823516}
   - {fileID: 4888314776699582074}
   m_Father: {fileID: 0}
@@ -885,6 +885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 8504917740904744273}
   fadeSpeed: 1
+  optionsScreen: {fileID: 0}
 --- !u!1 &5859257403680091026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &767547512140410400
 RectTransform:
   m_ObjectHideFlags: 0

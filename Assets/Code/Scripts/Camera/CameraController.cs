@@ -35,10 +35,10 @@ public class CameraController : MonoBehaviour
             //Restricción entre un mínimo y un máximo para la cámara en y
             transform.position = new Vector3(target.position.x + xOffSet, Mathf.Clamp(transform.position.y, minHeight, maxHeight) + yOffSet, transform.position.z);
 
-            veryFarBackground.position += new Vector3(_amountToMove.x, _amountToMove.y, 0f);
-            farBackground.position += new Vector3(_amountToMove.x * 0.9f, _amountToMove.y * 0.9f, 0f);
-            middleBackground.position += new Vector3(_amountToMove.x * 0.6f, _amountToMove.y * -0.05f, 0f);
-            nearBackGround.position += new Vector3(_amountToMove.x * 0.2f, _amountToMove.y * -0.075f, 0f);
+            veryFarBackground.position += new Vector3(_amountToMove.x * 0.95f, _amountToMove.y, 0f);
+            farBackground.position += new Vector3(_amountToMove.x * 0.85f, _amountToMove.y * 0.9f, 0f);
+            middleBackground.position += new Vector3(_amountToMove.x * 0.6f, _amountToMove.y * -0.005f, 0f);
+            nearBackGround.position += new Vector3(_amountToMove.x * 0.2f, _amountToMove.y * -0.0075f, 0f);
 
             //Actualizamos la posición del jugador
             _lastPos.x = target.position.x;

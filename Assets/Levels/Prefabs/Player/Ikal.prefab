@@ -185,7 +185,7 @@ MonoBehaviour:
   heavyDamage: 4
   attackRange: 1.5
   attackCounterLength: 0.25
-  heavyAttackCounterLength: 0.4
+  heavyAttackCounterLength: 0.3
   heavyAttackHoldLength: 0.5
   leftBulletPrefab: {fileID: 7076753470244331541, guid: 1ff96835ddeccd04d93b22a556ed5ad0, type: 3}
   rightBulletPrefab: {fileID: 4928619759899995988, guid: 2a3e233d0def62d4bbe41001d83e475a, type: 3}
