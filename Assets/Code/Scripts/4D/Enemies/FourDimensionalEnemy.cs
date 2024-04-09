@@ -7,6 +7,8 @@ public class FourDimensionalEnemy : MonoBehaviour
 {
     public float enemySpeed;
 
+    public int damageDealt = 1;
+
     private bool _isSpawned;
 
     private Rigidbody2D _rb;
@@ -42,7 +44,7 @@ public class FourDimensionalEnemy : MonoBehaviour
     {
         if (collision.CompareTag("4DPlayer"))
         {
-            _pHC.DealWithDamage();
+            _pHC.DealWithDamage(damageDealt);
 
             _isSpawned = false;
 

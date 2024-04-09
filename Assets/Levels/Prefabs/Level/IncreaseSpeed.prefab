@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5555289695809729765}
   - component: {fileID: 2097618335182945997}
   m_Layer: 0
-  m_Name: HealthRestore
-  m_TagString: Untagged
+  m_Name: IncreaseSpeed
+  m_TagString: IncreaseSpeed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8471593065915342165}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.13, y: 2.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.8773585, g: 0.21933962, b: 0.26218525, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c8357c50ff43fba458055bb3e4c328ec, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,4 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPoint: 0
-  isRestoreHealth: 1
+  isIncreaseSpeed: 1
+  isBigPoint: 0

@@ -11,6 +11,7 @@ public class JohnnyController : MonoBehaviour
     //Saltos
     public float playerJumpForce;
     public bool isGrounded;
+    public float fallSpeed;
 
     //Dash
     private bool _isDashing;
@@ -63,6 +64,8 @@ public class JohnnyController : MonoBehaviour
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
             else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+            else if (Input.GetAxisRaw("Vertical") <= -0.1f)
+                _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.5f);
 
             //Salto
             if (Input.GetButtonDown("Jump") && isGrounded)
@@ -102,6 +105,13 @@ public class JohnnyController : MonoBehaviour
                 }
             }
         }
+
+        //Límite Velocidad de Caída
+        if(_playerRB.velocity.y < fallSpeed)
+        {
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, fallSpeed);
+        }
+
         //Animaciones
         _anim.SetBool("isGrounded", isGrounded);
 

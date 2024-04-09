@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public bool isPoint, isRestoreHealth, isBigPoint;
+    public bool isPoint, isIncreaseSpeed, isBigPoint;
 
-    private bool _isCollected;
+    public bool isCollected;
     private UIController _uIRef;
     private PlayerHealthController _pHCRef;
     private IkalController _pCRef;
@@ -17,15 +17,16 @@ public class Pickup : MonoBehaviour
         _pHCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealthController>();
         _pCRef = GameObject.FindGameObjectWithTag("Player").GetComponent<IkalController>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !_isCollected)
+        if (collision.CompareTag("Player") && !isCollected)
         {
             if (isPoint)
             {
                 _uIRef.AddScore(100);
 
-                _isCollected = true;
+                isCollected = true;
 
                 Destroy(gameObject);
             }
@@ -34,28 +35,18 @@ public class Pickup : MonoBehaviour
             {
                 _uIRef.AddScore(1000);
 
-                _isCollected = true;
+                isCollected = true;
 
                 Destroy(gameObject);
             }
 
-            if (isRestoreHealth)
+            if (isIncreaseSpeed)
             {
-                if(_pHCRef.currentHealth <= _pHCRef.maxHealth -1)
-                {
-                    _pHCRef.currentHealth++;
+                _pCRef.boostTime = _pCRef.boostTimeLength;
 
-                    _uIRef.UpdateHealth();
+                isCollected = true;
 
-                    _isCollected = true;       
-                }
-                else
-                {
-                    _pCRef.boostTime = _pCRef.boostTimeLength;
-
-                    _isCollected = true;
-                }
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
