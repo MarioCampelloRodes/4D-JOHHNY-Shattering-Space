@@ -62,7 +62,9 @@ public class JohnnyController : MonoBehaviour
             //Movimiento
             if (isGrounded)
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-            else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+            else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x == -dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x == dashSpeed))
+                _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+            else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x > -dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x < dashSpeed))
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
             else if (Input.GetAxisRaw("Vertical") <= -0.1f)
                 _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.5f);
