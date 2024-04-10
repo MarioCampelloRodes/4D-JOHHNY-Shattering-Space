@@ -8,6 +8,7 @@ public class LSPlayer : MonoBehaviour
 
     public float moveSpeed;
 
+    public bool canMove = true;
     private LSManager _lSMRef;
     // Start is called before the first frame update
     void Start()
@@ -18,45 +19,48 @@ public class LSPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, currentPoint.transform.position, moveSpeed * Time.deltaTime);
-
-        if(Vector3.Distance(transform.position, currentPoint.transform.position) < 0.1f)
+        if (canMove)
         {
-            if(Input.GetAxisRaw("Horizontal") > 0.5f)
-            {
-                if(currentPoint.right != null)
-                {
-                    SetNextPoint(currentPoint.right);
-                }
-            }
+            transform.position = Vector3.MoveTowards(transform.position, currentPoint.transform.position, moveSpeed * Time.deltaTime);
 
-            if (Input.GetAxisRaw("Horizontal") < -0.5f)
+            if (Vector3.Distance(transform.position, currentPoint.transform.position) < 0.1f)
             {
-                if (currentPoint.left != null)
+                if (Input.GetAxisRaw("Horizontal") > 0.5f)
                 {
-                    SetNextPoint(currentPoint.left);
+                    if (currentPoint.right != null)
+                    {
+                        SetNextPoint(currentPoint.right);
+                    }
                 }
-            }
 
-            if (Input.GetAxisRaw("Vertical") > 0.5f)
-            {
-                if (currentPoint.up != null)
+                if (Input.GetAxisRaw("Horizontal") < -0.5f)
                 {
-                    SetNextPoint(currentPoint.up);
+                    if (currentPoint.left != null)
+                    {
+                        SetNextPoint(currentPoint.left);
+                    }
                 }
-            }
 
-            if (Input.GetAxisRaw("Vertical") < -0.5f)
-            {
-                if (currentPoint.down != null)
+                if (Input.GetAxisRaw("Vertical") > 0.5f)
                 {
-                    SetNextPoint(currentPoint.down);
+                    if (currentPoint.up != null)
+                    {
+                        SetNextPoint(currentPoint.up);
+                    }
                 }
-            }
-            
-            if (currentPoint.isLevel && Input.GetButtonDown("Jump"))
-            {
-                _lSMRef.LoadLevel();
+
+                if (Input.GetAxisRaw("Vertical") < -0.5f)
+                {
+                    if (currentPoint.down != null)
+                    {
+                        SetNextPoint(currentPoint.down);
+                    }
+                }
+
+                if (currentPoint.isLevel && Input.GetButtonDown("Jump"))
+                {
+                    _lSMRef.LoadLevel();
+                }
             }
         }
     }
