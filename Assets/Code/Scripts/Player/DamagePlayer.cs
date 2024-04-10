@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class DamagePlayer : MonoBehaviour
 {
+    public int damageDealt = 1;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerHealthController>().DealWithDamage();
+            collision.GetComponent<PlayerHealthController>().DealWithDamage(damageDealt);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerHealthController>().DealWithDamage();
+            collision.GetComponent<PlayerHealthController>().DealWithDamage(damageDealt);
         }
     }
 
@@ -23,7 +24,7 @@ public class DamagePlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealthController>().DealWithDamage();
+            collision.gameObject.GetComponent<PlayerHealthController>().DealWithDamage(damageDealt);
         }
     }
 
@@ -31,7 +32,7 @@ public class DamagePlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerHealthController>().DealWithDamage();
+            collision.gameObject.GetComponent<PlayerHealthController>().DealWithDamage(damageDealt);
         }
     }
 }

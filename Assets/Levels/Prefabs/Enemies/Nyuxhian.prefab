@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: scoreReward
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: enemiesSpawned
       value: 2
       objectReference: {fileID: 0}
@@ -79,6 +83,18 @@ PrefabInstance:
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.20496619
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.29973978
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8867924
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

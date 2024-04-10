@@ -174,6 +174,7 @@ MonoBehaviour:
   playerJumpForce: 14
   jumpNumber: 0
   isGrounded: 0
+  fallSpeed: -20
   wallJumpCounterLength: 0.25
   canDash: 1
   dashSpeed: 16
@@ -185,7 +186,7 @@ MonoBehaviour:
   heavyDamage: 4
   attackRange: 1.5
   attackCounterLength: 0.25
-  heavyAttackCounterLength: 0.3
+  heavyAttackCounterLength: 0.4
   heavyAttackHoldLength: 0.5
   leftBulletPrefab: {fileID: 7076753470244331541, guid: 1ff96835ddeccd04d93b22a556ed5ad0, type: 3}
   rightBulletPrefab: {fileID: 4928619759899995988, guid: 2a3e233d0def62d4bbe41001d83e475a, type: 3}
@@ -193,7 +194,7 @@ MonoBehaviour:
   knockbackForce: 8
   knockbackCounterLength: 0.25
   boostSpeed: 12
-  boostTimeLength: 3
+  boostTimeLength: 7
   boostTime: 0
   canInteract: 0
   groundPoint: {fileID: 1838125212152150749}

@@ -15,6 +15,7 @@ public class IkalController : MonoBehaviour
     public float playerJumpForce;
     public int jumpNumber = 0;
     public bool isGrounded;
+    public float fallSpeed;
 
     //Saltos de Pared
     private bool _isWalledLeft, _isWalledRight;
@@ -102,16 +103,22 @@ public class IkalController : MonoBehaviour
             if (boostTime > 0) //Movimiento Boost
             {
                 if (isGrounded)
-                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
                 else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
-                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed * 0.75f, _playerRB.velocity.y);
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
+                else if (Input.GetAxisRaw("Vertical") <= -0.1f)
+                    _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
             }
             else //Movimiento Default
             {
                 if (isGrounded)
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-                else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+                else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x == -dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x == dashSpeed))
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+                else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x > -dashSpeed && _playerRB.velocity.x < dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x < dashSpeed && _playerRB.velocity.x > -dashSpeed))
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
+                else if (Input.GetAxisRaw("Vertical") <= -0.1f)
+                    _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
             }
 
             //¿Está tocando la pared?
@@ -226,6 +233,12 @@ public class IkalController : MonoBehaviour
             }
         }
 
+        //Límite Velocidad de Caída
+        if (_playerRB.velocity.y < fallSpeed)
+        {
+            _playerRB.velocity = new Vector2(_playerRB.velocity.x, fallSpeed);
+        }
+
         //Reseteo de Saltos
         if (isGrounded)
         {
@@ -258,6 +271,23 @@ public class IkalController : MonoBehaviour
             _enemyXPos = collision.transform.position.x;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.parent = collision.transform;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.parent = null;
+        }
+    }
+
     public void Knockback()
     {
         _knockbackCounter = knockbackCounterLength;

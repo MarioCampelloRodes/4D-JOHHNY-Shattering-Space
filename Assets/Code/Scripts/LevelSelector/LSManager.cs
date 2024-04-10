@@ -28,6 +28,8 @@ public class LSManager : MonoBehaviour
 
     private IEnumerator LoadLevelCO()
     {
+        _lSPRef.canMove = false;
+
         _lSUICRef.FadeToBlack();
 
         yield return new WaitForSeconds(1f);

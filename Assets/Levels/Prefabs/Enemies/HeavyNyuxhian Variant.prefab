@@ -193,6 +193,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: scoreReward
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: enemiesSpawned
       value: 1
       objectReference: {fileID: 0}
@@ -312,6 +316,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c60c9588ca7e1014fa91bfd21799fb5d, type: 3}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Color.b
+      value: 0.24341702
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Color.g
+      value: 0.23349056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6506568700426602892, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}

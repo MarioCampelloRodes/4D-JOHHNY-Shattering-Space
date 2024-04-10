@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - 4DWeakSpot
   - EnemyBullet
+  - IncreaseSpeed
   layers:
   - Default
   - TransparentFX

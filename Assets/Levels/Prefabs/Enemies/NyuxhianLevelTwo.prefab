@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3dd700895b4d784bbafc3330e15e20b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8862745, g: 0.29803923, b: 0.20392157, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -136,6 +136,11 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   isDamaged: 0
+  enemiesSpawned: 0
+  spawnTimeLength: 0
+  shootTimeLength: 0
+  leftBulletPrefab: {fileID: 0}
+  rightBulletPrefab: {fileID: 0}
   deathEffect: {fileID: 4461926073205091622, guid: cc0cc919ca38dfb49bf4423ee1b396c4, type: 3}
 --- !u!50 &5157964200854382665
 Rigidbody2D:
@@ -375,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf052e1f1e833884f94957d825b35730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageDealt: 1
 --- !u!70 &4495691069981866325
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

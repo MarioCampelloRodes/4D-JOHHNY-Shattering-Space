@@ -56,11 +56,11 @@ public class PlayerHealthController : MonoBehaviour
         }
     }
 
-    public void DealWithDamage()
+    public void DealWithDamage(int damage)
     {
         if(invincibleCounter <= 0)
         {
-            currentHealth--;
+            currentHealth -= damage;
 
             if (currentHealth <= 0)
             {
@@ -79,6 +79,7 @@ public class PlayerHealthController : MonoBehaviour
                 _iCRef.jumpNumber = 0;
             }
             _uIRef.UpdateHealth();
+            _uIRef.ResetStreak();
         }
     }
 

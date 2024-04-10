@@ -27,11 +27,11 @@ public class MovingPlatform : MonoBehaviour
     {
         if (_movingRight)
         {
-            _rb.velocity = new Vector2(platformSpeed, 0f);
+            transform.position = Vector2.MoveTowards(transform.position, maxRight.position, platformSpeed * Time.deltaTime);
         }
         else
         {
-            _rb.velocity = new Vector2(-platformSpeed, 0f);
+            transform.position = Vector2.MoveTowards(transform.position, maxLeft.position, platformSpeed * Time.deltaTime);
         }
 
         if (transform.position.x >= maxRight.position.x)
@@ -41,14 +41,6 @@ public class MovingPlatform : MonoBehaviour
         else if (transform.position.x <= maxLeft.position.x)
         {
             _movingRight = true;
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") && _iCRef.isGrounded)
-        {
-            collision.transform.position = new Vector2(collision.transform.position.x + _rb.velocity.x * Time.deltaTime, collision.transform.position.y);
         }
     }
 }
