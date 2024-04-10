@@ -79,6 +79,7 @@ public class PlayerHealthController : MonoBehaviour
                 _iCRef.jumpNumber = 0;
             }
             _uIRef.UpdateHealth();
+            _uIRef.ResetStreak();
         }
     }
 

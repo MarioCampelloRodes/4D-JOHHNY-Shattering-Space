@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
 {
     public GameObject life1, life2, life3, life4, life5, life6;
 
-    public int score, time, streak;
+    public int score, time, streak, highStreak;
 
     private float _timeCounter;
 
@@ -56,6 +56,14 @@ public class UIController : MonoBehaviour
         streak++;
         streakText.text = streak.ToString();
     }
+    public void ResetStreak()
+    {
+        if (streak > highStreak)
+            highStreak = streak;
+        streak = 0;
+        streakText.text = streak.ToString();
+    }
+
     public void UpdateHealth()
     {
         switch (_pHRef.currentHealth)

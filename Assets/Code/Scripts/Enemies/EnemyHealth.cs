@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth;
     public bool isDamaged;
     public int enemiesSpawned;
+    public int scoreReward;
 
     //Nyuxhiano Acorazado
     public float spawnTimeLength;
@@ -27,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
     EnemySpawner _eSRef;
     private float _lookForPlayerTime;
     GameObject _player;
+    UIController _uIRef;
 
     private void Start()
     {
@@ -45,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         }
 
         _player = GameObject.FindWithTag("Player");
+        _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
     }
 
     private void Update()
@@ -107,6 +110,9 @@ public class EnemyHealth : MonoBehaviour
                     _eSRef.SpawnEnemy();            
                 }
             }
+
+            _uIRef.AddScore(scoreReward);
+            _uIRef.AddStreak();
 
             EnemyDeathController();
         }
