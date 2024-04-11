@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8793834177805252294}
   - component: {fileID: 2239187172458812663}
   - component: {fileID: 1581964279574258463}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: FourDimensionalWeakSpot
   m_TagString: 4DWeakSpot
   m_Icon: {fileID: 0}

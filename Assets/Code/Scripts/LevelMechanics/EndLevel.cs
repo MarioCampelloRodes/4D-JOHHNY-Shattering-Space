@@ -25,15 +25,15 @@ public class EndLevel : MonoBehaviour
                 collision.GetComponent<IkalController>().isLevelOver = true;
             }
 
-            LoadLS();
+            ExitLevel();
         }
     }
 
-    public void LoadLS()
+    public void ExitLevel()
     {
-        StartCoroutine(LoadLSCO());
+        StartCoroutine(ExitLevelCO());
     }
-    private IEnumerator LoadLSCO()
+    private IEnumerator ExitLevelCO()
     {
         _cCRef.isFreezed = true;
 
@@ -42,7 +42,14 @@ public class EndLevel : MonoBehaviour
         _uIRef.FadeToBlack();
 
         yield return new WaitForSeconds(1f);
-
-        SceneManager.LoadScene("LevelSelector");
+        
+        if(SceneManager.GetActiveScene().name == "Boss")
+        {
+            SceneManager.LoadScene("Credits");
+        }
+        else
+        {
+            SceneManager.LoadScene("LevelSelector");
+        }
     }
 }

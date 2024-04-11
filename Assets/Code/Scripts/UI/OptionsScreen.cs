@@ -22,4 +22,9 @@ public class OptionsScreen : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void GoToCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }

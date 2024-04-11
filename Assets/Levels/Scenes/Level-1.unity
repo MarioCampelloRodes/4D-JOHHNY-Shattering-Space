@@ -429,9 +429,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2167874506853847248, guid: ff4182ba18940a344a0e25548a318480, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571438492763164742, guid: ff4182ba18940a344a0e25548a318480, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571438492763164742, guid: ff4182ba18940a344a0e25548a318480, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172407820168998097, guid: ff4182ba18940a344a0e25548a318480, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621683924493713850, guid: ff4182ba18940a344a0e25548a318480, type: 3}
+      propertyPath: m_fontSize
+      value: 47.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621683924493713850, guid: ff4182ba18940a344a0e25548a318480, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7889464371377950296, guid: ff4182ba18940a344a0e25548a318480, type: 3}
       propertyPath: m_Name
       value: OptionsScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889464371377950296, guid: ff4182ba18940a344a0e25548a318480, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

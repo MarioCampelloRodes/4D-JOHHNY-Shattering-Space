@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5795800603973730796}
   - component: {fileID: 6722094039675262687}
   - component: {fileID: 6042406576920857970}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: 4D Enemy
   m_TagString: 4DEnemy
   m_Icon: {fileID: 0}
@@ -162,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 0.6
+  damageDealt: 1

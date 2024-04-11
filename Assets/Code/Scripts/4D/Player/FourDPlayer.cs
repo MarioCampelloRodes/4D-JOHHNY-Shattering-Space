@@ -9,7 +9,12 @@ public class FourDPlayer : MonoBehaviour
     public float shootCooldownLength;
     private float _shootCooldown;
 
+    public LayerMask whatIs4D;
+
     public bool shootingLeft, shootingRight, shootingTop, shootingBottom;
+
+    public float dangerRadius;
+    public GameObject dangerSignScreen, dangerSignRadar;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +68,29 @@ public class FourDPlayer : MonoBehaviour
         { 
             _shootCooldown -= Time.deltaTime;
         }
+
+        Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, dangerRadius, whatIs4D);
+
+        foreach (Collider2D enemy in nearEnemies)
+        {
+
+            if (!dangerSignScreen.activeSelf && !dangerSignRadar.activeSelf)
+            {
+                dangerSignRadar.SetActive(true);
+                dangerSignScreen.SetActive(true);
+            }
+        }
+
+        if(nearEnemies.Length == 0)
+        {
+            dangerSignRadar.SetActive(false);
+            dangerSignScreen.SetActive(false);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, dangerRadius);
     }
 }
