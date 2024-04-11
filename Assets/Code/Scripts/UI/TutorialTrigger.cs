@@ -9,9 +9,11 @@ public class TutorialTrigger : MonoBehaviour
 
     [TextArea(14,10)] public string tutorialText;
 
+    private bool isActive;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !isActive)
         {
             tutorialObject.SetActive(true);
             tutorialObject.GetComponentInChildren<TextMeshProUGUI>().text = tutorialText;
@@ -22,7 +24,16 @@ public class TutorialTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            tutorialObject.SetActive(false);
+            StartCoroutine(DeactivateTutorialCO());
         }
+    }
+
+    IEnumerator DeactivateTutorialCO()
+    {
+        yield return new WaitForSeconds(3f);
+
+        isActive = true;
+
+        tutorialObject.SetActive(false);
     }
 }

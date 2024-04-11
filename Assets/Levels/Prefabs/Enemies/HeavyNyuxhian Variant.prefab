@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 822244697299462496, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: spawnTimeLength
-      value: 2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1596844221218175575, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_Size.x

@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf052e1f1e833884f94957d825b35730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageDealt: 1
 --- !u!114 &1778215952841438414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftDirection: 1
   rightDirection: 0
-  laserSpeed: 3
+  laserSpeed: 7
 --- !u!50 &4486579343144378059
 Rigidbody2D:
   serializedVersion: 4
@@ -209,6 +210,7 @@ MonoBehaviour:
   currentHealth: 0
   isDamaged: 0
   enemiesSpawned: 0
+  scoreReward: 0
   spawnTimeLength: 0
   shootTimeLength: 0
   leftBulletPrefab: {fileID: 0}

@@ -2,28 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Dialogue : MonoBehaviour
 {
     public GameObject dialoguePanel, continueButton;
     public TextMeshProUGUI dialogueText;
     [TextArea(2, 5)] public string[] dialogue;
+    public Image dialogueImage;
+    public Sprite[] dialogueSprite;
     private int index;
     public float textSpeed;
+
+    private GameObject _player;
+
+    private void Start()
+    {
+        _player = GameObject.FindWithTag("Player");
+        Typing();
+    }
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            if(dialoguePanel.activeSelf) 
+            if(dialogueText.text == dialogue[index]) 
             {
-                ClearText();
+                NextLine();
             }
             else
             {
-                dialoguePanel.SetActive(true);
-                Typing();
+                dialogueText.text = dialogue[index];
             }
         }
 

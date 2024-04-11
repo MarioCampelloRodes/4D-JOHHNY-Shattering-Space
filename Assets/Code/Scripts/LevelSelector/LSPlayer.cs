@@ -25,7 +25,7 @@ public class LSPlayer : MonoBehaviour
 
             if (Vector3.Distance(transform.position, currentPoint.transform.position) < 0.1f)
             {
-                if (Input.GetAxisRaw("Horizontal") > 0.5f)
+                if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetKeyDown(KeyCode.RightArrow))
                 {
                     if (currentPoint.right != null)
                     {
@@ -33,7 +33,7 @@ public class LSPlayer : MonoBehaviour
                     }
                 }
 
-                if (Input.GetAxisRaw("Horizontal") < -0.5f)
+                if (Input.GetAxisRaw("Horizontal") < -0.5f || Input.GetKeyDown(KeyCode.LeftArrow))
                 {
                     if (currentPoint.left != null)
                     {
@@ -41,7 +41,7 @@ public class LSPlayer : MonoBehaviour
                     }
                 }
 
-                if (Input.GetAxisRaw("Vertical") > 0.5f)
+                if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     if (currentPoint.up != null)
                     {
@@ -49,7 +49,7 @@ public class LSPlayer : MonoBehaviour
                     }
                 }
 
-                if (Input.GetAxisRaw("Vertical") < -0.5f)
+                if (Input.GetAxisRaw("Vertical") < -0.5f || Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     if (currentPoint.down != null)
                     {
@@ -57,7 +57,7 @@ public class LSPlayer : MonoBehaviour
                     }
                 }
 
-                if (currentPoint.isLevel && Input.GetButtonDown("Jump"))
+                if (currentPoint.isLevel && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.Return)))
                 {
                     _lSMRef.LoadLevel();
                 }

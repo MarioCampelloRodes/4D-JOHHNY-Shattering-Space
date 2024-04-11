@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8057581224935423719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -868,6 +868,7 @@ MonoBehaviour:
   score: 0
   time: 0
   streak: 0
+  highStreak: 0
   scoreText: {fileID: 6295487683903559982}
   timeText: {fileID: 3480324424440775909}
   streakText: {fileID: 6663131849072852414}
