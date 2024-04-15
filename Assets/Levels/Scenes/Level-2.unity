@@ -1910,6 +1910,8 @@ MonoBehaviour:
   nearBackGround: {fileID: 1897112251}
   minHeight: -2
   maxHeight: 9
+  minX: -1000
+  maxX: -1
 --- !u!4 &527605641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
@@ -3104,7 +3106,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4469679269510691366, guid: 13876e4b6e738a14f8511af8fa8c1a47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.900013
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 4469679269510691366, guid: 13876e4b6e738a14f8511af8fa8c1a47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5845,7 +5847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5482898449313581739, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.593487
+      value: 5.47
       objectReference: {fileID: 0}
     - target: {fileID: 5482898449313581739, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: m_LocalPosition.y

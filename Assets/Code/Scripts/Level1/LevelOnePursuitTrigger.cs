@@ -6,6 +6,7 @@ public class LevelOnePursuitTrigger : MonoBehaviour
 {
     public GameObject pursuitPrefab;
 
+    private bool _isActive;
     private LevelOneLM _lMRef;
 
     private void Start()
@@ -15,10 +16,11 @@ public class LevelOnePursuitTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !_isActive)
         {
             Instantiate(pursuitPrefab, transform.position, transform.rotation);
             _lMRef.isPursuitActive = true;
+            _isActive = true;
         }
     }
 }

@@ -13,6 +13,7 @@ TagManager:
   - 4DWeakSpot
   - EnemyBullet
   - IncreaseSpeed
+  - Pursuit
   layers:
   - Default
   - TransparentFX

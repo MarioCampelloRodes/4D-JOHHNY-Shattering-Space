@@ -10,8 +10,7 @@ public class CameraController : MonoBehaviour
 
     //Referencias a las posiciones de los fondos
     public Transform veryFarBackground, farBackground, middleBackground, nearBackGround;
-
-    public float minHeight, maxHeight;
+    public float minHeight, maxHeight, minX, maxX;
 
     //Última posición del jugador en X y en Y
     private Vector2 _lastPos;
@@ -33,7 +32,7 @@ public class CameraController : MonoBehaviour
 
 
             //Restricción entre un mínimo y un máximo para la cámara en y
-            transform.position = new Vector3(target.position.x + xOffSet, Mathf.Clamp(transform.position.y, minHeight, maxHeight) + yOffSet, transform.position.z);
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX) + xOffSet, Mathf.Clamp(transform.position.y, minHeight, maxHeight) + yOffSet, transform.position.z);
 
             veryFarBackground.position += new Vector3(_amountToMove.x * 0.95f, _amountToMove.y, 0f);
             farBackground.position += new Vector3(_amountToMove.x * 0.85f, _amountToMove.y * 0.9f, 0f);

@@ -36,9 +36,7 @@ public class IkalController : MonoBehaviour
     public float attackCounterLength = 0.25f;
     public float heavyAttackCounterLength = 0.4f;
     private float attackCounter;
-    public float heavyAttackHoldLength = 1f;
-    private float attackHoldTime;
-    private bool canHeavyAttack = true;
+    private bool _isHeavyAttacking;
     public GameObject leftBulletPrefab, rightBulletPrefab, attackCirclePrefab;
 
     //Knockbacks
@@ -88,7 +86,7 @@ public class IkalController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
 
         //¿Tiene el control?
-        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && !isLevelOver)
+        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && !isLevelOver && !_isHeavyAttacking)
         {
             canMove = true;
         }
@@ -102,22 +100,26 @@ public class IkalController : MonoBehaviour
             //Movimiento
             if (boostTime > 0) //Movimiento Boost
             {
-                if (isGrounded)
+                if (isGrounded && !_isDashing)
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
-                else if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+                else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x <= -dashSpeed * 0.95) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x >= dashSpeed * 0.95))
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
-                else if (Input.GetAxisRaw("Vertical") <= -0.1f)
+                else if (_playerRB.velocity.x > -dashSpeed * 0.95 && _playerRB.velocity.x < dashSpeed * 0.95)
+                    _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
+
+                if (!isGrounded && Input.GetAxisRaw("Vertical") <= -0.1f)
                     _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
             }
             else //Movimiento Default
             {
-                if (isGrounded)
+                if (isGrounded && !_isDashing)
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-                else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x == -dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x == dashSpeed))
+                else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x <= -dashSpeed * 0.95) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x >= dashSpeed * 0.95))
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-                else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x > -dashSpeed && _playerRB.velocity.x < dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x < dashSpeed && _playerRB.velocity.x > -dashSpeed))
+                else if (_playerRB.velocity.x > -dashSpeed * 0.95 && _playerRB.velocity.x < dashSpeed * 0.95)
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-                else if (Input.GetAxisRaw("Vertical") <= -0.1f)
+
+                if (!isGrounded && Input.GetAxisRaw("Vertical") <= -0.1f)
                     _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
             }
 
@@ -176,28 +178,13 @@ public class IkalController : MonoBehaviour
             //Ataque
             if(attackCounter <= 0)
             {
-                if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.RightControl))
+                if (isGrounded && (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.RightShift)))
                 {
-                    attackHoldTime += Time.deltaTime;
-                    
-                    //Ataque Pesado
-                    if (attackHoldTime > heavyAttackHoldLength && canHeavyAttack)
-                    {
-                        HeavyAttack();
-                        canHeavyAttack = false;
-                    }
+                    HeavyAttack();
                 }
-                if (Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.RightControl))
+                if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.RightControl))
                 {
-                    //Ataque Ligero
-                    if(attackHoldTime < heavyAttackHoldLength)
-                    {
-                        LightAttack();
-                    }
-
-                    attackHoldTime = 0;
-
-                    canHeavyAttack = true;
+                    LightAttack();
                 }
             }
 
@@ -389,6 +376,17 @@ public class IkalController : MonoBehaviour
 
     void HeavyAttack()
     {
+        StartCoroutine(HeavyAttackCO());
+    }
+
+    IEnumerator HeavyAttackCO()
+    {
+        _isHeavyAttacking = true;
+
+        _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y);
+
+        yield return new WaitForSeconds(0.3f);
+
         if (_playerSpriteRenderer.flipX)
         {
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointRight.position, attackRange, whatIsEnemy);
@@ -417,6 +415,10 @@ public class IkalController : MonoBehaviour
         attackCounter = heavyAttackCounterLength;
 
         Debug.Log("Ataque Pesado");
+
+        yield return new WaitForSeconds(0.3f);
+
+        _isHeavyAttacking = false;
     }
 
     private void OnDrawGizmos()

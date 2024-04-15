@@ -60,14 +60,15 @@ public class JohnnyController : MonoBehaviour
         if (_knockbackCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && canMove)
         {
             //Movimiento
-            if (isGrounded)
+            if (isGrounded && !_isDashing)
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-            else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x == -dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x == dashSpeed))
+            else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x <= -dashSpeed *0.95) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x >= dashSpeed *0.95))
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-            else if ((Input.GetAxisRaw("Horizontal") > 0.1f && _playerRB.velocity.x > -dashSpeed && _playerRB.velocity.x < dashSpeed) || (Input.GetAxisRaw("Horizontal") < -0.1f && _playerRB.velocity.x < dashSpeed && _playerRB.velocity.x > -dashSpeed))
+            else if (_playerRB.velocity.x > -dashSpeed * 0.95 && _playerRB.velocity.x < dashSpeed * 0.95)
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-            else if (Input.GetAxisRaw("Vertical") <= -0.1f)
-                _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.5f);
+            
+            if (!isGrounded && Input.GetAxisRaw("Vertical") <= -0.1f)
+                _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
 
             //Salto
             if (Input.GetButtonDown("Jump") && isGrounded)

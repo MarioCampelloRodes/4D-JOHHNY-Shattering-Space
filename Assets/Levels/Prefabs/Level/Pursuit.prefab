@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3967710096296299729}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.06, y: 2, z: 0}
+  m_LocalPosition: {x: 10.34, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 102676780464541218}
   m_Layer: 0
   m_Name: Pursuit
-  m_TagString: Untagged
+  m_TagString: Pursuit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
