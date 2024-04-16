@@ -61,6 +61,10 @@ public class IkalController : MonoBehaviour
     public LayerMask whatIsGround;
     public LayerMask whatIsEnemy;
 
+    //Diálogos
+    public bool isInDialogue;
+    public Sprite thePlayerSprite;
+
     //Referencias
     private Rigidbody2D _playerRB;
     private SpriteRenderer _playerSpriteRenderer;
@@ -86,7 +90,7 @@ public class IkalController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
 
         //¿Tiene el control?
-        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && !isLevelOver && !_isHeavyAttacking)
+        if (_knockbackCounter <= 0 && _wallJumpCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && !isLevelOver && !_isHeavyAttacking && !isInDialogue)
         {
             canMove = true;
         }

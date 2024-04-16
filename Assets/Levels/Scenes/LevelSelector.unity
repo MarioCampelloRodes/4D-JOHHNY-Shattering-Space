@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LSCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3529945158797837341, guid: 6a684226c726c0e4ab812bcb0e0a21a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4781899411513880768, guid: 6a684226c726c0e4ab812bcb0e0a21a2, type: 3}
       propertyPath: m_Color.a
       value: 1

@@ -171,7 +171,7 @@ MonoBehaviour:
   canMove: 0
   isLevelOver: 0
   playerSpeed: 8
-  playerJumpForce: 14
+  playerJumpForce: 13
   jumpNumber: 0
   isGrounded: 0
   fallSpeed: -20
@@ -187,7 +187,6 @@ MonoBehaviour:
   attackRange: 1.5
   attackCounterLength: 0.25
   heavyAttackCounterLength: 0.4
-  heavyAttackHoldLength: 0.5
   leftBulletPrefab: {fileID: 7076753470244331541, guid: 1ff96835ddeccd04d93b22a556ed5ad0, type: 3}
   rightBulletPrefab: {fileID: 4928619759899995988, guid: 2a3e233d0def62d4bbe41001d83e475a, type: 3}
   attackCirclePrefab: {fileID: 2206374973562515993, guid: 4f5a10f07f300e14eaba12bdc92f52e7, type: 3}
@@ -206,6 +205,8 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 256
+  isInDialogue: 0
+  thePlayerSprite: {fileID: 21300000, guid: bd720f6ee9bbdd84a91b760fe8eb5d00, type: 3}
 --- !u!114 &4527783608865212809
 MonoBehaviour:
   m_ObjectHideFlags: 0

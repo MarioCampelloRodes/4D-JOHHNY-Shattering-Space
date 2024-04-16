@@ -32,6 +32,9 @@ public class JohnnyController : MonoBehaviour
     //Detector de capas
     public LayerMask whatIsGround;
 
+    //Diálogos
+    public bool isInDialogue;
+
     //Referencias
     private Rigidbody2D _playerRB;
     private SpriteRenderer _playerSpriteRenderer;
@@ -57,7 +60,7 @@ public class JohnnyController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.2f, whatIsGround);
 
         //Si el contador de knockback se ha vaciado, el jugador recupera el control
-        if (_knockbackCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && canMove)
+        if (_knockbackCounter <= 0 && !_isDashing && _pHCRef.currentHealth >= 0 && canMove && !isInDialogue)
         {
             //Movimiento
             if (isGrounded && !_isDashing)
