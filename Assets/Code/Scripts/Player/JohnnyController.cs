@@ -119,10 +119,10 @@ public class JohnnyController : MonoBehaviour
         }
 
         //Animaciones
-        _anim.SetBool("isGrounded", isGrounded);
+        //_anim.SetBool("isGrounded", isGrounded);
 
         //Math.Abs devuelve el absoluto de una variable
-        _anim.SetFloat("MoveSpeed", Mathf.Abs(_playerRB.velocity.x));
+        //_anim.SetFloat("MoveSpeed", Mathf.Abs(_playerRB.velocity.x));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -137,7 +137,7 @@ public class JohnnyController : MonoBehaviour
         _knockbackCounter = knockbackCounterLength;
 
         _playerRB.velocity = new Vector2(0f, knockbackForce);
-        _anim.SetTrigger("IsHurt");
+        //_anim.SetTrigger("IsHurt");
     }
 
     void Dash()
@@ -158,7 +158,7 @@ public class JohnnyController : MonoBehaviour
             _playerRB.velocity = new Vector2(-dashSpeed, 0f);
 
         _pHCRef.invincibleCounter = dashTime;
-        _anim.SetTrigger("IsDashing");
+        //_anim.SetTrigger("IsDashing");
 
         yield return new WaitForSeconds(dashTime);
 

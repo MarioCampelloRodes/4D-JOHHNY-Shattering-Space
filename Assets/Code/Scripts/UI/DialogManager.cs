@@ -19,8 +19,6 @@ public class DialogManager : MonoBehaviour
     public string[] dialogLines;
     //La línea actual de diálogo
     public int currentLine;
-    //Para saber si acaba de empezar o no
-    private bool justStarted;
     //Nombre del personaje que habla en ese momento
     private string charName;
     //El sprite del NPC
@@ -53,37 +51,30 @@ public class DialogManager : MonoBehaviour
         if(dialogBox.activeInHierarchy)
         {
             //Al pulsar la tecla X
-            if ((Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1f)
+            if ((Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1f)
             {
-                //Si el diálogo no ha empezado ahora mismo
-                if (!justStarted)
-                {
-                    //Vamos a la siguiente línea de diálogo
-                    currentLine++;
+                //Vamos a la siguiente línea de diálogo
+                currentLine++;
 
-                    //Si se ha terminado el diálogo
-                    if (currentLine >= dialogLines.Length)
-                    {
-                        //Desactivamos el cuadro de diálogo
-                        dialogBox.SetActive(false);
-                        //Permitimos que el jugador se mueva de nuevo
-                        if (SceneManager.GetActiveScene().name == "Level-1")
-                            _jCRef.isInDialogue = false;
-                        else
-                            _iCRef.isInDialogue = false;
-                    }
-                    //Si el diálogo aún no ha terminado
+                //Si se ha terminado el diálogo
+                if (currentLine >= dialogLines.Length)
+                {
+                    //Desactivamos el cuadro de diálogo
+                    dialogBox.SetActive(false);
+                    //Permitimos que el jugador se mueva de nuevo
+                    if (SceneManager.GetActiveScene().name == "Level-1")
+                        _jCRef.isInDialogue = false;
                     else
-                    {
-                        //Comprobamos si hay un cambio de personaje en el diálogo
-                        CheckIfName(sNpc);
-                        //Muestra la línea de diálogo actual
-                        dialogText.text = dialogLines[currentLine];
-                    }
+                        _iCRef.isInDialogue = false;
                 }
-                //Si el diálogo ya empezó
+                //Si el diálogo aún no ha terminado
                 else
-                    justStarted = false;
+                {
+                    //Comprobamos si hay un cambio de personaje en el diálogo
+                    CheckIfName(sNpc);
+                    //Muestra la línea de diálogo actual
+                    dialogText.text = dialogLines[currentLine];
+                }
             }
         }
     }
@@ -105,8 +96,6 @@ public class DialogManager : MonoBehaviour
         dialogCharName.text = charName;
         //Activamos el cuadro de diálogo
         dialogBox.SetActive(true);
-        //El diálogo acaba de empezar
-        justStarted = true;
         //Hacemos que el jugador no se pueda mover
         if (SceneManager.GetActiveScene().name == "Level-1")
             _jCRef.isInDialogue = true;
