@@ -76,7 +76,7 @@ public class IkalController : MonoBehaviour
     {
         _playerRB = GetComponent<Rigidbody2D>();
 
-        _anim = GetComponent<Animator>();
+        //_anim = GetComponent<Animator>();
 
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -249,10 +249,10 @@ public class IkalController : MonoBehaviour
         }
 
         //Animaciones
-        _anim.SetBool("isGrounded", isGrounded);
+        //_anim.SetBool("isGrounded", isGrounded);
 
         //Math.Abs devuelve el absoluto de una variable
-        _anim.SetFloat("MoveSpeed", Mathf.Abs(_playerRB.velocity.x));
+        //_anim.SetFloat("MoveSpeed", Mathf.Abs(_playerRB.velocity.x));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -284,7 +284,7 @@ public class IkalController : MonoBehaviour
         _knockbackCounter = knockbackCounterLength;
 
         _playerRB.velocity = new Vector2(0f, knockbackForce);
-        _anim.SetTrigger("IsHurt");
+        //_anim.SetTrigger("IsHurt");
     }
 
     public void Bounce(float bounceForce)
@@ -325,7 +325,7 @@ public class IkalController : MonoBehaviour
         }
 
         _pHCRef.invincibleCounter = dashTime;
-        _anim.SetTrigger("IsDashing");
+        //_anim.SetTrigger("IsDashing");
 
         yield return new WaitForSeconds(dashTime);
 
