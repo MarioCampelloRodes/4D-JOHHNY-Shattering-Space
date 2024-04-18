@@ -16,17 +16,21 @@ PrefabInstance:
       propertyPath: isBigPoint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1873489682132242800, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
+      propertyPath: m_Radius
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3568351028448761704, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -70,7 +74,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5027924977805156086, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
       propertyPath: m_Name
-      value: BigPoint Variant
+      value: BigPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700070713122315110, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1405f1d83617ea468dfe842d01d0a8e, type: 3}
+    - target: {fileID: 5700070713122315110, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700070713122315110, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
+      propertyPath: m_Color.g
+      value: 0.99252295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700070713122315110, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

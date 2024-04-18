@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 347489678673264422}
   - component: {fileID: 1193951523204223377}
   - component: {fileID: 644586785505167813}
-  - component: {fileID: 6365179721459431673}
   - component: {fileID: 7158410564958423308}
   m_Layer: 0
   m_Name: Johnny
@@ -32,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5, y: -0.483, z: 0}
-  m_LocalScale: {x: 0.61, y: 0.61, z: 0.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1838125212152150749}
@@ -81,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 1134149073
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 304672968, guid: a9cc5da9006e02746a786ea635e5bd65, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a35933b6ffeb5142b7e5f9a39b41bf2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +107,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 74c8d75ff6d28234c97478c5d5321006, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -117,7 +116,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &1193951523204223377
 CapsuleCollider2D:
@@ -151,8 +150,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.066043854, y: -0.30690953}
-  m_Size: {x: 1, y: 2.35}
+  m_Offset: {x: -0.019750118, y: -0.14334273}
+  m_Size: {x: 0.6542587, y: 1.5754371}
   m_Direction: 0
 --- !u!114 &644586785505167813
 MonoBehaviour:
@@ -172,7 +171,7 @@ MonoBehaviour:
   isGrounded: 0
   fallSpeed: -15
   canDash: 1
-  dashSpeed: 10
+  dashSpeed: 8
   dashTime: 0.3
   dashCooldown: 0.75
   knockbackForce: 5
@@ -181,27 +180,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
---- !u!95 &6365179721459431673
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2140982076817892803}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d8ecea0cb9b9bf54e8f338f353c36b00, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  isInDialogue: 0
 --- !u!114 &7158410564958423308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 2179536059796209382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.3, z: 0}
+  m_LocalPosition: {x: -0.35, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,7 +254,7 @@ Transform:
   m_GameObject: {fileID: 2495796031691029112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0.326, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -306,7 +285,7 @@ Transform:
   m_GameObject: {fileID: 6476317905417614835}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.938, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
