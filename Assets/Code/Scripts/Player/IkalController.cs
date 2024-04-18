@@ -110,9 +110,6 @@ public class IkalController : MonoBehaviour
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
                 else if (_playerRB.velocity.x > -dashSpeed * 0.95 && _playerRB.velocity.x < dashSpeed * 0.95)
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * boostSpeed, _playerRB.velocity.y);
-
-                if (!isGrounded && Input.GetAxisRaw("Vertical") <= -0.1f)
-                    _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
             }
             else //Movimiento Default
             {
@@ -122,13 +119,10 @@ public class IkalController : MonoBehaviour
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
                 else if (_playerRB.velocity.x > -dashSpeed * 0.95 && _playerRB.velocity.x < dashSpeed * 0.95)
                     _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-
-                if (!isGrounded && Input.GetAxisRaw("Vertical") <= -0.1f)
-                    _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
             }
 
             //¿Está tocando la pared?
-            Collider2D rightWall = Physics2D.OverlapCircle(wallPointRight.position, 0.2f, whatIsGround);
+            Collider2D rightWall = Physics2D.OverlapCircle(wallPointRight.position, 0.35f, whatIsGround);
             if(rightWall != null && !rightWall.usedByEffector)
             {
                 _isWalledRight = true;
@@ -138,7 +132,7 @@ public class IkalController : MonoBehaviour
                 _isWalledRight = false;
             }
 
-            Collider2D leftWall = Physics2D.OverlapCircle(wallPointLeft.position, 0.2f, whatIsGround);
+            Collider2D leftWall = Physics2D.OverlapCircle(wallPointLeft.position, 0.35f, whatIsGround);
             if (leftWall != null && !leftWall.usedByEffector)
             {
                 _isWalledLeft = true;

@@ -174,7 +174,7 @@ MonoBehaviour:
   jumpNumber: 0
   isGrounded: 0
   fallSpeed: -20
-  wallJumpCounterLength: 0.25
+  wallJumpCounterLength: 0.3
   canDash: 1
   dashSpeed: 16
   dashTime: 0.3
@@ -205,7 +205,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isInDialogue: 0
-  thePlayerSprite: {fileID: 21300000, guid: bd720f6ee9bbdd84a91b760fe8eb5d00, type: 3}
+  thePlayerSprite: {fileID: 21300000, guid: 0e11a6b583d01084e97d121642482db9, type: 3}
 --- !u!114 &4527783608865212809
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -69,9 +69,6 @@ public class JohnnyController : MonoBehaviour
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
             else if (_playerRB.velocity.x > -dashSpeed * 0.95 && _playerRB.velocity.x < dashSpeed * 0.95)
                 _playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * playerSpeed, _playerRB.velocity.y);
-            
-            if (!isGrounded && Input.GetAxisRaw("Vertical") <= -0.1f)
-                _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y - 0.1f);
 
             //Salto
             if (Input.GetButtonDown("Jump") && isGrounded)
