@@ -69,11 +69,13 @@ public class EnemyHealth : MonoBehaviour
         {
             if (_player.transform.position.x < transform.position.x)
             {
-                Instantiate(leftBulletPrefab, transform.position + new Vector3(-1f, 0, 0), transform.rotation);
+                Instantiate(leftBulletPrefab, transform.position + new Vector3(-1.5f, -0.5f, 0), transform.rotation);
+                _sPR.flipX = false;
             }
             else if (_player.transform.position.x > transform.position.x)
             {
-                Instantiate(rightBulletPrefab, transform.position + new Vector3(1f, 0, 0), transform.rotation);
+                Instantiate(rightBulletPrefab, transform.position + new Vector3(1.5f, -0.5f, 0), transform.rotation);
+                _sPR.flipX = true;
             }
 
             _shootTime = shootTimeLength;
