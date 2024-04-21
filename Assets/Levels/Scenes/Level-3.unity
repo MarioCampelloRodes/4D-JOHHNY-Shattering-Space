@@ -5063,7 +5063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8639823051812339621, guid: f0c548dc51bc1044b8e3e567260e66f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.160886
+      value: 5.43
       objectReference: {fileID: 0}
     - target: {fileID: 8639823051812339621, guid: f0c548dc51bc1044b8e3e567260e66f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69813,6 +69813,10 @@ PrefabInstance:
     - target: {fileID: 390273141223732213, guid: 553bcd2a7b01acc4ca8dadb60d020dd0, type: 3}
       propertyPath: m_Name
       value: DangerSigns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931753990945297375, guid: 553bcd2a7b01acc4ca8dadb60d020dd0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
