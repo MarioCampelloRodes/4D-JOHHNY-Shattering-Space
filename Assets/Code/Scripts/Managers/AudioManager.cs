@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     //Creamos un array donde guardamos los sonidos a reproducir
     public AudioSource[] sfx;
     //Referencias a la música del juego
-    public AudioSource menuMusic, lvlOne, lvlTwo, lvlThree, lvlSelector, shopMusic, bossMusic;
+    public AudioSource menuMusic, lvlOne, lvlTwo, lvlThree, lvlSelector, shopMusic, bossMusic, creditsMusic;
 
     //Hacemos el Singleton de este script
     public static AudioManager aMRef;
@@ -27,31 +27,27 @@ public class AudioManager : MonoBehaviour
         {
             case "Level-1":
                 lvlOne.Play();
-                Debug.Log("Se está reproduciendo la Soundtrack " + lvlOne.ToString());
                 break;
             case "Level-2":
                 lvlTwo.Play();
-                Debug.Log("Se está reproduciendo la Soundtrack " + lvlTwo.ToString());
                 break;
             case "Level-3":
                 lvlThree.Play();
-                Debug.Log("Se está reproduciendo la Soundtrack " + lvlThree.ToString());
                 break;
             case "LevelSelector":
                 lvlSelector.Play();
-                Debug.Log("Se está reproduciendo la Soundtrack " + lvlSelector.ToString());
                 break;
             case "MainMenu":
                 menuMusic.Play();
-                Debug.Log("Se está reproduciendo la Soundtrack " + menuMusic.ToString());
                 break;
             case "Shop":
                 shopMusic.Play();
-                Debug.Log("Se está reproduciendo la Soundtrack " + shopMusic.ToString());
+                break;
+            case "Credits":
+                creditsMusic.Play();
                 break;
             default:
                 lvlThree.Play();
-                Debug.Log("Se está reproduciendo la Soundtrack " + lvlThree.ToString());
                 break;
         }
     }
@@ -62,7 +58,7 @@ public class AudioManager : MonoBehaviour
         //Si ya estaba reproduciendo el sonido, lo paramos
         sfx[soundToPlay].Stop();
         //Alteramos un poco el sonido cada vez que se vaya a reproducir
-        sfx[soundToPlay].pitch = Random.Range(.9f, 1.1f);
+        sfx[soundToPlay].pitch = Random.Range(.95f, 1.05f);
         //Reproducir el sonido pasado por parámetro
         sfx[soundToPlay].Play();
     }
@@ -72,6 +68,5 @@ public class AudioManager : MonoBehaviour
     {
         //Reproducimos la música del jefe
         bossMusic.Play();
-        Debug.Log("Se está reproduciendo la Soundtrack " + bossMusic.ToString());
     }
 }

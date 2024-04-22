@@ -5,26 +5,21 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab, weakSpotPrefab;
-    private GameObject _enemy, _weakSpot;
 
     public void SpawnEnemy()
     {
-        Instantiate(enemyPrefab, this.transform.position, this.transform.rotation);
+        GameObject enemy = Instantiate(enemyPrefab, this.transform.position + new Vector3(0, 3.25f, 0), this.transform.rotation);
 
-        _enemy = GameObject.FindWithTag("4DEnemy");
-
-        _enemy.transform.parent = this.transform;
+        enemy.transform.parent = this.transform;
 
         GetComponentInChildren<FourDimensionalEnemy>().SpawnRandom();
     }
 
     public void SpawnWeakSpot()
     {
-        Instantiate(weakSpotPrefab, this.transform.position, this.transform.rotation);
+        GameObject weakSpot = Instantiate(weakSpotPrefab, this.transform.position, this.transform.rotation);
 
-        _weakSpot = GameObject.FindWithTag("4DWeakSpot");
-
-        _weakSpot.transform.parent = this.transform;
+        weakSpot.transform.parent = this.transform;
 
         GetComponentInChildren<FourDimensionalWeakSpot>().SpawnRandom();
     }

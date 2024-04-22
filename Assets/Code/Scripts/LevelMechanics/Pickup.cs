@@ -28,6 +28,8 @@ public class Pickup : MonoBehaviour
 
                 isCollected = true;
 
+                AudioManager.aMRef.PlaySFX(13);
+
                 Destroy(gameObject);
             }
 
@@ -37,6 +39,8 @@ public class Pickup : MonoBehaviour
 
                 isCollected = true;
 
+                AudioManager.aMRef.PlaySFX(13);
+
                 Destroy(gameObject);
             }
 
@@ -45,6 +49,8 @@ public class Pickup : MonoBehaviour
                 _pCRef.boostTime = _pCRef.boostTimeLength;
 
                 isCollected = true;
+
+                AudioManager.aMRef.PlaySFX(3);
 
                 gameObject.SetActive(false);
             }

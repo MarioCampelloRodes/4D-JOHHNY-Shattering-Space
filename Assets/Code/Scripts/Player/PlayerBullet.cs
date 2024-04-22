@@ -34,11 +34,22 @@ public class PlayerBullet : MonoBehaviour
         {
             collision.GetComponent<EnemyHealth>().TakeDamage(1);
             Destroy(gameObject);
+
+            AudioManager.aMRef.PlaySFX(1);
         }
         if (collision.CompareTag("EnemyBullet"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+
+            AudioManager.aMRef.PlaySFX(1);
         }
+
+        if (collision.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
+
+        
     }
 }

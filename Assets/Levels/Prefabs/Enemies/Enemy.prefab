@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673166efd50329c409a534b43e9b3889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWolf: 1
 --- !u!1 &3464202452839254964
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15315fe8eec467e4aa52987c8d5e9fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWolf: 1
 --- !u!1 &6803694707856204220
 GameObject:
   m_ObjectHideFlags: 0

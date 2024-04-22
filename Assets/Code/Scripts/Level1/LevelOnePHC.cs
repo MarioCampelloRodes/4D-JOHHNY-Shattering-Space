@@ -76,6 +76,8 @@ public class LevelOnePHC : MonoBehaviour
 
                 _jCRef.Knockback();
 
+                AudioManager.aMRef.PlaySFX(15);
+
             }
         }
     }
@@ -90,6 +92,8 @@ public class LevelOnePHC : MonoBehaviour
         _jCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _jCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
         yield return new WaitUntil(() => _jCRef.isGrounded);
+
+        AudioManager.aMRef.PlaySFX(14);
 
         _lMRef.RespawnPlayer();
 

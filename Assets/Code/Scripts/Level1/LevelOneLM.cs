@@ -41,5 +41,7 @@ public class LevelOneLM : MonoBehaviour
         {
             GameObject.Find("Pursuit(Clone)").transform.position = _cpRef.spawnPoint;
         }
+
+        AudioManager.aMRef.PlaySFX(17);
     }
 }

@@ -14,12 +14,7 @@ public class FourDPlayer : MonoBehaviour
     public bool shootingLeft, shootingRight, shootingTop, shootingBottom;
 
     public float dangerRadius;
-    public GameObject dangerSignScreen, dangerSignRadar;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject dangerSignScreen, dangerSignRadar, dangerEffect;
 
     // Update is called once per frame
     void Update()
@@ -32,6 +27,8 @@ public class FourDPlayer : MonoBehaviour
             shootingBottom = false;
             Instantiate(bullet, transform.position + new Vector3(-0.4f, -0.075f, 0f), transform.rotation);
             _shootCooldown = shootCooldownLength;
+
+            AudioManager.aMRef.PlaySFX(1);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow) && _shootCooldown <= 0)
@@ -42,6 +39,8 @@ public class FourDPlayer : MonoBehaviour
             shootingBottom = false;
             Instantiate(bullet, transform.position + new Vector3(0.4f, -0.075f, 0f), transform.rotation);
             _shootCooldown = shootCooldownLength;
+
+            AudioManager.aMRef.PlaySFX(1);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && _shootCooldown <= 0)
@@ -52,6 +51,8 @@ public class FourDPlayer : MonoBehaviour
             shootingBottom = false;
             Instantiate(bullet, transform.position + new Vector3(0f, 0.4f, 0f), transform.rotation);
             _shootCooldown = shootCooldownLength;
+
+            AudioManager.aMRef.PlaySFX(1);
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && _shootCooldown <= 0)
@@ -62,13 +63,18 @@ public class FourDPlayer : MonoBehaviour
             shootingBottom = true;
             Instantiate(bullet, transform.position + new Vector3(0, -0.4f, 0f), transform.rotation);
             _shootCooldown = shootCooldownLength;
+
+            AudioManager.aMRef.PlaySFX(1);
         }
 
         if (_shootCooldown > 0) 
         { 
             _shootCooldown -= Time.deltaTime;
-        }
+        } 
+    }
 
+    private void LateUpdate()
+    {
         Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, dangerRadius, whatIs4D);
 
         foreach (Collider2D enemy in nearEnemies)
@@ -78,13 +84,17 @@ public class FourDPlayer : MonoBehaviour
             {
                 dangerSignRadar.SetActive(true);
                 dangerSignScreen.SetActive(true);
+                dangerEffect.SetActive(true);
+
+                AudioManager.aMRef.PlaySFX(0);
             }
         }
 
-        if(nearEnemies.Length == 0)
+        if (nearEnemies.Length == 0)
         {
             dangerSignRadar.SetActive(false);
             dangerSignScreen.SetActive(false);
+            dangerEffect.SetActive(false);
         }
     }
 

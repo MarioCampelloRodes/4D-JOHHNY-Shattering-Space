@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageDealt: 2
+  isPursuit: 1
 --- !u!1 &7629564356138615081
 GameObject:
   m_ObjectHideFlags: 0

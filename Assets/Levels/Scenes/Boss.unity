@@ -1699,6 +1699,10 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 4930615162262234900, guid: 96704d2ff8ba3674596512109b15f55f, type: 3}
+      propertyPath: dangerEffect
+      value: 
+      objectReference: {fileID: 1988119981}
+    - target: {fileID: 4930615162262234900, guid: 96704d2ff8ba3674596512109b15f55f, type: 3}
       propertyPath: dangerSignRadar
       value: 
       objectReference: {fileID: 1487806986}
@@ -2023,6 +2027,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 553bcd2a7b01acc4ca8dadb60d020dd0, type: 3}
+--- !u!1 &1988119981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6931753990945297375, guid: 553bcd2a7b01acc4ca8dadb60d020dd0, type: 3}
+  m_PrefabInstance: {fileID: 1988119980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1994527789
 PrefabInstance:
   m_ObjectHideFlags: 0

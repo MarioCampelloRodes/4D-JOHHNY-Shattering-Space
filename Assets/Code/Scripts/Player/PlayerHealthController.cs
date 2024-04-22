@@ -80,6 +80,8 @@ public class PlayerHealthController : MonoBehaviour
             }
             _uIRef.UpdateHealth();
             _uIRef.ResetStreak();
+
+            AudioManager.aMRef.PlaySFX(15);
         }
     }
 
@@ -93,6 +95,8 @@ public class PlayerHealthController : MonoBehaviour
         _iCRef.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, _iCRef.gameObject.GetComponent<Rigidbody2D>().velocity.y);
 
         yield return new WaitUntil(() => _iCRef.isGrounded);
+
+        AudioManager.aMRef.PlaySFX(14);
 
         Instantiate(playerDeath, transform.position, transform.rotation);
 

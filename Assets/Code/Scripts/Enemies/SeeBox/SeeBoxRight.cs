@@ -5,6 +5,7 @@ using UnityEngine;
 public class SeeBoxRight : MonoBehaviour
 {
     private EnemyController _sCRef;
+    public bool isWolf;
 
     private void Start()
     {
@@ -16,6 +17,18 @@ public class SeeBoxRight : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             _sCRef.seeingRight = true;
+
+            if (_sCRef.movingRight)
+            {
+                if (isWolf)
+                {
+                    AudioManager.aMRef.PlaySFX(19);
+                }
+                else
+                {
+                    AudioManager.aMRef.PlaySFX(11);
+                }
+            }
         }
     }
 

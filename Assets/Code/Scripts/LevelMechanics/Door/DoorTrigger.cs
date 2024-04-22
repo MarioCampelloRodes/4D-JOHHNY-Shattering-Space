@@ -29,6 +29,8 @@ public class DoorTrigger : MonoBehaviour
             doorRightRef.ActivateObject();
             isClosed = true;
             hasActivated = true;
+
+            AudioManager.aMRef.PlaySFX(7);
         }
     }
 }

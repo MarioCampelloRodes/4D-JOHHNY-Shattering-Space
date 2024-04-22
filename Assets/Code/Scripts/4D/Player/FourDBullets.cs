@@ -67,6 +67,8 @@ public class FourDBullets : MonoBehaviour
         if (collision.CompareTag("4DEnemy") || collision.CompareTag("4DWeakSpot"))
         {
             _uIRef.AddScore(200);
+
+            AudioManager.aMRef.PlaySFX(8);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

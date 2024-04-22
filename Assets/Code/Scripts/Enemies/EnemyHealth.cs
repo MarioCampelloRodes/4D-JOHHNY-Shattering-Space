@@ -78,6 +78,8 @@ public class EnemyHealth : MonoBehaviour
                 _sPR.flipX = true;
             }
 
+            AudioManager.aMRef.PlaySFX(9);
+
             _shootTime = shootTimeLength;
         }
         if (isRangerNyuxhian && _shootTime > 0)
@@ -124,6 +126,7 @@ public class EnemyHealth : MonoBehaviour
     
     void EnemyDeathController()
     {
+        AudioManager.aMRef.PlaySFX(8);
         Instantiate(deathEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
@@ -142,6 +145,10 @@ public class EnemyHealth : MonoBehaviour
                 isHeavyNyuxhian = false;
 
                 _sPR.color = new Color(1f, 0.5f, 0.5f, 1f);
+            }
+            else if (isHeavyNyuxhian && damage < maxHealth)
+            {
+                AudioManager.aMRef.PlaySFX(2);
             }
             else if(!isHeavyNyuxhian && !_isInvincible)
             {
@@ -163,6 +170,10 @@ public class EnemyHealth : MonoBehaviour
         if (isProp && damage >= maxHealth) 
         {
             currentHealth -= damage;
+        }
+        else if (isProp && damage < maxHealth)
+        {
+            AudioManager.aMRef.PlaySFX(2);
         }
     }
 }

@@ -19,6 +19,8 @@ public class Bouncer : MonoBehaviour
         {
             collision.GetComponent<IkalController>().Bounce(bounceForce);
 
+            AudioManager.aMRef.PlaySFX(4);
+
             //_anim.SetTrigger("Bounce");
         }
     }

@@ -146,12 +146,16 @@ public class IkalController : MonoBehaviour
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 _playerRB.velocity = new Vector2(_playerRB.velocity.x, playerJumpForce);
+
+                AudioManager.aMRef.PlaySFX(16);
             }
             //Doble Salto
             else if (Input.GetButtonDown("Jump") && jumpNumber == 0)
             {
                 _playerRB.velocity = new Vector2(_playerRB.velocity.x, playerJumpForce);
                 jumpNumber++;
+
+                AudioManager.aMRef.PlaySFX(16);
             }
             //Salto de Pared
             if (Input.GetButtonDown("Jump") && _isWalledRight && !isGrounded)
@@ -159,12 +163,16 @@ public class IkalController : MonoBehaviour
                 _wallJumpCounter = wallJumpCounterLength;
                 _playerRB.velocity = new Vector2(-0.9f * playerJumpForce, 0.9f * playerJumpForce);
                 jumpNumber = 0;
+
+                AudioManager.aMRef.PlaySFX(16);
             }
             if (Input.GetButtonDown("Jump") && _isWalledLeft && !isGrounded)
             {
                 _wallJumpCounter = wallJumpCounterLength;
                 _playerRB.velocity = new Vector2(0.9f * playerJumpForce, 0.9f * playerJumpForce);
                 jumpNumber = 0;
+
+                AudioManager.aMRef.PlaySFX(16);
             }
 
             //Dash
@@ -298,6 +306,8 @@ public class IkalController : MonoBehaviour
         float rbGravity = _playerRB.gravityScale;
         _playerRB.gravityScale = 0f;
 
+        AudioManager.aMRef.PlaySFX(6);
+
         if (_isWalledLeft && !isGrounded)
         {
             _playerRB.velocity = new Vector2(dashSpeed, 0f);
@@ -369,6 +379,8 @@ public class IkalController : MonoBehaviour
 
         attackCounter = attackCounterLength;
 
+        AudioManager.aMRef.PlaySFX(10);
+
         Debug.Log("Ataque Ligero");
     }
 
@@ -411,6 +423,8 @@ public class IkalController : MonoBehaviour
         }
 
         attackCounter = heavyAttackCounterLength;
+
+        AudioManager.aMRef.PlaySFX(18);
 
         Debug.Log("Ataque Pesado");
 

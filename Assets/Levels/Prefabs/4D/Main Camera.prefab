@@ -193,8 +193,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  isFreezed: 0
+  xOffSet: -2
+  yOffSet: 1
+  veryFarBackground: {fileID: 0}
+  farBackground: {fileID: 0}
+  middleBackground: {fileID: 0}
+  nearBackGround: {fileID: 0}
   minHeight: -19
   maxHeight: 13
+  minX: 0
+  maxX: 0
 --- !u!1001 &3640162318127845388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,10 +351,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7008839985155833610, guid: 114cbc8401ca91e43bdb0346eddaf555, type: 3}
   shootCooldownLength: 0.25
+  whatIs4D:
+    serializedVersion: 2
+    m_Bits: 1024
   shootingLeft: 0
   shootingRight: 0
   shootingTop: 0
   shootingBottom: 0
+  dangerRadius: 2.5
+  dangerSignScreen: {fileID: 0}
+  dangerSignRadar: {fileID: 0}
+  dangerEffect: {fileID: 0}
 --- !u!4 &8102904531593290489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2143819043042851071, guid: 23b006d7b5364d04c9af202fcc4b90fa, type: 3}

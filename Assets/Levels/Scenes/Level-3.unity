@@ -12219,6 +12219,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 447340271a4412c48a3d7906f6d529c8, type: 3}
+--- !u!1 &1417729610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6931753990945297375, guid: 553bcd2a7b01acc4ca8dadb60d020dd0, type: 3}
+  m_PrefabInstance: {fileID: 577793773336615563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1419155358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68370,21 +68375,13 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 4930615162262234900, guid: 96704d2ff8ba3674596512109b15f55f, type: 3}
-      propertyPath: shootingTop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4930615162262234900, guid: 96704d2ff8ba3674596512109b15f55f, type: 3}
-      propertyPath: dangerRadius
-      value: 2.75
-      objectReference: {fileID: 0}
+      propertyPath: dangerEffect
+      value: 
+      objectReference: {fileID: 1417729610}
     - target: {fileID: 4930615162262234900, guid: 96704d2ff8ba3674596512109b15f55f, type: 3}
       propertyPath: dangerSignRadar
       value: 
       objectReference: {fileID: 1309905230}
-    - target: {fileID: 4930615162262234900, guid: 96704d2ff8ba3674596512109b15f55f, type: 3}
-      propertyPath: whatIs4D.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
     - target: {fileID: 4930615162262234900, guid: 96704d2ff8ba3674596512109b15f55f, type: 3}
       propertyPath: dangerSignScreen
       value: 
@@ -69831,10 +69828,6 @@ PrefabInstance:
     - target: {fileID: 390273141223732213, guid: 553bcd2a7b01acc4ca8dadb60d020dd0, type: 3}
       propertyPath: m_Name
       value: DangerSigns
-      objectReference: {fileID: 0}
-    - target: {fileID: 6931753990945297375, guid: 553bcd2a7b01acc4ca8dadb60d020dd0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

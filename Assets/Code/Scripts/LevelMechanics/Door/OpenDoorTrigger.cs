@@ -13,6 +13,8 @@ public class OpenDoorTrigger : MonoBehaviour
         {
             doorLeftRef.DeactivateObject();
             doorRightRef.DeactivateObject();
+
+            AudioManager.aMRef.PlaySFX(7);
         }
     }
 }

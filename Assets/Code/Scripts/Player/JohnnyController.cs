@@ -74,6 +74,8 @@ public class JohnnyController : MonoBehaviour
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 _playerRB.velocity = new Vector2(_playerRB.velocity.x, playerJumpForce);
+
+                AudioManager.aMRef.PlaySFX(16);
             }
 
             //Dash
@@ -134,6 +136,7 @@ public class JohnnyController : MonoBehaviour
         _knockbackCounter = knockbackCounterLength;
 
         _playerRB.velocity = new Vector2(0f, knockbackForce);
+
         //_anim.SetTrigger("IsHurt");
     }
 
@@ -155,6 +158,9 @@ public class JohnnyController : MonoBehaviour
             _playerRB.velocity = new Vector2(-dashSpeed, 0f);
 
         _pHCRef.invincibleCounter = dashTime;
+
+        AudioManager.aMRef.PlaySFX(6);
+
         //_anim.SetTrigger("IsDashing");
 
         yield return new WaitForSeconds(dashTime);
