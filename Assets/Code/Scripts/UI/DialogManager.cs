@@ -27,6 +27,9 @@ public class DialogManager : MonoBehaviour
     private IkalController _iCRef;
     private JohnnyController _jCRef;
 
+    public bool activatesBossBattle;
+    public GameObject bossBattle;
+
     //Hacemos una referencia (Singleton)
     public static DialogManager instance;
     private void Awake()
@@ -59,6 +62,13 @@ public class DialogManager : MonoBehaviour
                 //Si se ha terminado el diálogo
                 if (currentLine >= dialogLines.Length)
                 {
+                    //Activa el Boss
+                    if (activatesBossBattle)
+                    {
+                        bossBattle.SetActive(true);
+
+                        AudioManager.aMRef.PlayBossMusic();
+                    }
                     //Desactivamos el cuadro de diálogo
                     dialogBox.SetActive(false);
                     //Permitimos que el jugador se mueva de nuevo

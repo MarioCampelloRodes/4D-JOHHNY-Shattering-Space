@@ -13,6 +13,7 @@ public class DialogActivator : MonoBehaviour
     public Sprite theNpcSprite;
 
     public bool activatesPursuit;
+    public bool activatesBossBattle;
 
     //Si el jugador entra en la zona de Trigger puede activar el diálogo
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,6 +28,10 @@ public class DialogActivator : MonoBehaviour
             if (activatesPursuit)
             {
                 GameObject.Find("PursuitTrigger").GetComponent<LevelOnePursuitTrigger>().SpawnPursuit();
+            }
+            if (activatesBossBattle)
+            {
+                DialogManager.instance.activatesBossBattle = true;
             }
         }
            

@@ -82,7 +82,6 @@ public class IkalController : MonoBehaviour
 
         _pHCRef = GetComponent<PlayerHealthController>();
     }
-
     // Update is called once per frame
     void Update()
     {

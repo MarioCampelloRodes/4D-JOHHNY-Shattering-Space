@@ -2908,7 +2908,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4de2b77e7bfb8f343867409d14ec2213, type: 3}
-  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9019608}
+  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7267,6 +7267,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3633821919295961673, guid: 344098e415f1dd04faeab45cd8de46b0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5087149531113253855, guid: 344098e415f1dd04faeab45cd8de46b0, type: 3}
       propertyPath: m_Name
       value: DestructibleStone
@@ -10009,7 +10013,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4224362b3bcfe3a44bbd19e856ef1ffe, type: 3}
-  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9019608}
+  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11791,7 +11795,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e3131ad6b74fe9745bf6b462267e78bf, type: 3}
-  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9019608}
+  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -71546,7 +71550,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 14e29aa9692e3984eb41775fe081da2a, type: 3}
-  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9019608}
+  m_Color: {r: 0.90099996, g: 0.90099996, b: 0.90099996, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
