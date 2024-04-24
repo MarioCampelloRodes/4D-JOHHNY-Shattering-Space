@@ -9,7 +9,8 @@ public class BossController : MonoBehaviour
 
     public bossStates currentState;
 
-    public Transform leftShootPoint, rightShootPoint, leftPoint, topPoint, rightPoint, downPoint;
+    public Transform leftShootPoint, rightShootPoint, topPoint, downPoint;
+
 
     //Atributo de las variables que genera un encabezado en el editor de Unity
     [Header("Shooting")]

@@ -46,6 +46,8 @@ public class AudioManager : MonoBehaviour
             case "Credits":
                 creditsMusic.Play();
                 break;
+            case "Boss":
+                break;
             default:
                 lvlThree.Play();
                 break;

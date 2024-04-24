@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public bool isEnemy, isProp, isBasicNyuxhian, isRangerNyuxhian, isHeavyNyuxhian;
+    public bool isEnemy, isProp, isBasicNyuxhian, isRangerNyuxhian, isHeavyNyuxhian, isBoss;
     public float maxHealth;
     public float currentHealth;
     public bool isDamaged;
@@ -29,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
     private float _lookForPlayerTime;
     GameObject _player;
     UIController _uIRef;
+    public Image bossLifeBar;
 
     private void Start()
     {
@@ -41,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
             _eSRef = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         }
 
-        if(isRangerNyuxhian )
+        if(isRangerNyuxhian)
         {
             _isInvincible = true;
         }
@@ -128,6 +130,12 @@ public class EnemyHealth : MonoBehaviour
     {
         AudioManager.aMRef.PlaySFX(8);
         Instantiate(deathEffect, transform.position, transform.rotation);
+        if (isBoss)
+        {
+            AudioManager.aMRef.bossMusic.Stop();
+
+            GameObject.Find("BossLifeBar").SetActive(false);
+        }
         Destroy(gameObject);
     }
 
@@ -157,6 +165,11 @@ public class EnemyHealth : MonoBehaviour
                 _sPR.color = new Color(_sPR.color.r, _sPR.color.g, _sPR.color.b, 0.7f);
 
                 isDamaged = true;
+
+                if (isBoss)
+                {
+                    bossLifeBar.rectTransform.sizeDelta = new Vector2((currentHealth * 586) / maxHealth, bossLifeBar.rectTransform.sizeDelta.y);
+                }
 
                 yield return new WaitForSeconds(0.5f);
 

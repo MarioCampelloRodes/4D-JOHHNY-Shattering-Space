@@ -29,6 +29,7 @@ public class DialogManager : MonoBehaviour
 
     public bool activatesBossBattle;
     public GameObject bossBattle;
+    public GameObject bossLifeBar;
 
     //Hacemos una referencia (Singleton)
     public static DialogManager instance;
@@ -66,6 +67,8 @@ public class DialogManager : MonoBehaviour
                     if (activatesBossBattle)
                     {
                         bossBattle.SetActive(true);
+
+                        bossLifeBar.SetActive(true);
 
                         AudioManager.aMRef.PlayBossMusic();
                     }
