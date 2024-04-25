@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     //Lista de estados por los que puede pasar el jefe final (Máquina de estados)
-    public enum bossStates { shooting, pursuit, stayStill, defeated };
+    public enum bossStates { shooting, pursuit, stayStill};
 
     public bossStates currentState;
 
@@ -34,15 +34,17 @@ public class BossController : MonoBehaviour
     private float _pursuitCounter;
 
     [Header("Stay Still")]
-
+    private int _stayingStateNumber;
     //Tiempo de spawnear enemigos 4D
     public float spawnCooldown;
     private float _spawnCounter;
 
     [Header("References")]
-    //Posición del Boos
+
     public Transform bossPosition;
-    //Referencia al Animator del jefe final
+
+    public EnemySpawner _eSRef;
+
     private Animator _bAnim;
 
     // Start is called before the first frame update
@@ -64,15 +66,11 @@ public class BossController : MonoBehaviour
         //En base a los cambios en el valor de enum generamos los cambios de estado
         switch (currentState)
         {
-            //En el caso en el que currentState = 0
             case bossStates.shooting:
-                //Hacemos decrecer el contador entre disparos
                 _shotCounter -= Time.deltaTime;
 
-                //Si el contador de tiempo entre disparos se ha vaciado
                 if (_shotCounter <= 0)
                 {
-                    //Reiniciamos el contador de tiempo entre disparos
                     _shotCounter = shootCooldown;
 
                     _shootAmountNumber++;
@@ -119,51 +117,52 @@ public class BossController : MonoBehaviour
 
                 if (_stateChangeCounter > 0)
                 {
-                    //Hacemos decrecer el contador de tiempo de daño
                     _stateChangeCounter -= Time.deltaTime;
 
-                    //Si el contador de tiempo de daño se ha vaciado
                     if (_stateChangeCounter <= 0)
                     {
                         _stateChangeCounter = stateChangeTime;
+                        bossPosition.position = disappearPoint.position;
                         currentState = bossStates.pursuit;
                     }
                 }
                 break;
 
             case bossStates.stayStill:
-                //Si el contador de tiempo de daño aún no está vacío
-                if (_stateChangeCounter > 0)
+                if(_spawnCounter > 0)
                 {
-                    //Hacemos decrecer el contador de tiempo de daño
-                    _stateChangeCounter -= Time.deltaTime;
+                    _spawnCounter -= Time.deltaTime;
 
-                    //Si el contador de tiempo de daño se ha vaciado
-                    if (_stateChangeCounter <= 0)
+                    if (_spawnCounter <= 0)
                     {
-                        _stateChangeCounter = stateChangeTime; 
-                        currentState = bossStates.shooting;
+                        _eSRef.SpawnEnemy();
+                        _spawnCounter = spawnCooldown;
                     }
                 }
-                break;
-            //En el caso en el que currentState = 2
-            case bossStates.pursuit:
                 if (_stateChangeCounter > 0)
                 {
-                    //Hacemos decrecer el contador de tiempo de daño
                     _stateChangeCounter -= Time.deltaTime;
 
                     if (_stateChangeCounter <= 0)
                     {
                         _stateChangeCounter = stateChangeTime;
                         RandomShootPoint();
-                        currentState = bossStates.shooting;
                     }
                 }
                 break;
-            //En el caso en el que currentState = 3
-            case bossStates.defeated:
-                Debug.Log("Ended");
+
+            case bossStates.pursuit:
+                if (_stateChangeCounter > 0)
+                {
+                    _stateChangeCounter -= Time.deltaTime;
+
+                    if (_stateChangeCounter <= 0)
+                    {
+                        _stateChangeCounter = stateChangeTime;
+                        _spawnCounter = spawnCooldown;
+                        RandomStayPoint();
+                    }
+                }
                 break;
         }
     }
@@ -184,5 +183,23 @@ public class BossController : MonoBehaviour
         }
 
         currentState = bossStates.shooting;
+    }
+
+    void RandomStayPoint()
+    {
+        _stayingStateNumber++;
+
+        if (_stayingStateNumber % 2 == 0)
+        {
+            bossPosition.position = downPoint.position;
+            bossPosition.localScale = Vector3.one;
+        }
+        else
+        {
+            bossPosition.position = topPoint.position;
+            bossPosition.localScale = Vector3.one;
+        }
+
+        currentState = bossStates.stayStill;
     }
 }

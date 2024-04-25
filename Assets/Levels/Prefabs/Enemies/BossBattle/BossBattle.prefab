@@ -459,6 +459,7 @@ MonoBehaviour:
   topPoint: {fileID: 8678893125811275864}
   downPoint: {fileID: 5343868590803628158}
   disappearPoint: {fileID: 1804834248387782704}
+  stateChangeTime: 0
   shootCooldown: 1.5
   bulletPrefab: {fileID: 5117646664605668844, guid: 963220cd4ac126a46b23fa1589928943, type: 3}
   firePointTopLeft: {fileID: 5479444183406959021}
@@ -469,9 +470,9 @@ MonoBehaviour:
   firePointDownRight: {fileID: 5072620982751530721}
   pursuitAttackPrefab: {fileID: 0}
   pursuitCooldown: 0
-  stayStillTime: 4
   spawnCooldown: 1
   bossPosition: {fileID: 3895397604530393918}
+  _eSRef: {fileID: 0}
 --- !u!114 &4152861247768555370
 MonoBehaviour:
   m_ObjectHideFlags: 0
