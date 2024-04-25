@@ -87,6 +87,7 @@ public class DialogManager : MonoBehaviour
                     CheckIfName(sNpc);
                     //Muestra la línea de diálogo actual
                     dialogText.text = dialogLines[currentLine];
+                    dialogCharName.text = charName;
                 }
             }
         }

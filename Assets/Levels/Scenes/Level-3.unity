@@ -9193,6 +9193,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 3.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3591552693435011320, guid: fda4be8d322176348814264678599c01, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ef61c5b40a33c644933bc8547df7ef9, type: 3}
     - target: {fileID: 3920474288722732251, guid: fda4be8d322176348814264678599c01, type: 3}
       propertyPath: m_Name
       value: Props_Plataforma fija (5)

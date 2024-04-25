@@ -9,27 +9,39 @@ public class BossController : MonoBehaviour
 
     public bossStates currentState;
 
-    public Transform leftShootPoint, rightShootPoint, topPoint, downPoint;
+    public Transform leftShootPoint, rightShootPoint, topPoint, downPoint, disappearPoint;
 
+    public float stateChangeTime;
+    private float _stateChangeCounter;
 
     //Atributo de las variables que genera un encabezado en el editor de Unity
     [Header("Shooting")]
+    private int _shootingStateNumber;
+    private int _shootAmountNumber;
 
     public float shootCooldown;
     private float _shotCounter;
 
-    public GameObject bulletLeft, bulletRight;
+    public GameObject bulletPrefab;
     public Transform firePointTopLeft, firePointMiddleLeft, firePointDownLeft, firePointTopRight, firePointMiddleRight, firePointDownRight;
 
+    [Header("Pursuit")]
+
+    public GameObject pursuitAttackPrefab;
+
+    //Tiempo entre ataques de persecución
+    public float pursuitCooldown;
+    private float _pursuitCounter;
+
     [Header("Stay Still")]
-    //Tiempo de daño del enemigo
-    public float stayStillTime;
-    //Contador de tiempo de daño
-    private float _stayStillCounter;
+
+    //Tiempo de spawnear enemigos 4D
+    public float spawnCooldown;
+    private float _spawnCounter;
 
     [Header("References")]
     //Posición del Boos
-    public Transform theBoss;
+    public Transform bossPosition;
     //Referencia al Animator del jefe final
     private Animator _bAnim;
 
@@ -39,6 +51,10 @@ public class BossController : MonoBehaviour
         currentState = bossStates.stayStill;
 
         _bAnim = GetComponentInChildren<Animator>();
+
+        _stateChangeCounter = stateChangeTime;
+
+        Invoke("RandomShootPoint", 2f);
     }
 
     // Update is called once per frame
@@ -58,38 +74,115 @@ public class BossController : MonoBehaviour
                 {
                     //Reiniciamos el contador de tiempo entre disparos
                     _shotCounter = shootCooldown;
-                    //Instanciamos la bala pero en una nueva referencia cada vez
-                    GameObject b = Instantiate(bulletLeft, firePointTopLeft.position, firePointTopLeft.rotation);
-                    //Como cada bala estará referenciada (será única) puedo aplicarle los cambios que queramos
-                    //En este caso le diré a cada bala hacia donde debe apuntar según hacia donde mira el jefe final
-                    b.transform.localScale = theBoss.localScale;
+
+                    _shootAmountNumber++;
+
+                    if (_shootingStateNumber % 2 == 0)
+                    {
+                        if (_shootAmountNumber % 2 == 0)
+                        {
+                            GameObject topRightBullet = Instantiate(bulletPrefab, firePointTopRight.position, firePointTopRight.rotation);
+
+                            topRightBullet.transform.localScale = bossPosition.localScale;
+
+                            GameObject downRightBullet = Instantiate(bulletPrefab, firePointDownRight.position, firePointDownRight.rotation);
+
+                            downRightBullet.transform.localScale = bossPosition.localScale;
+                        }
+                        else
+                        {
+                            GameObject middleRightBullet = Instantiate(bulletPrefab, firePointMiddleRight.position, firePointMiddleRight.rotation);
+
+                            middleRightBullet.transform.localScale = bossPosition.localScale;
+                        }
+                    }
+                    else
+                    {
+                        if (_shootAmountNumber % 2 == 0)
+                        {
+                            GameObject topLeftBullet = Instantiate(bulletPrefab, firePointTopLeft.position, firePointTopLeft.rotation);
+
+                            topLeftBullet.transform.localScale = bossPosition.localScale;
+
+                            GameObject downLeftBullet = Instantiate(bulletPrefab, firePointDownLeft.position, firePointDownLeft.rotation);
+
+                            downLeftBullet.transform.localScale = bossPosition.localScale;
+                        }
+                        else
+                        {
+                            GameObject middleLeftBullet = Instantiate(bulletPrefab, firePointMiddleLeft.position, firePointMiddleLeft.rotation);
+
+                            middleLeftBullet.transform.localScale = bossPosition.localScale;
+                        }
+                    }
                 }
-                break;
-            //En el caso en el que currentState = 1
-            case bossStates.stayStill:
-                //Si el contador de tiempo de daño aún no está vacío
-                if (_stayStillCounter > 0)
+
+                if (_stateChangeCounter > 0)
                 {
                     //Hacemos decrecer el contador de tiempo de daño
-                    _stayStillCounter -= Time.deltaTime;
+                    _stateChangeCounter -= Time.deltaTime;
 
                     //Si el contador de tiempo de daño se ha vaciado
-                    if (_stayStillCounter <= 0)
+                    if (_stateChangeCounter <= 0)
                     {
-                        //El jefe final pasaría al estado de movimiento
+                        _stateChangeCounter = stateChangeTime;
+                        currentState = bossStates.pursuit;
+                    }
+                }
+                break;
+
+            case bossStates.stayStill:
+                //Si el contador de tiempo de daño aún no está vacío
+                if (_stateChangeCounter > 0)
+                {
+                    //Hacemos decrecer el contador de tiempo de daño
+                    _stateChangeCounter -= Time.deltaTime;
+
+                    //Si el contador de tiempo de daño se ha vaciado
+                    if (_stateChangeCounter <= 0)
+                    {
+                        _stateChangeCounter = stateChangeTime; 
                         currentState = bossStates.shooting;
                     }
                 }
                 break;
             //En el caso en el que currentState = 2
             case bossStates.pursuit:
-                //Si el enemigo se mueve a la derecha
-                
+                if (_stateChangeCounter > 0)
+                {
+                    //Hacemos decrecer el contador de tiempo de daño
+                    _stateChangeCounter -= Time.deltaTime;
+
+                    if (_stateChangeCounter <= 0)
+                    {
+                        _stateChangeCounter = stateChangeTime;
+                        RandomShootPoint();
+                        currentState = bossStates.shooting;
+                    }
+                }
                 break;
             //En el caso en el que currentState = 3
             case bossStates.defeated:
                 Debug.Log("Ended");
                 break;
         }
+    }
+
+    void RandomShootPoint()
+    {
+        _shootingStateNumber++;
+
+        if(_shootingStateNumber % 2 == 0)
+        {
+            bossPosition.position = rightShootPoint.position;
+            bossPosition.localScale = Vector3.one;
+        }
+        else
+        {
+            bossPosition.position = leftShootPoint.position;
+            bossPosition.localScale = new Vector3(-1, 1, 1);
+        }
+
+        currentState = bossStates.shooting;
     }
 }

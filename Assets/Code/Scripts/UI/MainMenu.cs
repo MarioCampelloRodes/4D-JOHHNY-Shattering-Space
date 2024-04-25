@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsScreen;
     public void NewGame()
     {
-        SceneManager.LoadScene("LevelSelector");
+        SceneManager.LoadScene("Cinematic");
     }
 
     public void Continue()
