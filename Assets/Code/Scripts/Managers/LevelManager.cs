@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class LevelManager : MonoBehaviour
     private CheckpointController _cpRef;
     private UIController _uIRef;
     private PlayerHealthController _pHCRef;
+
+    public EnemyHealth bossHealth;
 
     private void Start()
     {
@@ -39,5 +42,28 @@ public class LevelManager : MonoBehaviour
         _pHCRef.currentHealth = _pHCRef.maxHealth;
         _uIRef.UpdateHealth();
 
+        if(SceneManager.GetActiveScene().name == "Boss")
+        {
+            switch (bossHealth.howManyBossHealthQuarters)
+            {
+                case 4:
+                    bossHealth.currentHealth = bossHealth.maxHealth;
+                    break;
+                case 3:
+                    bossHealth.currentHealth = bossHealth.maxHealth * 0.75f;
+                    break;
+                case 2:
+                    bossHealth.currentHealth = bossHealth.maxHealth * 0.50f;
+                    break;
+                case 1:
+                    bossHealth.currentHealth = bossHealth.maxHealth * 0.25f;
+                    break;
+                default:
+                    bossHealth.currentHealth = bossHealth.maxHealth;
+                    break;
+            }
+
+            bossHealth.UpdateBossBar();
+        }
     }
 }

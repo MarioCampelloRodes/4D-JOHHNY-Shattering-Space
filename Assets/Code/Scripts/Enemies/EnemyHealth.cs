@@ -25,6 +25,10 @@ public class EnemyHealth : MonoBehaviour
     public GameObject leftBulletPrefab, rightBulletPrefab;
     private GameObject _weakSpot;
 
+    //Boss
+    public int howManyBossHealthQuarters = 4;
+
+    BossController _bossController;
     SpriteRenderer _sPR;
     EnemySpawner _eSRef;
     private float _lookForPlayerTime;
@@ -50,6 +54,7 @@ public class EnemyHealth : MonoBehaviour
 
         _player = GameObject.FindWithTag("Player");
         _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
+        _bossController = GetComponent<BossController>();
     }
 
     private void Update()
@@ -168,7 +173,29 @@ public class EnemyHealth : MonoBehaviour
 
                 if (isBoss)
                 {
-                    bossLifeBar.rectTransform.sizeDelta = new Vector2((currentHealth * 586) / maxHealth, bossLifeBar.rectTransform.sizeDelta.y);
+                    UpdateBossBar();
+
+                    if(currentHealth < maxHealth * 0.25)
+                    {
+                        howManyBossHealthQuarters = 1;
+                    }
+                    else if(currentHealth < maxHealth * 0.5)
+                    {
+                        howManyBossHealthQuarters = 2;
+
+                        _bossController.shootCooldown = 1.25f;
+                        _bossController.pursuitCooldown = 1.25f;
+                        _bossController.spawnCooldown = 0.75f;
+                    }
+                    else if(currentHealth < maxHealth * 0.75)
+                    {
+                        howManyBossHealthQuarters = 3;
+                    }
+                    else if(currentHealth < maxHealth)
+                    {
+                        howManyBossHealthQuarters = 4;
+                    }
+                    Debug.Log("Al boss le quedan " + howManyBossHealthQuarters + " cuartos de vida.");
                 }
 
                 yield return new WaitForSeconds(0.5f);
@@ -188,5 +215,10 @@ public class EnemyHealth : MonoBehaviour
         {
             AudioManager.aMRef.PlaySFX(2);
         }
+    }
+
+    public void UpdateBossBar()
+    {
+        bossLifeBar.rectTransform.sizeDelta = new Vector2((currentHealth * 586) / maxHealth, bossLifeBar.rectTransform.sizeDelta.y);
     }
 }

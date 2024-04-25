@@ -47,12 +47,16 @@ public class BossController : MonoBehaviour
 
     private Animator _bAnim;
 
+    private Transform _playerPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         currentState = bossStates.stayStill;
 
         _bAnim = GetComponentInChildren<Animator>();
+
+        _playerPosition = GameObject.FindWithTag("Player").transform;
 
         _stateChangeCounter = stateChangeTime;
 
@@ -123,6 +127,7 @@ public class BossController : MonoBehaviour
                     {
                         _stateChangeCounter = stateChangeTime;
                         bossPosition.position = disappearPoint.position;
+                        _pursuitCounter = pursuitCooldown;
                         currentState = bossStates.pursuit;
                     }
                 }
@@ -152,6 +157,17 @@ public class BossController : MonoBehaviour
                 break;
 
             case bossStates.pursuit:
+                if(_pursuitCounter > 0)
+                {
+                    _pursuitCounter -= Time.deltaTime;
+
+                    if(_pursuitCounter <= 0)
+                    {
+                        Debug.Log("Pursuit");
+                        Instantiate(pursuitAttackPrefab, _playerPosition.position, _playerPosition.rotation);
+                        _pursuitCounter = pursuitCooldown;
+                    }
+                }
                 if (_stateChangeCounter > 0)
                 {
                     _stateChangeCounter -= Time.deltaTime;

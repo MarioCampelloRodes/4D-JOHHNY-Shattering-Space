@@ -431,10 +431,6 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9185254330882086972, guid: d7c87c1e3c9cc5a4fbd0a6af5938dc1a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2068,6 +2064,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 71739777}
     m_Modifications:
+    - target: {fileID: 1490239315196771934, guid: 3f71a0d023e2b9c47aeca6001981578a, type: 3}
+      propertyPath: bossHealth
+      value: 
+      objectReference: {fileID: 1271680615}
     - target: {fileID: 4166102882934276549, guid: 3f71a0d023e2b9c47aeca6001981578a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2195,6 +2195,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5723759761595142072, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
   m_PrefabInstance: {fileID: 5619436052377179602}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1271680615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4152861247768555370, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
+  m_PrefabInstance: {fileID: 5619436052377179602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271680611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be26d2fc29040894f93263c8b5b8b6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1276306342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,90 +2236,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1011317843}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1283877932
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1283877934}
-  - component: {fileID: 1283877933}
-  m_Layer: 0
-  m_Name: BossPursuit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1283877933
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283877932}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8266a09f1ac69c8468fe7f029440cb56, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5, y: 5}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &1283877934
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283877932}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.838997, y: 2.6033998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1314156906 stripped
@@ -13796,10 +13723,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossBattle
       objectReference: {fileID: 0}
-    - target: {fileID: 1256398737506530010, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1259271312117013230, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27
@@ -13848,14 +13771,6 @@ PrefabInstance:
       propertyPath: _eSRef
       value: 
       objectReference: {fileID: 1497527282}
-    - target: {fileID: 9133410914503815376, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
-      propertyPath: pursuitCooldown
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9133410914503815376, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
-      propertyPath: stateChangeTime
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13886,4 +13801,3 @@ SceneRoots:
   - {fileID: 1245206861}
   - {fileID: 29011351}
   - {fileID: 5619436052377179602}
-  - {fileID: 1283877934}
