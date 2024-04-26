@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 354597973921871538}
   m_Layer: 8
   m_Name: Nyuxh
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -500,6 +500,7 @@ MonoBehaviour:
   shootTimeLength: 0
   leftBulletPrefab: {fileID: 0}
   rightBulletPrefab: {fileID: 0}
+  howManyBossHealthQuarters: 4
   bossLifeBar: {fileID: 0}
   deathEffect: {fileID: 4461926073205091622, guid: cc0cc919ca38dfb49bf4423ee1b396c4, type: 3}
 --- !u!70 &3432252145399136368

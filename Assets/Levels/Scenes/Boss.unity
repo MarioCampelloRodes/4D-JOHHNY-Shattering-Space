@@ -438,7 +438,7 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 700842738}
     - targetCorrespondingSourceObject: {fileID: 660607724109079195, guid: d7c87c1e3c9cc5a4fbd0a6af5938dc1a, type: 3}
-      insertIndex: -1
+      insertIndex: 9
       addedObject: {fileID: 27520839}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c87c1e3c9cc5a4fbd0a6af5938dc1a, type: 3}
@@ -1335,6 +1335,10 @@ PrefabInstance:
     - target: {fileID: 2140982076817892803, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: m_Name
       value: Ikal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
+      propertyPath: attackCounterLength
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: heavyAttackHoldLength
