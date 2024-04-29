@@ -1337,15 +1337,7 @@ PrefabInstance:
       value: Ikal
       objectReference: {fileID: 0}
     - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: attackCounterLength
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
       propertyPath: heavyAttackHoldLength
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683371955756365837, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
-      propertyPath: heavyAttackCounterLength
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5482898449313581739, guid: 7f85d8041bd82cf4eba74ee49b0b2ac6, type: 3}
