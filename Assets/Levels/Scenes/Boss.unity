@@ -1949,73 +1949,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1086046048
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1016972223315823512, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_Name
-      value: TutorialTrigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 2643349536816677628, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: tutorialText
-      value: 'Boss Fight
-
-        (not yet implemented)'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2643349536816677628, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: tutorialObject
-      value: 
-      objectReference: {fileID: 1626030518}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
 --- !u!1 &1103997423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,11 +2536,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {x: 0, y: 0, z: 0}
---- !u!1 &1626030518 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6629566189982159088, guid: d7c87c1e3c9cc5a4fbd0a6af5938dc1a, type: 3}
-  m_PrefabInstance: {fileID: 69900674}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1733894376 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3311008892475419837, guid: d7c87c1e3c9cc5a4fbd0a6af5938dc1a, type: 3}
@@ -13793,7 +13721,6 @@ SceneRoots:
   - {fileID: 306989137}
   - {fileID: 742786059}
   - {fileID: 580783509}
-  - {fileID: 1086046048}
   - {fileID: 1245206861}
   - {fileID: 29011351}
   - {fileID: 5619436052377179602}

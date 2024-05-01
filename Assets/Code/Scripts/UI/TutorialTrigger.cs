@@ -10,12 +10,23 @@ public class TutorialTrigger : MonoBehaviour
 
     public Sprite tutorialCurrentSprite;
 
+    public Sprite inactiveSprite, activeSprite;
+
+    private SpriteRenderer _sPRef;
+
+    private void Start()
+    {
+        _sPRef = GetComponent<SpriteRenderer>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             tutorialObject.SetActive(true);
             tutorialObject.GetComponentInChildren<Image>().sprite = tutorialCurrentSprite;
+
+            _sPRef.sprite = activeSprite;
         }
     }
 
@@ -24,6 +35,8 @@ public class TutorialTrigger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             tutorialObject.SetActive(false);
+
+            _sPRef.sprite = inactiveSprite;
         }
     }
 }
