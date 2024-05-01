@@ -6138,6 +6138,10 @@ PrefabInstance:
       propertyPath: tutorialCurrentSprite
       value: 
       objectReference: {fileID: 21300000, guid: 317e749bbd4414742aeb335a7f53fb76, type: 3}
+    - target: {fileID: 4624187126255586086, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
+      propertyPath: m_Offset.y
+      value: 3.17
+      objectReference: {fileID: 0}
     - target: {fileID: 6919748109044132987, guid: ec4cbebc6aa09ad419fb44f16e6d5bd9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.75
@@ -17024,7 +17028,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 660607724109079195, guid: d7c87c1e3c9cc5a4fbd0a6af5938dc1a, type: 3}
-      insertIndex: -1
+      insertIndex: 8
       addedObject: {fileID: 577793773336615564}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c87c1e3c9cc5a4fbd0a6af5938dc1a, type: 3}
