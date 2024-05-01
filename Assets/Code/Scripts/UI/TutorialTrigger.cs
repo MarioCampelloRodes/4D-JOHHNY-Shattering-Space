@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TutorialTrigger : MonoBehaviour
 {
     public GameObject tutorialObject;
 
-    [TextArea(14,10)] public string tutorialText;
-
-    private bool isActive;
+    public Sprite tutorialCurrentSprite;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !isActive)
+        if (collision.CompareTag("Player"))
         {
             tutorialObject.SetActive(true);
-            tutorialObject.GetComponentInChildren<TextMeshProUGUI>().text = tutorialText;
+            tutorialObject.GetComponentInChildren<Image>().sprite = tutorialCurrentSprite;
         }
     }
 
@@ -24,16 +23,7 @@ public class TutorialTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(DeactivateTutorialCO());
+            tutorialObject.SetActive(false);
         }
-    }
-
-    IEnumerator DeactivateTutorialCO()
-    {
-        yield return new WaitForSeconds(3f);
-
-        isActive = true;
-
-        tutorialObject.SetActive(false);
     }
 }
