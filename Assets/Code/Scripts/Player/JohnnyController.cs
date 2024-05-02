@@ -79,7 +79,7 @@ public class JohnnyController : MonoBehaviour
             }
 
             //Dash
-            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("Dash")) && canDash)
             {
                 Dash();
             }
