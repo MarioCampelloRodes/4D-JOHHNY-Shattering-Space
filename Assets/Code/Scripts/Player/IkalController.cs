@@ -175,7 +175,7 @@ public class IkalController : MonoBehaviour
             }
 
             //Dash
-            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("Dash")) && canDash)
             {
                 Dash();
             }
@@ -183,11 +183,11 @@ public class IkalController : MonoBehaviour
             //Ataque
             if(attackCounter <= 0)
             {
-                if (isGrounded && (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.RightShift)))
+                if (isGrounded && (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.RightShift) || Input.GetButtonDown("HeavyAttack")))
                 {
                     HeavyAttack();
                 }
-                if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.RightControl))
+                if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.RightControl) || Input.GetButtonDown("LightAttack"))
                 {
                     LightAttack();
                 }
