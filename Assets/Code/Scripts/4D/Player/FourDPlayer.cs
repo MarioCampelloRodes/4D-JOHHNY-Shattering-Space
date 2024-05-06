@@ -19,7 +19,7 @@ public class FourDPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("DPadX") < -0.1f || Input.GetAxis("RightStickX") < -0.1f) && _shootCooldown <= 0) 
+        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("DPadX") < 0f || Input.GetAxis("RightStickX") < -0.01f) && _shootCooldown <= 0) 
         {
             shootingLeft = true;
             shootingRight = false;
@@ -31,7 +31,7 @@ public class FourDPlayer : MonoBehaviour
             AudioManager.aMRef.PlaySFX(1);
         }
 
-        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("DPadX") > 0.1f || Input.GetAxis("RightStickX") > 0.1f) && _shootCooldown <= 0)
+        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("DPadX") > 0f || Input.GetAxis("RightStickX") > 0.01f) && _shootCooldown <= 0)
         {
             shootingLeft = false;
             shootingRight = true;
@@ -43,7 +43,7 @@ public class FourDPlayer : MonoBehaviour
             AudioManager.aMRef.PlaySFX(1);
         }
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("DPadY") > 0.1f || Input.GetAxis("RightStickY") > 0.1f) && _shootCooldown <= 0)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("DPadY") > 0f || Input.GetAxis("RightStickY") > 0.01f) && _shootCooldown <= 0)
         {
             shootingLeft = false;
             shootingRight = false;
@@ -55,7 +55,7 @@ public class FourDPlayer : MonoBehaviour
             AudioManager.aMRef.PlaySFX(1);
         }
 
-        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("DPadY") < -0.1f || Input.GetAxis("RightStickY") < -0.1f) && _shootCooldown <= 0)
+        if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("DPadY") < 0f || Input.GetAxis("RightStickY") < -0.01f) && _shootCooldown <= 0)
         {
             shootingLeft = false;
             shootingRight = false;

@@ -7,7 +7,7 @@ public class OptionsScreen : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Escape"))
         {
             DeactivateOptionsScreen();
         }

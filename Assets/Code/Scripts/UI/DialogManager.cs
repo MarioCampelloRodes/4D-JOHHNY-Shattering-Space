@@ -54,8 +54,7 @@ public class DialogManager : MonoBehaviour
         //Si el cuadro de diálogo está activo
         if(dialogBox.activeInHierarchy)
         {
-            //Al pulsar la tecla X
-            if ((Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1f)
+            if ((Input.GetButtonUp("Fire1") || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Jump")) && Time.timeScale == 1f)
             {
                 //Vamos a la siguiente línea de diálogo
                 currentLine++;

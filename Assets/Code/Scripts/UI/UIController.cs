@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
             timeText.text = time.ToString();
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetButtonDown("Escape"))
         {
             ActivatePauseScreen();
             Time.timeScale = 0;

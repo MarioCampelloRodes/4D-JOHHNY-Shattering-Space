@@ -8,7 +8,7 @@ public class PauseScreen : MonoBehaviour
     public GameObject optionsScreen;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Escape"))
         {
             DeactivatePauseScreen();
         }
