@@ -175,7 +175,7 @@ public class IkalController : MonoBehaviour
             }
 
             //Dash
-            if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetButtonDown("Dash")) && canDash)
+            if (Input.GetButtonDown("Dash") && canDash)
             {
                 Dash();
             }
