@@ -443,7 +443,7 @@ MonoBehaviour:
   shootingRight: 0
   shootingTop: 0
   shootingBottom: 0
-  dangerRadius: 2.5
+  dangerRadius: 2.4
   dangerSignScreen: {fileID: 0}
   dangerSignRadar: {fileID: 0}
   dangerEffect: {fileID: 0}

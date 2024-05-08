@@ -19,7 +19,7 @@ public class FourDPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("DPadX") < 0f || Input.GetAxis("RightStickX") < -0.01f) && _shootCooldown <= 0) 
+        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("DPadX") < 0f || Input.GetAxis("RightStickX") < -0.01f) && _shootCooldown <= 0)
         {
             shootingLeft = true;
             shootingRight = false;
@@ -67,14 +67,12 @@ public class FourDPlayer : MonoBehaviour
             AudioManager.aMRef.PlaySFX(1);
         }
 
-        if (_shootCooldown > 0) 
-        { 
+        if (_shootCooldown > 0)
+        {
             _shootCooldown -= Time.deltaTime;
-        } 
-    }
+        }
 
-    private void LateUpdate()
-    {
+        //Detección de Peligros cercanos
         Collider2D[] nearEnemies = Physics2D.OverlapCircleAll(transform.position, dangerRadius, whatIs4D);
 
         foreach (Collider2D enemy in nearEnemies)
