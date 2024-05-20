@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -152,6 +153,44 @@ public class UIController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void CalculateFinalScore()
+    {
+        int timeBonus, streakBonus;
+
+        if(time < 120)
+        {
+            timeBonus = 5000;
+        }
+        else if(time < 180)
+        {
+            timeBonus = 2000;
+        }
+        else
+        {
+            timeBonus = 0;
+        }
+
+        if(streak > 10)
+        {
+            streakBonus = 5000;
+        }
+        if(streak > 5)
+        {
+            streakBonus = 2000;
+        }
+        else
+        {
+            streakBonus = 0;
+        }
+
+        score = score + timeBonus + streakBonus;
+
+        if(SceneManager.GetActiveScene().name == "Level-2" && score > PlayerPrefs.GetInt("ScoreLevel2"))
+            GameManager.gMRef.SaveLevelScore();
+        else if(SceneManager.GetActiveScene().name == "Level-3" && score > PlayerPrefs.GetInt("ScoreLevel3"))
+            GameManager.gMRef.SaveLevelScore();
     }
 
     public void ActivatePauseScreen()

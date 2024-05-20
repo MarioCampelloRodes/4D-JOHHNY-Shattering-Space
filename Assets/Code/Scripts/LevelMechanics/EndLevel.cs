@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class EndLevel : MonoBehaviour
 {
     private CameraController _cCRef;
-    private LSUIControl _uIRef;
+    private UIController _uIRef;
+    private LSUIControl _lsUIRef;
     private void Start()
     {
         _cCRef = GameObject.Find("Main Camera").GetComponent<CameraController>();
-        _uIRef = GameObject.Find("Canvas").GetComponent<LSUIControl>();
+        _lsUIRef = GameObject.Find("Canvas").GetComponent<LSUIControl>();
+        _uIRef = GameObject.Find("Canvas").GetComponent<UIController>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,9 +39,11 @@ public class EndLevel : MonoBehaviour
     {
         _cCRef.isFreezed = true;
 
+        _uIRef.CalculateFinalScore();
+
         yield return new WaitForSeconds(1f);
 
-        _uIRef.FadeToBlack();
+        _lsUIRef.FadeToBlack();
 
         yield return new WaitForSeconds(1f);
         
