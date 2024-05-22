@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int highScoreLevelTwo, highScoreLevelThree;
+
+    public bool hasSpeedUpgrade, hasAttackUpgrade, hasJumpUpgrade;
     UIController uiRef;
 
     public static GameManager gMRef;
@@ -22,28 +24,103 @@ public class GameManager : MonoBehaviour
     {
         uiRef = GameObject.Find("Canvas").GetComponent<UIController>();
 
-        highScoreLevelTwo = PlayerPrefs.GetInt("LevelScore2");
+        LoadData();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        //Prueba
+        if (Input.GetButtonDown("Jump"))
+        {
+            SaveLevelScore();
+        }
     }
 
     public void SaveLevelScore()
     {
         if(SceneManager.GetActiveScene().name == "Level-2")
             PlayerPrefs.SetInt("ScoreLevel2", uiRef.score);
-        if (SceneManager.GetActiveScene().name == "Level-3")
+        else if (SceneManager.GetActiveScene().name == "Level-3")
             PlayerPrefs.SetInt("ScoreLevel3", uiRef.score);
+    }
+
+    public void SaveUpgrades()
+    {
+        if (hasSpeedUpgrade)
+        {
+            PlayerPrefs.SetInt("SpeedUpgrade", 1);
+        }
+        if (hasAttackUpgrade)
+        {
+            PlayerPrefs.SetInt("AttackUpgrade", 1);
+        }
+        if (hasJumpUpgrade)
+        {
+            PlayerPrefs.SetInt("JumpUpgrade", 1);
+        }
     }
 
     public void LoadData()
     {
-        if (PlayerPrefs.HasKey("Score"))
+        //Highscores
+
+        if (PlayerPrefs.HasKey("ScoreLevel2"))
         {
-            PlayerPrefs.GetInt("Score", uiRef.score);
+            highScoreLevelTwo = PlayerPrefs.GetInt("ScoreLevel2");
+        }
+
+        if (PlayerPrefs.HasKey("ScoreLevel3"))
+        {
+            highScoreLevelThree = PlayerPrefs.GetInt("ScoreLevel2");
+        }
+
+        //Upgrades
+
+        if (PlayerPrefs.HasKey("SpeedUpgrade") && PlayerPrefs.GetInt("SpeedUpgrade") == 1)
+        {
+            hasSpeedUpgrade = true;
+        }
+
+        if (PlayerPrefs.HasKey("AttackUpgrade") && PlayerPrefs.GetInt("AttackUpgrade") == 1)
+        {
+            hasAttackUpgrade = true;
+        }
+
+        if (PlayerPrefs.HasKey("JumpUpgrade") && PlayerPrefs.GetInt("JumpUpgrade") == 1)
+        {
+            hasJumpUpgrade = true;
+        }
+    }
+
+    public void ClearData()
+    {
+        //Highscores
+
+        if (PlayerPrefs.HasKey("ScoreLevel2"))
+        {
+            highScoreLevelTwo = 0;
+        }
+
+        if (PlayerPrefs.HasKey("ScoreLevel3"))
+        {
+            highScoreLevelThree = 0;
+        }
+
+        //Upgrades
+
+        if (PlayerPrefs.HasKey("SpeedUpgrade"))
+        {
+            hasSpeedUpgrade = false;
+        }
+
+        if (PlayerPrefs.HasKey("AttackUpgrade"))
+        {
+            hasAttackUpgrade = false;
+        }
+
+        if (PlayerPrefs.HasKey("JumpUpgrade"))
+        {
+            hasJumpUpgrade = false;
         }
     }
 }
