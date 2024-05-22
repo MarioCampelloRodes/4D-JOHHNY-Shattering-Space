@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
 {
     public GameObject life1, life2, life3, life4, life5, life6;
 
-    public int score, time, streak, highStreak;
+    public int score, time, streak, highStreak, highScore;
 
     private float _timeCounter;
 
@@ -55,12 +55,16 @@ public class UIController : MonoBehaviour
     public void AddStreak()
     {
         streak++;
+
+        if(streak > highStreak)
+        {
+            highStreak = streak;
+        }
+
         streakText.text = streak.ToString();
     }
     public void ResetStreak()
     {
-        if (streak > highStreak)
-            highStreak = streak;
         streak = 0;
         streakText.text = streak.ToString();
     }
@@ -172,11 +176,11 @@ public class UIController : MonoBehaviour
             timeBonus = 0;
         }
 
-        if(streak > 10)
+        if(highStreak > 10)
         {
             streakBonus = 5000;
         }
-        if(streak > 5)
+        else if(highStreak > 5)
         {
             streakBonus = 2000;
         }
@@ -185,12 +189,21 @@ public class UIController : MonoBehaviour
             streakBonus = 0;
         }
 
-        score = score + timeBonus + streakBonus;
+        Debug.Log("Has completado el nivel en " + time + " segundos, obtienes un bonus de " + timeBonus + " puntos");
+        Debug.Log("Has conseguido una racha de " + highStreak + " enemigos, obtienes un bonus de " + streakBonus + " puntos");
+        highScore = score + timeBonus + streakBonus;
+        Debug.Log("La puntuación total es de " + highScore);
 
-        if(SceneManager.GetActiveScene().name == "Level-2" && score > PlayerPrefs.GetInt("ScoreLevel2"))
+        if(SceneManager.GetActiveScene().name == "Level-2" && highScore > GameManager.gMRef.highScoreLevelTwo)
+        {
+            Debug.Log("La puntuación es mayor, se guardará");
             GameManager.gMRef.SaveLevelScore();
-        else if(SceneManager.GetActiveScene().name == "Level-3" && score > PlayerPrefs.GetInt("ScoreLevel3"))
+        }
+        else if(SceneManager.GetActiveScene().name == "Level-3" && highScore > GameManager.gMRef.highScoreLevelThree)
+        {
+            Debug.Log("La puntuación es mayor, se guardará");
             GameManager.gMRef.SaveLevelScore();
+        }
     }
 
     public void ActivatePauseScreen()

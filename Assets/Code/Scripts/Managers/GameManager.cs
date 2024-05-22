@@ -22,26 +22,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(SceneManager.GetActiveScene().name == "Level-2" || SceneManager.GetActiveScene().name == "Level-3" || SceneManager.GetActiveScene().name == "Boss")
         uiRef = GameObject.Find("Canvas").GetComponent<UIController>();
 
         LoadData();
     }
 
-    private void Update()
-    {
-        //Prueba
-        if (Input.GetButtonDown("Jump"))
-        {
-            SaveLevelScore();
-        }
-    }
-
     public void SaveLevelScore()
     {
         if(SceneManager.GetActiveScene().name == "Level-2")
-            PlayerPrefs.SetInt("ScoreLevel2", uiRef.score);
+            PlayerPrefs.SetInt("ScoreLevel2", uiRef.highScore);
         else if (SceneManager.GetActiveScene().name == "Level-3")
-            PlayerPrefs.SetInt("ScoreLevel3", uiRef.score);
+            PlayerPrefs.SetInt("ScoreLevel3", uiRef.highScore);
     }
 
     public void SaveUpgrades()
@@ -99,11 +91,13 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("ScoreLevel2"))
         {
             highScoreLevelTwo = 0;
+            PlayerPrefs.SetInt("ScoreLevel2", highScoreLevelTwo);
         }
 
         if (PlayerPrefs.HasKey("ScoreLevel3"))
         {
             highScoreLevelThree = 0;
+            PlayerPrefs.SetInt("ScoreLevel3", highScoreLevelThree);
         }
 
         //Upgrades
@@ -111,16 +105,19 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("SpeedUpgrade"))
         {
             hasSpeedUpgrade = false;
+            PlayerPrefs.SetInt("SpeedUpgrade", 0);
         }
 
         if (PlayerPrefs.HasKey("AttackUpgrade"))
         {
             hasAttackUpgrade = false;
+            PlayerPrefs.SetInt("AttackUpgrade", 0);
         }
 
         if (PlayerPrefs.HasKey("JumpUpgrade"))
         {
             hasJumpUpgrade = false;
+            PlayerPrefs.SetInt("JumpUpgrade", 0);
         }
     }
 }

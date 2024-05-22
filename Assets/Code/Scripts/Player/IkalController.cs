@@ -83,7 +83,10 @@ public class IkalController : MonoBehaviour
         _pHCRef = GetComponent<PlayerHealthController>();
 
         if (GameManager.gMRef.hasSpeedUpgrade)
+        {
             playerSpeed += 2;
+            dashSpeed++;
+        }
 
         if (GameManager.gMRef.hasAttackUpgrade)
         {

@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsScreen;
     public void NewGame()
     {
+        GameManager.gMRef.ClearData();
         SceneManager.LoadScene("Cinematic");
     }
 

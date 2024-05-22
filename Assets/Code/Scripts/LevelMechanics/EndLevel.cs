@@ -39,7 +39,8 @@ public class EndLevel : MonoBehaviour
     {
         _cCRef.isFreezed = true;
 
-        _uIRef.CalculateFinalScore();
+        if(SceneManager.GetActiveScene().name != "Level-1")
+            _uIRef.CalculateFinalScore();
 
         yield return new WaitForSeconds(1f);
 
