@@ -424,7 +424,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Jump Upgrade
 
-    20000'
+    30000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c36aa804d589ea34a984e679ea2c0445, type: 2}
   m_sharedMaterial: {fileID: -6865190778184206684, guid: c36aa804d589ea34a984e679ea2c0445, type: 2}
@@ -1199,7 +1199,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Speed Upgrade
 
-    15000'
+    20000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c36aa804d589ea34a984e679ea2c0445, type: 2}
   m_sharedMaterial: {fileID: -6865190778184206684, guid: c36aa804d589ea34a984e679ea2c0445, type: 2}
@@ -1596,9 +1596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
-  speedPrice: 15000
-  attackPrice: 25000
-  jumpPrice: 20000
+  speedPrice: 20000
+  attackPrice: 40000
+  jumpPrice: 30000
   speedButton: {fileID: 1789320541}
   attackButton: {fileID: 1619723865}
   jumpButton: {fileID: 1131973238}
@@ -2598,7 +2598,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Attack Upgrade
 
-    25000'
+    40000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c36aa804d589ea34a984e679ea2c0445, type: 2}
   m_sharedMaterial: {fileID: -6865190778184206684, guid: c36aa804d589ea34a984e679ea2c0445, type: 2}

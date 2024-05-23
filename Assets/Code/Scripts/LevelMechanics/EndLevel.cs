@@ -7,7 +7,7 @@ using TMPro;
 public class EndLevel : MonoBehaviour
 {
     public GameObject endScreen, endScoreTitle, endTotalScoreTitle;
-    public TextMeshProUGUI highscoreText, timeBonusText, streakBonusText;
+    public TextMeshProUGUI highscoreText, timeBonusText, streakBonusText, totalScoreText, levelTwoText, levelThreeText;
 
     private CameraController _cCRef;
     private UIController _uIRef;
@@ -50,7 +50,7 @@ public class EndLevel : MonoBehaviour
 
         ShowWinText();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         _lsUIRef.FadeToBlack();
 
@@ -80,7 +80,9 @@ public class EndLevel : MonoBehaviour
         else if(SceneManager.GetActiveScene().name == "Boss")
         {
             endTotalScoreTitle.SetActive(true);
-            highscoreText.text = (GameManager.gMRef.highScoreLevelTwo + GameManager.gMRef.highScoreLevelThree).ToString();
+            totalScoreText.text = (GameManager.gMRef.highScoreLevelTwo + GameManager.gMRef.highScoreLevelThree).ToString();
+            levelTwoText.text = GameManager.gMRef.highScoreLevelTwo.ToString();
+            levelThreeText.text = GameManager.gMRef.highScoreLevelThree.ToString();
         }
     }
 }

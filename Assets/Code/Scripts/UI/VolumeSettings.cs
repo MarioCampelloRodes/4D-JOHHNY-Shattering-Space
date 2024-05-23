@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VolumeSettings : MonoBehaviour
 {
@@ -11,24 +12,27 @@ public class VolumeSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("AudioVolume"))
+        if(SceneManager.GetActiveScene().name != "Credits")
         {
-            if(PlayerPrefs.GetInt("AudioVolume") == 0)
-                volumeSlider.value = 0f;
-            else if (PlayerPrefs.GetInt("AudioVolume") == 1)
-                volumeSlider.value = 0.25f;
-            else if (PlayerPrefs.GetInt("AudioVolume") == 2)
-                volumeSlider.value = 0.5f;
-            else if (PlayerPrefs.GetInt("AudioVolume") == 3)
-                volumeSlider.value = 1f;
+            if (PlayerPrefs.HasKey("AudioVolume"))
+            {
+                if (PlayerPrefs.GetInt("AudioVolume") == 0)
+                    volumeSlider.value = 0f;
+                else if (PlayerPrefs.GetInt("AudioVolume") == 1)
+                    volumeSlider.value = 0.25f;
+                else if (PlayerPrefs.GetInt("AudioVolume") == 2)
+                    volumeSlider.value = 0.5f;
+                else if (PlayerPrefs.GetInt("AudioVolume") == 3)
+                    volumeSlider.value = 1f;
 
-            AudioListener.volume = volumeSlider.value;
-        }
-        else
-        {
-            PlayerPrefs.SetInt("AudioVolume", 3);
-            volumeSlider.value = 1f;
-            AudioListener.volume = volumeSlider.value;
+                AudioListener.volume = volumeSlider.value;
+            }
+            else
+            {
+                PlayerPrefs.SetInt("AudioVolume", 3);
+                volumeSlider.value = 1f;
+                AudioListener.volume = volumeSlider.value;
+            }
         }
     }
 

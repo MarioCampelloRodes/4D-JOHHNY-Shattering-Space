@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         {
             if (GameManager.gMRef.hasSpeedUpgrade)
             {
-                iCRef.playerSpeed += 2;
+                iCRef.playerSpeed++;
                 iCRef.dashSpeed++;
             }
 
@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
             }
 
             if (GameManager.gMRef.hasJumpUpgrade)
-                iCRef.playerJumpForce += 2;
+                iCRef.playerJumpForce++;
         }    
 
         //Level Clears
