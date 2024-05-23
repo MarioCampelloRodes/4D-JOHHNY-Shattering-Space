@@ -1,14 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public int highScoreLevelTwo, highScoreLevelThree;
 
-    public bool hasSpeedUpgrade, hasAttackUpgrade, hasJumpUpgrade;
+    [Header("Upgrades")]
+    public bool hasSpeedUpgrade;
+    public bool hasAttackUpgrade, hasJumpUpgrade;
+
+    [Header("Levels Cleared")]
+    public bool levelOneClear;
+    public bool levelTwoClear, levelThreeClear;
+
     UIController uiRef;
+
+    IkalController iCRef;
 
     public static GameManager gMRef;
     private void Awake()
@@ -23,7 +33,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if(SceneManager.GetActiveScene().name == "Level-2" || SceneManager.GetActiveScene().name == "Level-3" || SceneManager.GetActiveScene().name == "Boss")
-        uiRef = GameObject.Find("Canvas").GetComponent<UIController>();
+        {
+            uiRef = GameObject.Find("Canvas").GetComponent<UIController>();
+
+            iCRef = GameObject.FindWithTag("Player").GetComponent<IkalController>();
+        }     
 
         LoadData();
     }
@@ -52,6 +66,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SaveLevelClear()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "Level-1":
+                levelOneClear = true;
+                PlayerPrefs.SetInt("LevelOneClear", 1);
+                break;
+            case "Level-2":
+                levelTwoClear = true;
+                PlayerPrefs.SetInt("LevelTwoClear", 1);
+                break;
+            case "Level-3":
+                levelThreeClear = true;
+                PlayerPrefs.SetInt("LevelThreeClear", 1);
+                break;
+            default:
+                Debug.Log("Este nivel no requiere save o no se ha detectado correctamente");
+                break;
+        }
+    }
+
     public void LoadData()
     {
         //Highscores
@@ -63,7 +99,7 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("ScoreLevel3"))
         {
-            highScoreLevelThree = PlayerPrefs.GetInt("ScoreLevel2");
+            highScoreLevelThree = PlayerPrefs.GetInt("ScoreLevel3");
         }
 
         //Upgrades
@@ -81,6 +117,40 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("JumpUpgrade") && PlayerPrefs.GetInt("JumpUpgrade") == 1)
         {
             hasJumpUpgrade = true;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Level-2" || SceneManager.GetActiveScene().name == "Level-3" || SceneManager.GetActiveScene().name == "Boss")
+        {
+            if (GameManager.gMRef.hasSpeedUpgrade)
+            {
+                iCRef.playerSpeed += 2;
+                iCRef.dashSpeed++;
+            }
+
+            if (GameManager.gMRef.hasAttackUpgrade)
+            {
+                iCRef.lightDamage++;
+                iCRef.heavyDamage++;
+            }
+
+            if (GameManager.gMRef.hasJumpUpgrade)
+                iCRef.playerJumpForce += 2;
+        }    
+
+        //Level Clears
+        if (PlayerPrefs.HasKey("LevelOneClear") && PlayerPrefs.GetInt("LevelOneClear") == 1)
+        {
+            levelOneClear = true;
+        }
+
+        if (PlayerPrefs.HasKey("LevelTwoClear") && PlayerPrefs.GetInt("LevelTwoClear") == 1)
+        {
+            levelTwoClear = true;
+        }
+
+        if (PlayerPrefs.HasKey("LevelThreeClear") && PlayerPrefs.GetInt("LevelThreeClear") == 1)
+        {
+            levelThreeClear = true;
         }
     }
 
@@ -118,6 +188,26 @@ public class GameManager : MonoBehaviour
         {
             hasJumpUpgrade = false;
             PlayerPrefs.SetInt("JumpUpgrade", 0);
+        }
+
+        //Level Clears
+
+        if (PlayerPrefs.HasKey("LevelOneClear"))
+        {
+            levelOneClear = false;
+            PlayerPrefs.SetInt("LevelOneClear", 0);
+        }
+
+        if (PlayerPrefs.HasKey("LevelTwoClear"))
+        {
+            levelOneClear = false;
+            PlayerPrefs.SetInt("LevelTwoClear", 0);
+        }
+
+        if (PlayerPrefs.HasKey("LevelThreeClear"))
+        {
+            levelOneClear = false;
+            PlayerPrefs.SetInt("LevelThreeClear", 0);
         }
     }
 }

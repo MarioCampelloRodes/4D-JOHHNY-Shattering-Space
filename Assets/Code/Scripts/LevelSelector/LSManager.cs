@@ -23,7 +23,16 @@ public class LSManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        StartCoroutine(LoadLevelCO());
+        if (_lSPRef.currentPoint.levelToLoad == "Level-2" && GameManager.gMRef.levelOneClear)
+            StartCoroutine(LoadLevelCO());
+        else if(_lSPRef.currentPoint.levelToLoad == "Level-3" && GameManager.gMRef.levelTwoClear)
+            StartCoroutine(LoadLevelCO());
+        else if (_lSPRef.currentPoint.levelToLoad == "Boss" && GameManager.gMRef.levelThreeClear)
+            StartCoroutine(LoadLevelCO());
+        else if (_lSPRef.currentPoint.levelToLoad == "Shop" && GameManager.gMRef.levelTwoClear)
+            StartCoroutine(LoadLevelCO());
+        else if(_lSPRef.currentPoint.levelToLoad == "Level-1")
+            StartCoroutine(LoadLevelCO());
     }
 
     private IEnumerator LoadLevelCO()

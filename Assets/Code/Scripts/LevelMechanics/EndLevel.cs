@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EndLevel : MonoBehaviour
 {
+    public GameObject endScreen, endScoreTitle, endTotalScoreTitle;
+    public TextMeshProUGUI highscoreText, timeBonusText, streakBonusText;
+
     private CameraController _cCRef;
     private UIController _uIRef;
     private LSUIControl _lsUIRef;
@@ -42,6 +46,10 @@ public class EndLevel : MonoBehaviour
         if(SceneManager.GetActiveScene().name != "Level-1")
             _uIRef.CalculateFinalScore();
 
+        GameManager.gMRef.SaveLevelClear();
+
+        ShowWinText();
+
         yield return new WaitForSeconds(1f);
 
         _lsUIRef.FadeToBlack();
@@ -55,6 +63,24 @@ public class EndLevel : MonoBehaviour
         else
         {
             SceneManager.LoadScene("LevelSelector");
+        }
+    }
+
+    void ShowWinText()
+    {
+        endScreen.SetActive(true);
+
+        if(SceneManager.GetActiveScene().name == "Level-2" || SceneManager.GetActiveScene().name == "Level-3")
+        {
+            endScoreTitle.SetActive(true);
+            timeBonusText.text = _uIRef.timeBonus.ToString();
+            streakBonusText.text = _uIRef.streakBonus.ToString();
+            highscoreText.text = _uIRef.highScore.ToString();
+        }
+        else if(SceneManager.GetActiveScene().name == "Boss")
+        {
+            endTotalScoreTitle.SetActive(true);
+            highscoreText.text = (GameManager.gMRef.highScoreLevelTwo + GameManager.gMRef.highScoreLevelThree).ToString();
         }
     }
 }

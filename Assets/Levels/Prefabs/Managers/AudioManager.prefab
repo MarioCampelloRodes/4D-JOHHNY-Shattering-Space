@@ -3044,6 +3044,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389776016159392978}
   - component: {fileID: 2726625088075722737}
+  - component: {fileID: 6827254040369362503}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -3109,6 +3110,20 @@ MonoBehaviour:
   shopMusic: {fileID: 6034807091418514628}
   bossMusic: {fileID: 8820852041405579980}
   creditsMusic: {fileID: 8198814719606060278}
+--- !u!114 &6827254040369362503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986423551849579139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f750e167b4c9944b1539078ef77d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 0}
+  sliderValue: 1
 --- !u!1 &8248017840054805422
 GameObject:
   m_ObjectHideFlags: 0

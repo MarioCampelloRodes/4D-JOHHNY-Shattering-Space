@@ -81,22 +81,6 @@ public class IkalController : MonoBehaviour
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
         _pHCRef = GetComponent<PlayerHealthController>();
-
-        if (GameManager.gMRef.hasSpeedUpgrade)
-        {
-            playerSpeed += 2;
-            dashSpeed++;
-        }
-
-        if (GameManager.gMRef.hasAttackUpgrade)
-        {
-            lightDamage++;
-            heavyDamage++;
-        }
-            
-        if (GameManager.gMRef.hasJumpUpgrade)
-            playerJumpForce += 2;
-
     }
     // Update is called once per frame
     void Update()

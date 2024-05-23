@@ -11,6 +11,8 @@ public class UIController : MonoBehaviour
 
     public int score, time, streak, highStreak, highScore;
 
+    public int timeBonus, streakBonus;
+
     private float _timeCounter;
 
     public TextMeshProUGUI scoreText, timeText, streakText;
@@ -161,7 +163,7 @@ public class UIController : MonoBehaviour
 
     public void CalculateFinalScore()
     {
-        int timeBonus, streakBonus;
+        
 
         if(time < 120)
         {
