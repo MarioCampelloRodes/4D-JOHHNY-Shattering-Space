@@ -167,11 +167,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   canMove: 1
-  playerJumpForce: 10
+  playerJumpForce: 11
   isGrounded: 0
   fallSpeed: -15
   canDash: 1
-  dashSpeed: 8
+  dashSpeed: 9
   dashTime: 0.3
   dashCooldown: 0.75
   knockbackForce: 5
