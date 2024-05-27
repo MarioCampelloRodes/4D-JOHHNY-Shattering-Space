@@ -76,7 +76,7 @@ public class IkalController : MonoBehaviour
     {
         _playerRB = GetComponent<Rigidbody2D>();
 
-        //_anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
 
         _playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -250,10 +250,10 @@ public class IkalController : MonoBehaviour
         }
 
         //Animaciones
-        //_anim.SetBool("isGrounded", isGrounded);
+        _anim.SetBool("IsGrounded", isGrounded);
 
         //Math.Abs devuelve el absoluto de una variable
-        //_anim.SetFloat("MoveSpeed", Mathf.Abs(_playerRB.velocity.x));
+        _anim.SetFloat("Speed", Mathf.Abs(_playerRB.velocity.x));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -285,7 +285,7 @@ public class IkalController : MonoBehaviour
         _knockbackCounter = knockbackCounterLength;
 
         _playerRB.velocity = new Vector2(0f, knockbackForce);
-        //_anim.SetTrigger("IsHurt");
+        _anim.SetTrigger("Hurt");
     }
 
     public void Bounce(float bounceForce)
@@ -328,7 +328,7 @@ public class IkalController : MonoBehaviour
         }
 
         _pHCRef.invincibleCounter = dashTime;
-        //_anim.SetTrigger("IsDashing");
+        _anim.SetTrigger("Dash");
 
         yield return new WaitForSeconds(dashTime);
 
@@ -355,8 +355,8 @@ public class IkalController : MonoBehaviour
             {
                 Instantiate(rightBulletPrefab, transform.position + new Vector3(3f, 0, 0), transform.rotation);
             }
-            
-            Instantiate(attackCirclePrefab, attackPointRight.position, transform.rotation);
+
+            //Instantiate(attackCirclePrefab, attackPointRight.position, transform.rotation);
         }
         
         if (!_playerSpriteRenderer.flipX)
@@ -373,10 +373,12 @@ public class IkalController : MonoBehaviour
                 Instantiate(leftBulletPrefab, transform.position + new Vector3(-3f, 0, 0), transform.rotation);
             }
 
-            Instantiate(attackCirclePrefab, attackPointLeft.position, transform.rotation);
+            //Instantiate(attackCirclePrefab, attackPointLeft.position, transform.rotation);
         }
 
         attackCounter = attackCounterLength;
+
+        _anim.SetTrigger("LightATK");
 
         AudioManager.aMRef.PlaySFX(10);
 
@@ -394,7 +396,9 @@ public class IkalController : MonoBehaviour
 
         _playerRB.velocity = new Vector2(0f, _playerRB.velocity.y);
 
-        yield return new WaitForSeconds(0.3f);
+        _anim.SetTrigger("HeavyATK");
+
+        yield return new WaitForSeconds(0.05f);
 
         if (_playerSpriteRenderer.flipX)
         {
@@ -406,7 +410,7 @@ public class IkalController : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().TakeDamage(heavyDamage);
             }
 
-            Instantiate(attackCirclePrefab, attackPointRight.position, transform.rotation);
+            //Instantiate(attackCirclePrefab, attackPointRight.position, transform.rotation);
         }
 
         if (!_playerSpriteRenderer.flipX)
@@ -418,7 +422,7 @@ public class IkalController : MonoBehaviour
                 enemy.GetComponent<EnemyHealth>().TakeDamage(heavyDamage);
             }
 
-            Instantiate(attackCirclePrefab, attackPointLeft.position, transform.rotation);
+            //Instantiate(attackCirclePrefab, attackPointLeft.position, transform.rotation);
         }
 
         attackCounter = heavyAttackCounterLength;
@@ -427,7 +431,7 @@ public class IkalController : MonoBehaviour
 
         Debug.Log("Ataque Pesado");
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
 
         _isHeavyAttacking = false;
     }
