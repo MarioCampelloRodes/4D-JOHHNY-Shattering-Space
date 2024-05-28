@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt("LevelThreeClear", 1);
                 break;
             default:
-                Debug.Log("Este nivel no requiere save o no se ha detectado correctamente");
+                //Debug.Log("Este nivel no requiere save o no se ha detectado correctamente");
                 break;
         }
     }

@@ -88,7 +88,7 @@ public class EnemyController : MonoBehaviour
                     _waitCount = waitTime;
                 }
 
-                //_animRef.SetBool("IsMoving", true);
+                _animRef.SetBool("IsMoving", true);
             }
             else if(_waitCount > 0)
             {
@@ -101,7 +101,7 @@ public class EnemyController : MonoBehaviour
                     _moveCount = Random.Range(moveTime * 0.5f, moveTime * 1.25f);
                 }
 
-                //_animRef.SetBool("IsMoving", false);
+                _animRef.SetBool("IsMoving", false);
             } 
         }
         else

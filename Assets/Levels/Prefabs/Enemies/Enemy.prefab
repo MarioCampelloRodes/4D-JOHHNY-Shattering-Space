@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 2867705470367778533}
   - component: {fileID: 6199407466160051858}
   - component: {fileID: 2240399516186862055}
+  - component: {fileID: 5726983542674481692}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -407,7 +408,7 @@ SpriteRenderer:
   m_SortingLayerID: -500216363
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d431674c270d2cf448673c5c2544f280, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e7f0b07dd530be4e837dc683fca4554, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -435,6 +436,7 @@ MonoBehaviour:
   isBasicNyuxhian: 0
   isRangerNyuxhian: 0
   isHeavyNyuxhian: 0
+  isBoss: 0
   maxHealth: 3
   currentHealth: 0
   isDamaged: 0
@@ -444,6 +446,8 @@ MonoBehaviour:
   shootTimeLength: 0
   leftBulletPrefab: {fileID: 0}
   rightBulletPrefab: {fileID: 0}
+  howManyBossHealthQuarters: 4
+  bossLifeBar: {fileID: 0}
   deathEffect: {fileID: 4461926073205091622, guid: cc0cc919ca38dfb49bf4423ee1b396c4, type: 3}
 --- !u!114 &2867705470367778533
 MonoBehaviour:
@@ -465,7 +469,7 @@ MonoBehaviour:
   maxRight: {fileID: 5660176284707248630}
   movingRight: 0
   moveTime: 3
-  waitTime: 0.5
+  waitTime: 0.75
   seeingLeft: 0
   seeingRight: 0
 --- !u!50 &6199407466160051858
@@ -540,3 +544,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0794582, y: 1.3929738}
   m_EdgeRadius: 0
+--- !u!95 &5726983542674481692
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8853678240719406393}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5abc6ff4b27bd1a4aacadfa3e1026479, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

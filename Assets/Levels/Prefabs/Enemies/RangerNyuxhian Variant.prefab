@@ -136,10 +136,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8361091046035596429, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 09d3a7bd882d0cf4da98d611923b33e0, type: 2}
     - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3f1ee8fc4d20e58409924a3b22f9053b, type: 3}
+      objectReference: {fileID: 21300000, guid: aaaf31154d8e7044887c6ec8b469a23c, type: 3}
     - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_Color.a
       value: 0.6313726

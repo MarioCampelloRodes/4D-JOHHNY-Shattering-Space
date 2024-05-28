@@ -13894,6 +13894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossBattle
       objectReference: {fileID: 0}
+    - target: {fileID: 1256398737506530010, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1259271312117013230, guid: e2841870277ebc840a77d0d1d84e7625, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27

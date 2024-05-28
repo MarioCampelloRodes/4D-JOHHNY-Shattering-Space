@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Bouncer : MonoBehaviour
 {
-    //private Animator _anim;
+    private Animator _anim;
 
     public float bounceForce = 20f;
     // Start is called before the first frame update
     void Start()
     {
-        //_anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +21,7 @@ public class Bouncer : MonoBehaviour
 
             AudioManager.aMRef.PlaySFX(4);
 
-            //_anim.SetTrigger("Bounce");
+            _anim.SetTrigger("Bounce");
         }
     }
 }

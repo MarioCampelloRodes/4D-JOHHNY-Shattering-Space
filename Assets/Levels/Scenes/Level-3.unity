@@ -73685,6 +73685,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Trampolin
       objectReference: {fileID: 0}
+    - target: {fileID: 819594849134686043, guid: 4bfa372c2d90d6644bbd7f80369029c7, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 819594849134686043, guid: 4bfa372c2d90d6644bbd7f80369029c7, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
     - target: {fileID: 8186019480854280196, guid: 4bfa372c2d90d6644bbd7f80369029c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 217.21

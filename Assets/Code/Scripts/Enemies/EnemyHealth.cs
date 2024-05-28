@@ -36,6 +36,8 @@ public class EnemyHealth : MonoBehaviour
     UIController _uIRef;
     public Image bossLifeBar;
 
+    private Animator _anim;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -50,6 +52,7 @@ public class EnemyHealth : MonoBehaviour
         if(isRangerNyuxhian)
         {
             _isInvincible = true;
+            _anim = GetComponent<Animator>();
         }
 
         _player = GameObject.FindWithTag("Player");
@@ -92,6 +95,16 @@ public class EnemyHealth : MonoBehaviour
         if (isRangerNyuxhian && _shootTime > 0)
         {
             _shootTime -= Time.deltaTime;
+        }
+
+        //Nyuxhiano Tirador Animación
+        if (isRangerNyuxhian && Vector2.Distance(transform.position, _player.transform.position) <= 17)
+        {
+            _anim.SetBool("Shoot", true);
+        }
+        else if (isRangerNyuxhian && Vector2.Distance(transform.position, _player.transform.position) > 17)
+        {
+            _anim.SetBool("Shoot", false);
         }
 
         //Nyuxhiano Tirador Punto Débil
@@ -195,7 +208,8 @@ public class EnemyHealth : MonoBehaviour
                     {
                         howManyBossHealthQuarters = 4;
                     }
-                    Debug.Log("Al boss le quedan " + howManyBossHealthQuarters + " cuartos de vida.");
+                    
+                    //Debug.Log("Al boss le quedan " + howManyBossHealthQuarters + " cuartos de vida.");
                 }
 
                 yield return new WaitForSeconds(0.5f);

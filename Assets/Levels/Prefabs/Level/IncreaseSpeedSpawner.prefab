@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2164517151004757295}
   - component: {fileID: 1497913466462883023}
+  - component: {fileID: 4728808696964590452}
   m_Layer: 0
   m_Name: IncreaseSpeedSpawner
   m_TagString: Untagged
@@ -47,6 +48,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   increaseSpeedPrefab: {fileID: 8471593065915342165, guid: dfd75a0dc76f1644f85aafcd594dba74, type: 3}
   increaseSpeedChidren: {fileID: 6491080857234377319}
+--- !u!95 &4728808696964590452
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219577900164839650}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 059ca0ba73820f447bb8e232090cec34, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &3424379107390052146
 PrefabInstance:
   m_ObjectHideFlags: 0

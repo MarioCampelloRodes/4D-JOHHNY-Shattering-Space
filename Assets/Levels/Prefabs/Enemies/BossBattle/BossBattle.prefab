@@ -77,7 +77,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1259271312117013230
 Transform:
   m_ObjectHideFlags: 0
@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 4152861247768555370}
   - component: {fileID: 3432252145399136368}
   - component: {fileID: 354597973921871538}
+  - component: {fileID: 2899118642325988765}
   m_Layer: 8
   m_Name: Nyuxh
   m_TagString: Enemy
@@ -430,7 +431,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 014a6707304442f45a985be8f617d6ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d8a95bb7aee20cf44a7b78c35a81bbfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -551,6 +552,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageDealt: 1
+--- !u!95 &2899118642325988765
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5723759761595142072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1c2184e4b78b66499df38538bb39ac2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7856417821600917568
 GameObject:
   m_ObjectHideFlags: 0

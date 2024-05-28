@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 822244697299462496}
   - component: {fileID: 5157964200854382665}
   - component: {fileID: 1596844221218175575}
+  - component: {fileID: 8361091046035596429}
   m_Layer: 8
   m_Name: NyuxhianLevelTwo
   m_TagString: Enemy
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: -500216363
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c15ad54c69e43184681920f2ec8ae9c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d99e5549fb461cc4a9dcf86f23a3cec2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,6 +134,7 @@ MonoBehaviour:
   isBasicNyuxhian: 0
   isRangerNyuxhian: 0
   isHeavyNyuxhian: 0
+  isBoss: 0
   maxHealth: 3
   currentHealth: 0
   isDamaged: 0
@@ -142,6 +144,8 @@ MonoBehaviour:
   shootTimeLength: 0
   leftBulletPrefab: {fileID: 0}
   rightBulletPrefab: {fileID: 0}
+  howManyBossHealthQuarters: 4
+  bossLifeBar: {fileID: 0}
   deathEffect: {fileID: 4461926073205091622, guid: cc0cc919ca38dfb49bf4423ee1b396c4, type: 3}
 --- !u!50 &5157964200854382665
 Rigidbody2D:
@@ -215,6 +219,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.8353963}
   m_EdgeRadius: 0
+--- !u!95 &8361091046035596429
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624717545709494096}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77f01fe6986bb234591bac609beb3120, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3892721434775242284
 GameObject:
   m_ObjectHideFlags: 0

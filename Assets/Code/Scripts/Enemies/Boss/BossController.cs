@@ -49,12 +49,13 @@ public class BossController : MonoBehaviour
 
     private Transform _playerPosition;
 
+
     // Start is called before the first frame update
     void Start()
     {
         currentState = bossStates.stayStill;
 
-        _bAnim = GetComponentInChildren<Animator>();
+        _bAnim = GetComponent<Animator>();
 
         _playerPosition = GameObject.FindWithTag("Player").transform;
 
@@ -71,6 +72,7 @@ public class BossController : MonoBehaviour
         switch (currentState)
         {
             case bossStates.shooting:
+                _bAnim.SetBool("Attack", true);
                 _shotCounter -= Time.deltaTime;
 
                 if (_shotCounter <= 0)
@@ -134,7 +136,9 @@ public class BossController : MonoBehaviour
                 break;
 
             case bossStates.stayStill:
-                if(_spawnCounter > 0)
+                _bAnim.SetBool("Attack", false);
+
+                if (_spawnCounter > 0)
                 {
                     _spawnCounter -= Time.deltaTime;
 

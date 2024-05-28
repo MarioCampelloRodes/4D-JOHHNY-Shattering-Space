@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673166efd50329c409a534b43e9b3889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWolf: 0
 --- !u!1 &4193794952300079872
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15315fe8eec467e4aa52987c8d5e9fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWolf: 0
 --- !u!1001 &4765780932240482800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.543931
+      value: -9.29
       objectReference: {fileID: 0}
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -290,15 +292,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6965958843599932176, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -316,10 +318,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 3.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8361091046035596429, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b275d9f5b7b252e44a56942cd489abce, type: 2}
     - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 049717af8ccc6e64392e5088978394ef, type: 3}
+      objectReference: {fileID: 21300000, guid: 1a369f580b512f24792f1ebac8c12a64, type: 3}
     - target: {fileID: 8797803849804940977, guid: 2b9d98b1245f3f149bf360dd151031cd, type: 3}
       propertyPath: m_Color.b
       value: 1
