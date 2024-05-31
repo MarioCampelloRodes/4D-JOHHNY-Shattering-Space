@@ -17,6 +17,8 @@ public class ShopUIController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.gMRef.LoadData();
+        
         money = GameManager.gMRef.highScoreLevelTwo + GameManager.gMRef.highScoreLevelThree;
 
         coinAmountText.text = money.ToString();
